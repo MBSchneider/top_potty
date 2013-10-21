@@ -7,7 +7,7 @@
 
 By [Author name](author URL goes here).
 
-[![Code Climate](Code Climate Badge IMG URL goes here)](Code Climate URL goes here)
+![Wireframe](https://raw.github.com/MBSchneider/top_potty/master/tp_wireframe.jpg)
 
 ## Description
 **toppotty** description can be listed here.
