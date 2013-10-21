@@ -1,4 +1,4 @@
-# Application Title Goes Here
+# toppotty
 <!-- If you'd like to use a logo instead uncomment this code and remove the text above this line
 
   ![Logo](URL to logo img file goes here)
@@ -10,7 +10,7 @@ By [Author name](author URL goes here).
 [![Code Climate](Code Climate Badge IMG URL goes here)](Code Climate URL goes here)
 
 ## Description
-**Application Name Here** description can be listed here.
+**toppotty** description can be listed here.
 
 ## Installation
 
