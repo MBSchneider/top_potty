@@ -1,8 +1,8 @@
 TopPotty::Application.routes.draw do
-  resources :cleanliness_ratings
 
-
-  resources :restrooms
+  resources :restrooms do
+    resources :cleanliness_ratings
+  end
 
 
   # The priority is based upon order of creation:

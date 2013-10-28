@@ -3,7 +3,6 @@ class RestroomsController < ApplicationController
   # GET /restrooms.json
   def index
     @restrooms = Restroom.all
-    @cleanlinessratings = CleanlinessRating.all
 
     respond_to do |format|
       format.html # index.html.erb
