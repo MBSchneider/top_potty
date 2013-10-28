@@ -16,12 +16,20 @@
     <%= f.text_field :location %>
   </div>
   <div class="field">
-    <%= f.label :malefemale %><br />
-    <%= f.text_field :malefemale %>
+    <table>
+      <tr>
+        <td align="center"><%= f.label(:malefemale_male, "Male") %></td>
+        <td align="center"><%= f.label(:malefemale_female, "Female") %></td>
+      </tr>
+      <tr>
+        <td align="center"><%= f.radio_button(:malefemale, "male") %></td>
+        <td align="center"><%= f.radio_button(:malefemale, "female") %></td>
+      </td>
+    </table>
   </div>
   <div class="field">
-    <%= f.label :cleanliness %><br />
-    <%= f.number_field :cleanliness %>
+    <%= f.label(:cleanliness, "Cleanliness rating, 1 (dirtiest) to 10 (cleanest):") %><br />
+    <%= f.select(:cleanliness, 1..10) %>
   </div>
   <div class="actions">
     <%= f.submit %>
