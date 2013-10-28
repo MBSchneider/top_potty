@@ -2,9 +2,15 @@ require "test_helper"
 
 feature "Member can contribute restrooms" do
   scenario "Member adds new restroom location" do
-    # SKIP
-    #visit root_path
+    visit new_restroom_path
 
-    #page.text.wont_include 'Post was successfully created'
+    fill_in 'Location', with: "123 Oak Rd."
+    choose 'Male'
+    select '6', from: "Cleanliness rating"
+
+    click_on 'Create Restroom'
+
+    page.text.must_include 'successfully created'
+    save_and_open_page
   end
 end

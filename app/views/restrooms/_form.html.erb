@@ -16,20 +16,14 @@
     <%= f.text_field :location %>
   </div>
   <div class="field">
-    <table>
-      <tr>
-        <td align="center"><%= f.label(:malefemale_male, "Male") %></td>
-        <td align="center"><%= f.label(:malefemale_female, "Female") %></td>
-      </tr>
-      <tr>
-        <td align="center"><%= f.radio_button(:malefemale, "male") %></td>
-        <td align="center"><%= f.radio_button(:malefemale, "female") %></td>
-      </td>
-    </table>
+        <%= f.radio_button(:malefemale, "male") %>
+        <%= f.label(:malefemale, "Male", :value => "male") %>
+        <%= f.radio_button(:malefemale, "female") %>
+        <%= f.label(:malefemale, "Female", :value => "female") %>
   </div>
   <div class="field">
     <%= f.label(:cleanliness, "Cleanliness rating, 1 (dirtiest) to 10 (cleanest):") %><br />
-    <%= f.select(:cleanliness, 1..10) %>
+    <%= f.select(:cleanliness, 1..10, :selected => 5) %>
   </div>
   <div class="actions">
     <%= f.submit %>
