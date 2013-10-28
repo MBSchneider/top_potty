@@ -1,0 +1,29 @@
+<%= form_for(@restroom) do |f| %>
+  <% if @restroom.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@restroom.errors.count, "error") %> prohibited this restroom from being saved:</h2>
+
+      <ul>
+      <% @restroom.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :malefemale %><br />
+    <%= f.text_field :malefemale %>
+  </div>
+  <div class="field">
+    <%= f.label :cleanliness %><br />
+    <%= f.number_field :cleanliness %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

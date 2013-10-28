@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Location:</b>
+  <%= @restroom.location %>
+</p>
+
+<p>
+  <b>Malefemale:</b>
+  <%= @restroom.malefemale %>
+</p>
+
+<p>
+  <b>Cleanliness:</b>
+  <%= @restroom.cleanliness %>
+</p>
+
+
+<%= link_to 'Edit', edit_restroom_path(@restroom) %> |
+<%= link_to 'Back', restrooms_path %>

@@ -1,4 +1,7 @@
 TopPotty::Application.routes.draw do
+  resources :restrooms
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
