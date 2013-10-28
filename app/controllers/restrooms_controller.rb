@@ -2,7 +2,11 @@ class RestroomsController < ApplicationController
   # GET /restrooms
   # GET /restrooms.json
   def index
-    @restrooms = Restroom.all
+    if params[:search].present?
+      @restrooms = Restroom.near(params[:search], 50, :order => :distance)
+    else
+      @restrooms = Restroom.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
