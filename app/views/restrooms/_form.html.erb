@@ -21,9 +21,12 @@
         <%= f.radio_button(:malefemale, "female") %>
         <%= f.label(:malefemale, "Female", :value => "female") %>
   </div>
-  <div class="field">
-    <%= f.label(:cleanliness, "Cleanliness rating, 1 (dirtiest) to 10 (cleanest):") %><br />
-    <%= f.select(:cleanliness, 1..10, :selected => 5) %>
+
+    <%= f.fields_for :cleanliness_ratings do |builder| %>
+    <div class="field">
+      <%= builder.label(:cleanlinessrating, "Cleanliness rating, 1 (dirtiest) to 10 (cleanest):") %><br />
+      <%= builder.select(:cleanlinessrating, 1..10, :selected => 5) %>
+    <% end %>
   </div>
   <div class="actions">
     <%= f.submit %>

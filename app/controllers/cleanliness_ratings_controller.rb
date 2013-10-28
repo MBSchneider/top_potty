@@ -1,0 +1,2 @@
+class CleanlinessRatingsController < ApplicationController
+end

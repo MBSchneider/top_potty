@@ -1,4 +1,7 @@
 TopPotty::Application.routes.draw do
+  resources :cleanliness_ratings
+
+
   resources :restrooms
 
 

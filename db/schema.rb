@@ -11,14 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131028170129) do
+ActiveRecord::Schema.define(:version => 20131028181020) do
+
+  create_table "cleanliness_ratings", :force => true do |t|
+    t.integer  "restroom_id"
+    t.float    "cleanlinessrating"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
 
   create_table "restrooms", :force => true do |t|
     t.string   "location"
     t.string   "malefemale"
-    t.float    "cleanliness"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

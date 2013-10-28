@@ -25,6 +25,7 @@ class RestroomsController < ApplicationController
   # GET /restrooms/new.json
   def new
     @restroom = Restroom.new
+    @restroom.cleanliness_ratings.build
 
     respond_to do |format|
       format.html # new.html.erb
