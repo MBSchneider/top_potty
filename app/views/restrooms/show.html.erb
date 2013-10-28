@@ -12,7 +12,9 @@
 
 <p>
   <b>Cleanliness:</b>
-  <%= @restroom.cleanliness %>
+  <% for cleanlinessrating in @restroom.cleanliness_ratings %>
+  <%= cleanlinessrating.cleanlinessrating %>
+  <% end %>
 </p>
 
 

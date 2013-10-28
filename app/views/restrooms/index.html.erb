@@ -14,12 +14,13 @@
   <tr>
     <td><%= restroom.location %></td>
     <td><%= restroom.malefemale %></td>
-    <td><%= restroom.cleanliness %></td>
+    <td>
+    <%= restroom.cleanliness_ratings.average('cleanlinessrating') %></td>
     <td><%= link_to 'Show', restroom %></td>
     <td><%= link_to 'Edit', edit_restroom_path(restroom) %></td>
     <td><%= link_to 'Destroy', restroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
-<% end %>
+  <% end %>
 </table>
 
 <br />
