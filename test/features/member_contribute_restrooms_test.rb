@@ -11,6 +11,6 @@ feature "Member can contribute restrooms" do
     click_on 'Create Restroom'
 
     page.text.must_include 'successfully created'
-    save_and_open_page
+
   end
 end
