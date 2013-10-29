@@ -21,3 +21,13 @@ end
 
 Turn.config.format = :outline
 end
+
+def log_in_user_one
+  click_link "Log In"
+
+  # given a complete log in form
+  fill_in "Email", with: users(:one).email
+  fill_in "Password", with: 'password'
+
+  click_button "Sign in"
+end

@@ -1,9 +1,11 @@
 TopPotty::Application.routes.draw do
 
+
   resources :restrooms do
     resources :cleanliness_ratings
   end
 
+  devise_for :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

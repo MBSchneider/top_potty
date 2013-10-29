@@ -8,6 +8,8 @@ gem 'geocoder'
 
 gem 'figaro'
 gem 'pry-rails'
+gem 'devise'
+gem 'launchy'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
