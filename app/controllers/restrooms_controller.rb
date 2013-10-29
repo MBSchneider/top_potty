@@ -1,4 +1,6 @@
 class RestroomsController < ApplicationController
+  before_filter :authenticate_user!, except: [:index, :show]
+
   # GET /restrooms
   # GET /restrooms.json
   def index
@@ -12,7 +14,7 @@ class RestroomsController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @restrooms }
     end
-    # Add later
+    # Add later - MBS
     # format.js
 
   end
