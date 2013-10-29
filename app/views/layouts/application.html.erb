@@ -2,19 +2,28 @@
 <html>
 <head>
   <title>TopPotty</title>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyBiSAQ-M7T65r6PCdSUVFwlqAt4xq99o44&sensor=false" %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
 </head>
 <body>
-<%= form_tag(restrooms_path, :method => "get", class: "navbar-form", id: "search-form") %>
+<%= form_tag(restrooms_path, :method => "get", class: "navbar-form", id: "search-form") do %>
 <div class="input-append">
 <%= text_field_tag :search, params[:search], class: "span2", placeholder: "123 Oak St, Anytown, WA" %>
-<button class="btn" type="submit">Search for restroom</button>
+<%= submit_tag "Search for restroom", :name => nil %>
 </div>
+<% end %>
 
 
 <%= yield %>
 
 </body>
 </html>
+
+<!--- <%= form_tag restrooms_path, :method => :get do %>
+#   <p>
+#     <%= text_field_tag :search, params[:search] %>
+#     <%= submit_tag "Search Near", :name => nil %>
+# <% end %> -->

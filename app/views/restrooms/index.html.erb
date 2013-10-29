@@ -1,4 +1,4 @@
-
+<!--
 
 <% if params[:search] %>
 <h1>Closest matches:</h1>
@@ -6,7 +6,7 @@
   <%= link_to rr.location, rr %><br />
 <% end %>
 
-<% end %>
+<% end %> -->
 
 <h1>Listing all restrooms</h1>
 <table>
@@ -17,11 +17,12 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @restrooms.each do |restroom| %>
   <tr>
-    <td><%= restroom.location %></td>
+    <td><%= link_to restroom.location, restroom %></td>
     <td><%= restroom.malefemale %></td>
     <td>
     <%= restroom.cleanliness_ratings.average('cleanlinessrating').round(2) %>
@@ -29,10 +30,16 @@
     <td><%= link_to 'Show', restroom %></td>
     <td><%= link_to 'Edit', edit_restroom_path(restroom) %></td>
     <td><%= link_to 'Destroy', restroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= image_tag "http://maps.google.com/maps/api/staticmap?size=300x300&sensor=false&zoom=15&markers=#{restroom.latitude}%2C#{restroom.longitude}" %></td>
   </tr>
   <% end %>
 </table>
+<p>
+<!-- Add later -->
+<!--<div id="map-canvas"></div>-->
 
+
+</p>
 <br />
 
 <%= link_to 'New Restroom', new_restroom_path %>

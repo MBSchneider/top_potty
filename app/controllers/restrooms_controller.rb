@@ -2,18 +2,19 @@ class RestroomsController < ApplicationController
   # GET /restrooms
   # GET /restrooms.json
   def index
-    @restrooms = Restroom.all
-
-    if params[:search]
-      @rrresults = Restroom.search(params[:search]).order("created_at DESC")
+    if params[:search].present?
+      @restrooms = Restroom.near(params[:search], 60, :order => :distance)
+      search_coordinates = Geocoder.coordinates(params[:search])
     else
-      @rrresults = Restroom.order("created_at DESC")
+      @restrooms = Restroom.all
     end
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @restrooms }
     end
+
+    # Add later
+    # format.js
 
   end
 

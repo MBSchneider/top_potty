@@ -2,12 +2,18 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.14'
 
+# For map and location APIs
+gem 'gmaps4rails'
+gem 'geocoder'
+
+gem 'figaro'
+gem 'pry-rails'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
 gem 'minitest-rails'
-
 
 # Gems used only for assets and not required
 # in production environments by default.

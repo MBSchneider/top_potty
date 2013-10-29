@@ -19,12 +19,19 @@ ActiveRecord::Schema.define(:version => 20131028181020) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
   end
+=======
+ActiveRecord::Schema.define(:version => 20131028183950) do
 
   create_table "restrooms", :force => true do |t|
     t.string   "location"
     t.string   "malefemale"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "cleanliness"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.float    "longitude"
+    t.float    "latitude"
   end
 
 end
