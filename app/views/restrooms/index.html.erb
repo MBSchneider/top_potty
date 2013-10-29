@@ -13,7 +13,7 @@
   </tr>
 
 <% @restrooms.each do |restroom| %>
-  <tr>
+  <tr id=<%= dom_id(restroom) %> >
     <td><%= link_to restroom.location, restroom %></td>
     <td><%= restroom.malefemale %></td>
     <td>

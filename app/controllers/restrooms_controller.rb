@@ -1,5 +1,6 @@
 class RestroomsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
+  after_filter :verify_authorized, except: [:index, :show]
 
   # GET /restrooms
   # GET /restrooms.json
@@ -34,6 +35,7 @@ class RestroomsController < ApplicationController
   # GET /restrooms/new.json
   def new
     @restroom = Restroom.new
+    authorize @restroom
     @restroom.cleanliness_ratings.build
 
     respond_to do |format|
@@ -45,12 +47,14 @@ class RestroomsController < ApplicationController
   # GET /restrooms/1/edit
   def edit
     @restroom = Restroom.find(params[:id])
+    authorize @restroom
   end
 
   # POST /restrooms
   # POST /restrooms.json
   def create
     @restroom = Restroom.new(params[:restroom])
+    authorize @restroom
 
     respond_to do |format|
       if @restroom.save
@@ -67,6 +71,7 @@ class RestroomsController < ApplicationController
   # PUT /restrooms/1.json
   def update
     @restroom = Restroom.find(params[:id])
+    authorize @restroom
 
     respond_to do |format|
       if @restroom.update_attributes(params[:restroom])
@@ -83,10 +88,11 @@ class RestroomsController < ApplicationController
   # DELETE /restrooms/1.json
   def destroy
     @restroom = Restroom.find(params[:id])
+    authorize @restroom
     @restroom.destroy
 
     respond_to do |format|
-      format.html { redirect_to restrooms_url }
+      format.html { redirect_to restrooms_url, notice: 'Restroom deleted.' }
       format.json { head :no_content }
     end
   end

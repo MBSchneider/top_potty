@@ -19,8 +19,11 @@
 
   <%= render 'layouts/navbar' %>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+<% [:notice,:error,:info,:success,:alert].each do |key| %>
+  <div class="message">
+    <%= flash[key] %>
+  </div>
+<% end %>
 
   <%= yield %>
 

@@ -1,7 +1,7 @@
 require "test_helper"
 
-feature "visitor signs up for account" do
-  scenario "sign up for account" do
+feature "visitor logs out of account" do
+  scenario "log out" do
 
     visit root_path
 
