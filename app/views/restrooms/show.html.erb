@@ -6,14 +6,15 @@
 </p>
 
 <p>
-  <b>Malefemale:</b>
+  <b>Male/Female:</b>
   <%= @restroom.malefemale %>
 </p>
 
 <p>
-  <b>Average Cleanliness:</b>
+  <b>Average Cleanliness Rating:</b>
 
-  <%= @restroom.cleanliness_ratings.average(:cleanlinessrating) %>
+  <%= @restroom.cleanliness_ratings.average(:cleanlinessrating).round(2) %>
+  (<%= @restroom.cleanliness_ratings.count %> reviews total)
 
 </p>
 
