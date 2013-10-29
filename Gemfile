@@ -9,8 +9,8 @@ gem 'geocoder'
 gem 'figaro'
 gem 'pry-rails'
 gem 'devise'
-gem 'launchy'
 gem 'pundit'
+gem 'omniauth-twitter'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
