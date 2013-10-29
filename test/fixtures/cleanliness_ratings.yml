@@ -16,3 +16,7 @@ crtwo:
 crthree:
   restroom: third
   cleanlinessrating: 6
+
+crfourth:
+  restroom: fourth
+  cleanlinessrating: 7
