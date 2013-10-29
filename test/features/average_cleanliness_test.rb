@@ -3,6 +3,7 @@ require "test_helper"
 feature "restrooms cleanliness rating shows average and total of all ratings" do
   scenario "index shows average cleanliness ratings and total ratings" do
     sign_in(:one)
+
     visit new_restroom_path
 
     fill_in 'Location', with: "123 Oak Rd."
@@ -24,7 +25,9 @@ feature "restrooms cleanliness rating shows average and total of all ratings" do
   end
 
   scenario "individual restroom shows average cleanliness ratings and total ratings" do
+
     sign_in(:one)
+
     visit new_restroom_path
 
     fill_in 'Location', with: "123 Oak Rd."

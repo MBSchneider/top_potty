@@ -23,6 +23,8 @@ Turn.config.format = :outline
 end
 
 def log_in_user_one
+  visit root_path
+
   click_link "Log In"
 
   # given a complete log in form
@@ -32,9 +34,22 @@ def log_in_user_one
   click_button "Sign in"
 end
 
+
 def sign_in(user)
   visit new_user_session_path
   fill_in "Email", with: users(user).email
   fill_in "Password", with: "password"
   click_on "Sign in"
+end
+
+def log_in_admin
+  visit root_path
+
+  click_link "Log In"
+
+  # given a complete log in form
+  fill_in "Email", with: users(:three).email
+  fill_in "Password", with: 'password'
+
+  click_button "Sign in"
 end

@@ -2,7 +2,9 @@ require "test_helper"
 
 feature "Member can contribute restrooms" do
   scenario "Member adds new restroom location" do
+
     sign_in(:one)
+
     visit new_restroom_path
 
     fill_in 'Location', with: "123 Oak Rd."
