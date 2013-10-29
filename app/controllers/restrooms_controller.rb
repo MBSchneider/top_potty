@@ -4,8 +4,11 @@ class RestroomsController < ApplicationController
   # GET /restrooms
   # GET /restrooms.json
   def index
-    if params[:search].present?
-      @restrooms = Restroom.near(params[:search], 60, :order => :distance)
+    if params[:search].present? && params[:malefemale] == 'male'
+      @restrooms = Restroom.near(params[:search], 60, :order => :distance).where(:malefemale => 'male')
+      search_coordinates = Geocoder.coordinates(params[:search])
+    elsif params[:search].present? && params[:malefemale] == 'female'
+      @restrooms = Restroom.near(params[:search], 60, :order => :distance).where(:malefemale => 'female')
       search_coordinates = Geocoder.coordinates(params[:search])
     else
       @restrooms = Restroom.all

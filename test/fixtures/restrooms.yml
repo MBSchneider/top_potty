@@ -9,20 +9,17 @@
 first:
   location: "511 Boren Ave N, Seattle, WA"
   malefemale: male
-  cleanliness: 7
   longitude: -122.3360958
   latitude: 47.6235376
 
 second:
   location: "Denver, CO"
   malefemale: male
-  cleanliness: 7
   longitude: -104.9847179
   latitude: 39.737567
 
 third:
   location: "802 NE 62nd St, Seattle, WA 98115"
   malefemale: male
-  cleanliness: 7
   longitude: -122.319272
   latitude: 47.6735339
