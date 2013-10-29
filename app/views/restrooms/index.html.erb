@@ -1,5 +1,14 @@
-<h1>Listing restrooms</h1>
 
+
+<% if params[:search] %>
+<h1>Closest matches:</h1>
+<% @rrresults.each do |rr| %>
+  <%= link_to rr.location, rr %><br />
+<% end %>
+
+<% end %>
+
+<h1>Listing all restrooms</h1>
 <table>
   <tr>
     <th>Location</th>

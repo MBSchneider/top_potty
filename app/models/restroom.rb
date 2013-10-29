@@ -3,4 +3,8 @@ class Restroom < ActiveRecord::Base
   validates :location, :malefemale, :presence => true
   has_many :cleanliness_ratings, dependent: :destroy
   accepts_nested_attributes_for :cleanliness_ratings
+
+  def self.search(query)
+    where("location like ?", "%#{query}%")
+  end
 end

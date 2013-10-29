@@ -4,10 +4,17 @@ class RestroomsController < ApplicationController
   def index
     @restrooms = Restroom.all
 
+    if params[:search]
+      @rrresults = Restroom.search(params[:search]).order("created_at DESC")
+    else
+      @rrresults = Restroom.order("created_at DESC")
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @restrooms }
     end
+
   end
 
   # GET /restrooms/1
