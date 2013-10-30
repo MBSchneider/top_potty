@@ -16,7 +16,7 @@
   </tr>
 
 <% @restrooms.each do |restroom| %>
-  <tr>
+  <tr onload="addDiv">
     <td><%= restroom.location %></td>
     <td><%= restroom.malefemale %></td>
     <td><%= restroom.cleanliness %></td>

@@ -16,3 +16,4 @@ initialize = ->
 console.log "Two"
 google.maps.event.addDomListener window, "load", initialize
 console.log "Three"
+
