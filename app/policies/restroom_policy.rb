@@ -10,6 +10,10 @@ class RestroomPolicy < ApplicationPolicy
     true
   end
 
+  def newprelim?
+    user.present?
+  end
+
   def show?
     scope.where(:id => record.id).exists?
   end

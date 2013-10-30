@@ -14,13 +14,13 @@ class RestroomsController < ApplicationController
     else
       @restrooms = Restroom.all
     end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @restrooms }
     end
     # Add later - MBS
     # format.js
-
   end
 
   # GET /restrooms/1
@@ -37,6 +37,17 @@ class RestroomsController < ApplicationController
   # GET /restrooms/new
   # GET /restrooms/new.json
   def new
+    @restroom = Restroom.new
+    authorize @restroom
+    @restroom.cleanliness_ratings.build
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @restroom }
+    end
+  end
+
+  def newprelim
     @restroom = Restroom.new
     authorize @restroom
     @restroom.cleanliness_ratings.build

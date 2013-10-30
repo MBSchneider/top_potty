@@ -22,10 +22,16 @@
     <td><%= link_to 'Show', restroom %></td>
     <td><%= link_to 'Edit', edit_restroom_path(restroom) %></td>
     <td><%= link_to 'Destroy', restroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Add Cleanliness rating', new_restroom_cleanliness_rating_path(restroom) %></td>
     <td><%= image_tag "http://maps.google.com/maps/api/staticmap?size=300x300&sensor=false&zoom=15&markers=#{restroom.latitude}%2C#{restroom.longitude}" %></td>
   </tr>
   <% end %>
 </table>
+<%  if URI(request.referer || "").path == '/newprelim_restroom' %>
+Restroom not found?
+<%= link_to 'Add a new restroom!', new_restroom_path %>
+<% end %>
+
 <p>
 <!-- Add later -->
 <!--<div id="map-canvas"></div>-->
@@ -33,5 +39,3 @@
 
 </p>
 <br />
-
-<%= link_to 'New Restroom', new_restroom_path %>
