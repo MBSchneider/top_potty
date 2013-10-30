@@ -37,10 +37,15 @@
     -->
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
-      <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
       <% else %>
-      <li><%= link_to "Sign Up", new_user_registration_path %></li>
-      <li><%= link_to "Log In", new_user_session_path %></li>
+        <li><%= link_to "Sign Up", new_user_registration_path %></li>
+        <li><%= link_to "Log In", new_user_session_path %></li>
+        <li>
+          <%= link_to user_omniauth_authorize_path(:twitter) do %>
+            Sign in through Twitter<%= image_tag "bird_blue_32.png" %>
+          <% end %>
+        </li>
       <% end %>
       <!--
         <li class="dropdown">
