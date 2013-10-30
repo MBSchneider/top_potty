@@ -3,43 +3,38 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TopPotty</title>
-  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyBiSAQ-M7T65r6PCdSUVFwlqAt4xq99o44&sensor=false" %>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+    <title>TopPotty</title>
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyBiSAQ-M7T65r6PCdSUVFwlqAt4xq99o44&sensor=false" %>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
   </head>
 
   <body>
 
     <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-        <%= link_to 'TopPotty', root_path, class: 'navbar-brand' %>
+      <%= link_to 'TopPotty', root_path, class: 'navbar-brand' %>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-
-        <%= form_tag(restrooms_path, :method => "get", id: "search-form") do %>
-            <%= text_field_tag :search, params[:search], placeholder: "123 Oak St, Anytown, WA" %>
-            <%= label_tag(:malefemale_male, "Male:", :value => "male", class: "navbar-form") %>
-            <%= radio_button_tag(:malefemale, "male", class: "navbar-text") %>
-            <%= label_tag(:malefemale_female, "Female:", :value => "female", class: "navbar-form") %>
-            <%= radio_button_tag(:malefemale, "female", class: "navbar-text") %>
-            <%= submit_tag "Search for restroom", :name => nil %>
-            <%= link_to 'ADD NEW RESTROOM', newprelim_restroom_path, class: "navbar-brand2" %>
+      <%= form_tag(restrooms_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "123 Oak St, Anytown, WA" %>
+        <%= label_tag(:malefemale_male, "Male:", :value => "male", class: "navbar-form") %>
+        <%= radio_button_tag(:malefemale, "male", class: "navbar-text") %>
+        <%= label_tag(:malefemale_female, "Female:", :value => "female", class: "navbar-form") %>
+        <%= radio_button_tag(:malefemale, "female", class: "navbar-text") %>
+        <%= submit_tag "Search for restroom", :name => nil %>
+        <%= link_to 'ADD NEW RESTROOM', newprelim_restroom_path, class: "navbar-brand2" %>
         <!-- /.navbar-collapse -->
-        <% end %>
-      </nav>
-      <%= render 'restrooms/navbar' %>
-
-      <!-- /.container -->
-
+      <% end %>
+    </nav>
+    <%= render 'restrooms/navbar' %>
 
     <!-- Content goes here -->
 
-<% [:notice,:error,:info,:success,:alert].each do |key| %>
-  <div class="message">
-    <%= flash[key] %>
-  </div>
-<% end %>
+    <% [:notice,:error,:info,:success,:alert].each do |key| %>
+    <div class="message">
+      <%= flash[key] %>
+    </div>
+    <% end %>
     <%= yield %>
 
   </body>
