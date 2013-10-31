@@ -1,9 +1,6 @@
 TopPotty::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
-  # ADDED FOR HEROKU COMPATIBLITY
-  config.assets.initialize_on_precompile = false
-
   # Code is not reloaded between requests
   config.cache_classes = true
 

@@ -5,4 +5,7 @@
 require File.expand_path('../config/application', __FILE__)
 
 TopPotty::Application.load_tasks
-MiniTest::Rails::Testing.default_tasks << "features"
+
+if (Rails.env == "test" || Rails.env == "development")
+  MiniTest::Rails::Testing.default_tasks << "features"
+end
