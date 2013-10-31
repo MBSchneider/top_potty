@@ -7,6 +7,7 @@ feature "visitor inputs address" do
 
     # input address in address input
     fill_in "search", with: "511 Boren Ave N, Seattle, WA"
+    choose("malefemale_male")
     click_button "Search for restroom"
 
     # search in result div ID #1 for fixture
