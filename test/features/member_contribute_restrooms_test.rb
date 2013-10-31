@@ -7,7 +7,7 @@ feature "Member can contribute restrooms" do
 
     visit new_restroom_path
 
-    fill_in 'Location', with: "123 Oak Rd."
+    fill_in 'Address', with: "123 Oak Rd."
     choose 'Male'
     select '6', from: "Cleanliness rating"
 
