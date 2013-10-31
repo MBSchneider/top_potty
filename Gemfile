@@ -13,11 +13,11 @@ gem 'pundit'
 gem 'omniauth-twitter'
 gem 'gon'
 
-
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :production do
   gem 'pg'
+  gem 'rails_12factor'
 end
 
 group :development, :test do
