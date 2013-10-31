@@ -11,8 +11,8 @@
   </head>
 
   <body>
-
     <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <%= render 'restrooms/navbar' %>
       <%= link_to 'TopPotty', root_path, class: 'navbar-brand' %>
 
       <%= form_tag(restrooms_path, :method => "get", id: "search-form") do %>
@@ -26,10 +26,9 @@
         <!-- /.navbar-collapse -->
       <% end %>
     </nav>
-    <%= render 'restrooms/navbar' %>
 
     <!-- Content goes here -->
-
+    <br />
     <% [:notice,:error,:info,:success,:alert].each do |key| %>
     <div class="message">
       <%= flash[key] %>
