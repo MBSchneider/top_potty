@@ -1,4 +1,4 @@
-![Logo](https://raw.github.com/MBSchneider/top_potty/master/app/assets/images/toppotty.png)
+![Logo](https://raw.github.com/MBSchneider/top_potty/master/app/assets/images/toppotty2.png)
 
 By [Matt Sayre](https://github.com/mlsayre) and [Matt Schneider](https://github.com/mbschneider).
 
