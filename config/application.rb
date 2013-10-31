@@ -1,8 +1,5 @@
 require File.expand_path('../boot', __FILE__)
 
-# For Heroku
-config.assets.initialize_on_precompile = false
-
 # Pick the frameworks you want:
 require "active_record/railtie"
 require "action_controller/railtie"
@@ -20,6 +17,10 @@ end
 
 module TopPotty
   class Application < Rails::Application
+
+    # For Heroku
+    config.assets.initialize_on_precompile = false
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
