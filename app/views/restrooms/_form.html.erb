@@ -12,8 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :location %><br />
+    <%= f.label :location, "Address" %><br />
     <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label(:foundwithin, "Found within") %><br />
+    <%= f.text_field :foundwithin, placeholder: "Inside business or building?" %>
   </div>
   <div class="field">
         <%= f.radio_button(:malefemale, "male") %>
