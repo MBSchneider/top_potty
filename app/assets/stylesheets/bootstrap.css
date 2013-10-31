@@ -1410,7 +1410,8 @@ table {
 }
 
 th {
-  text-align: left;
+  text-align: center;
+  background-color: #cc9;
 }
 
 .table {

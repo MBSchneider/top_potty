@@ -6,7 +6,7 @@ feature "bootstrap makes our site pretty" do
 
     visit root_path
 
-    page.has_css? 'cc9' #color of table th
+    page.body.must_include('navbar-brand2')
 
   end
 
