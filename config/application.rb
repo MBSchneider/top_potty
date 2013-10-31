@@ -1,5 +1,8 @@
 require File.expand_path('../boot', __FILE__)
 
+# For Heroku
+config.assets.initialize_on_precompile = false
+
 # Pick the frameworks you want:
 require "active_record/railtie"
 require "action_controller/railtie"
