@@ -43,6 +43,9 @@ $(document).ready ->
 
     initialize = ->
       myLatlng = new google.maps.LatLng($("#restroom_table").data("lat-near"), $("#restroom_table").data("long-near"))
+      bounds = new google.maps.LatLngBounds()
+      bounds.extend myLatlng
+      LatLngMarkerList = new Array(myLatlng)
       console.log "myLat = " + myLatlng
       mapOptions =
         center: myLatlng
@@ -62,6 +65,9 @@ $(document).ready ->
         b = $(this).data("long")
 
         rrLatLng = new google.maps.LatLng(a, b)
+        LatLngMarkerList.push rrLatLng
+        bounds.extend rrLatLng
+
         marker = new google.maps.Marker(
           position: rrLatLng
           map: map
@@ -70,5 +76,6 @@ $(document).ready ->
           #title: beach[0]
           #zIndex: beach[3]
         )
+      map.fitBounds bounds
 
     google.maps.event.addDomListener window, "load", initialize
