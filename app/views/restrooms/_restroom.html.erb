@@ -4,6 +4,7 @@
       <%= image_tag "tpbadge.png", alt: "The TP! Badge is given to restrooms that have an average cleanliness rating of at least 8.8.", size: "45x50" %>
     <% end %>
   <%= link_to restroom.location, restroom %></td>
+  <td><%= restroom.foundwithin %></td>
   <td><center><% if restroom.malefemale == 'male' %>
       <%= image_tag "male.png", size: "15x40" %>
     <% elsif restroom.malefemale == 'female' %>
