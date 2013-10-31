@@ -1,5 +1,15 @@
 <h1>Listing all restrooms</h1>
-<table>
+
+<% if @search_coordinates %>
+  <%= @search_coordinates %>
+<% end %>
+
+<% if @search_coordinates %>
+  <table id="restroom_table" data-lat-near=<%= @search_coordinates[0] %> data-long-near=<%= @search_coordinates[1]%>>
+<% else %>
+  <table id="restroom_table" data-long-near=<%= -122.3320708 %> data-lat-near=<%= 47.6062095 %>>
+<% end %>
+
   <tr>
     <th>Location</th>
     <th>Male/Female</th>
@@ -9,27 +19,12 @@
     <th></th>
   </tr>
 
-<% @restrooms.each do |restroom| %>
-  <tr id=<%= dom_id(restroom) %> >
-    <td><%= link_to restroom.location, restroom %></td>
-    <td><%= restroom.malefemale %></td>
-    <td>
-    <%= restroom.cleanliness_ratings.average('cleanlinessrating').round(2) %>
-    (<%= restroom.cleanliness_ratings.count %> reviews total)</td>
-    <% if policy(restroom).update? %>
-      <td><%= link_to 'Edit', edit_restroom_path(restroom) %></td>
-    <% end %>
-    <% if policy(restroom).destroy? %>
-      <td><%= link_to 'Destroy', restroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <% end %>
-      <td><%= image_tag "http://maps.google.com/maps/api/staticmap?size=200x200&sensor=false&zoom=15&markers=#{restroom.latitude}%2C#{restroom.longitude}" %></td>
-  </tr>
-  <% end %>
+<%= render @restrooms %>
+
 </table>
 <p>
-<!-- Add later -->
-<!--<div id="map-canvas"></div>-->
-
+<%= link_to "See Map", restrooms_path, id: "js_index", remote: true %>
+<div id="map-canvas" style="width: 400px; height: 400px; border:1px solid red"></div>
 
 </p>
 <br />

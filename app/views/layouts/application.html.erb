@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>TopPotty</title>
+  <%= include_gon %>
   <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyBiSAQ-M7T65r6PCdSUVFwlqAt4xq99o44&sensor=false" %>
-  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js" %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -11,16 +11,16 @@
 </head>
 <body>
 <%= form_tag(restrooms_path, :method => "get", class: "navbar-form", id: "search-form") do %>
+
 <div class="input-append">
-<%= text_field_tag :search, params[:search], class: "span2", placeholder: "123 Oak St, Anytown, WA" %>
+<%= text_field_tag :search, params[:search], class: "span2", placeholder: "123 Oak St, Anytown, WA", :id => "search_val" %>
 <%= label_tag(:malefemale_male, "Male:", :value => "male") %>
 <%= radio_button_tag(:malefemale, "male") %>
 <%= label_tag(:malefemale_female, "Female:", :value => "female") %>
 <%= radio_button_tag(:malefemale, "female") %>
-<%= submit_tag "Search for restroom", :name => nil %>
+<%= submit_tag "Search for restroom", :name => nil, :id => "search_bar" %>
 </div>
 <% end %>
-
 
   <%= render 'layouts/navbar' %>
 

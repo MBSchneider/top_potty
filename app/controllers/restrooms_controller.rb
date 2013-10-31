@@ -1,25 +1,27 @@
 class RestroomsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
   after_filter :verify_authorized, except: [:index, :show]
-
   # GET /restrooms
   # GET /restrooms.json
   def index
+
     if params[:search].present? && params[:malefemale] == 'male'
       @restrooms = Restroom.near(params[:search], 60, :order => :distance).where(:malefemale => 'male')
-      search_coordinates = Geocoder.coordinates(params[:search])
+      @search_coordinates = Geocoder.coordinates(params[:search])
     elsif params[:search].present? && params[:malefemale] == 'female'
       @restrooms = Restroom.near(params[:search], 60, :order => :distance).where(:malefemale => 'female')
-      search_coordinates = Geocoder.coordinates(params[:search])
+      @search_coordinates = Geocoder.coordinates(params[:search])
     else
       @restrooms = Restroom.all
+      result = request.location
     end
     respond_to do |format|
       format.html # index.html.erb
+      format.js
       format.json { render json: @restrooms }
     end
     # Add later - MBS
-    # format.js
+
 
   end
 
