@@ -12,6 +12,7 @@ gem 'devise'
 gem 'pundit'
 gem 'omniauth-twitter'
 
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -22,6 +23,7 @@ gem 'minitest-rails'
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
+  gem 'bootstrap-sass', '~> 3.0.0.0.rc'
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes

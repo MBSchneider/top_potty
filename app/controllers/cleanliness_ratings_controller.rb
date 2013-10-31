@@ -1,4 +1,6 @@
 class CleanlinessRatingsController < ApplicationController
+  before_filter :authenticate_user!
+
   def new
     @cleanlinessrating = CleanlinessRating.new
     @restroom = Restroom.find(params[:restroom_id])
