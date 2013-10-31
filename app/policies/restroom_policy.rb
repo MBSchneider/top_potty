@@ -19,11 +19,19 @@ class RestroomPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin?
+    if user
+      user.admin?
+    else
+      false
+    end
   end
 
   def destroy?
-    user.admin?
+    if user
+      user.admin?
+    else
+      false
+    end
   end
 
   def scope

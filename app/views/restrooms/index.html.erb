@@ -1,39 +1,31 @@
-<h1>Listing all restrooms</h1>
-<table class="table">
-  <tr>
-    <th>Location</th>
-    <th><%= image_tag "malefemale.png", size: "50x46" %></th>
-    <th>Average Cleanliness Rating</th>
-  </tr>
+<div class="row">
+  <div class="col-md-6">
 
-<% @restrooms.each do |restroom| %>
-  <tr id=<%= dom_id(restroom) %> >
-    <td><%= link_to restroom.location, restroom %></td>
-    <td><center><% if restroom.malefemale == 'male' %>
-      <%= image_tag "male.png", size: "12x31" %>
-    <% elsif restroom.malefemale == 'female' %>
-      <%= image_tag "female.png", size: "14x31" %>
-      <% end %></center></td>
-    <td>
-    <%= restroom.cleanliness_ratings.average('cleanlinessrating').round(2) %>
-    (<%= restroom.cleanliness_ratings.count %> reviews total)</td>
-    <td><%= link_to 'Show', restroom %><br />
-    <%= link_to 'Edit', edit_restroom_path(restroom) %><br />
-    <%= link_to 'Destroy', restroom, method: :delete, data: { confirm: 'Are you sure?' } %><br />
-    <%= link_to 'Add Cleanliness rating', new_restroom_cleanliness_rating_path(restroom) %></td>
-    <td><%= image_tag "http://maps.google.com/maps/api/staticmap?size=300x300&sensor=false&zoom=15&markers=#{restroom.latitude}%2C#{restroom.longitude}" %></td>
-  </tr>
-  <% end %>
-</table>
-<%  if URI(request.referer || "").path == '/newprelim_restroom' %>
-Restroom not found?
-<%= link_to 'Add a new restroom!', new_restroom_path %>
-<% end %>
+    <h1>Listing all restrooms</h1>
 
-<p>
-<!-- Add later -->
-<!--<div id="map-canvas"></div>-->
+    <% if @search_coordinates %>
+      <table class="table" id="restroom_table" data-lat-near=<%= @search_coordinates[0] %> data-long-near=<%= @search_coordinates[1]%>>
+    <% else %>
+      <table class = "table" id="restroom_table" data-long-near=<%= -122.3320708 %> data-lat-near=<%= 47.6062095 %>>
+    <% end %>
+        <tr>
+          <th>Location</th>
+          <th><center><%= image_tag "malefemale.png", size: "50x46" %></center></th>
+          <th>Cleanliness Rating</th>
+        </tr>
 
+    <%= render @restrooms %>
 
-</p>
+      </table>
+    <%  if URI(request.referer || "").path == '/newprelim_restroom' %>
+      Restroom not found?
+      <%= link_to 'Add a new restroom!', new_restroom_path %>
+    <% end %>
+
+  </div>
+  <div class="col-md-6">
+    <div id="map-canvas" style="width:100%"></div>
+  </div>
+</div>
+
 <br />

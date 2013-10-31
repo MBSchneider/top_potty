@@ -11,6 +11,7 @@ gem 'pry-rails'
 gem 'devise'
 gem 'pundit'
 gem 'omniauth-twitter'
+gem 'gon'
 
 
 # Bundle edge Rails instead:
