@@ -1,41 +1,34 @@
-<h1>Listing all restrooms</h1>
-<table>
-  <tr>
-    <th>Location</th>
-    <th>Male/Female</th>
-    <th>Average Cleanliness Rating</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="row">
+  <div class="col-md-6">
 
-<% @restrooms.each do |restroom| %>
-  <tr id=<%= dom_id(restroom) %> >
-    <td><%= link_to restroom.location, restroom %></td>
-    <td><%= restroom.malefemale %></td>
-    <td>
-    <%= restroom.cleanliness_ratings.average('cleanlinessrating').round(2) %>
-    (<%= restroom.cleanliness_ratings.count %> reviews total)</td>
-    <% if policy(restroom).update? %>
-      <td><%= link_to 'Edit', edit_restroom_path(restroom) %></td>
+    <h1>Listing all restrooms</h1>
+
+    <% if @search_coordinates %>
+      <table class="table" id="restroom_table" data-lat-near=<%= @search_coordinates[0] %> data-long-near=<%= @search_coordinates[1]%>>
+    <% else %>
+      <table id="restroom_table" data-long-near=<%= -122.3320708 %> data-lat-near=<%= 47.6062095 %>>
     <% end %>
-    <% if policy(restroom).destroy? %>
-      <td><%= link_to 'Destroy', restroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <tr>
+          <th>Location</th>
+          <th>Gender</th>
+          <th>Cleanliness Rating</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+
+    <%= render @restrooms %>
+
+      </table>
+    <%  if URI(request.referer || "").path == '/newprelim_restroom' %>
+      Restroom not found?
+      <%= link_to 'Add a new restroom!', new_restroom_path %>
     <% end %>
-      <td><%= link_to 'Add Cleanliness rating', new_restroom_cleanliness_rating_path(restroom) %></td>
-      <td><%= image_tag "http://maps.google.com/maps/api/staticmap?size=200x200&sensor=false&zoom=15&markers=#{restroom.latitude}%2C#{restroom.longitude}" %></td>
-  </tr>
-  <% end %>
-</table>
-<%  if URI(request.referer || "").path == '/newprelim_restroom' %>
-Restroom not found?
-<%= link_to 'Add a new restroom!', new_restroom_path %>
-<% end %>
 
-<p>
-<!-- Add later -->
-<!--<div id="map-canvas"></div>-->
+  </div>
+  <div class="col-md-6">
+    <div id="map-canvas" style="width:100%; border-radius:25px"></div>
+  </div>
+</div>
 
-
-</p>
 <br />

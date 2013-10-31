@@ -5,6 +5,8 @@ TopPotty::Application.routes.draw do
     resources :cleanliness_ratings
   end
 
+  resources :maps
+
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   # The priority is based upon order of creation:
