@@ -21,9 +21,9 @@
       <%= form_tag(restrooms_path, :method => "get", id: "search-form") do %>
         <%= text_field_tag :search, params[:search], placeholder: "123 Oak St, Anytown, WA" %>
         <%= label_tag(:malefemale_male, "Male:", :value => "male", class: "navbar-form") %>
-        <%= radio_button_tag(:malefemale, "male", class: "navbar-text") %>
+        <%= radio_button_tag(:malefemale, "male") %>
         <%= label_tag(:malefemale_female, "Female:", :value => "female", class: "navbar-form") %>
-        <%= radio_button_tag(:malefemale, "female", class: "navbar-text") %>
+        <%= radio_button_tag(:malefemale, "female") %>
         <%= submit_tag "Search for restroom", :name => nil %>
         <%= link_to 'ADD NEW RESTROOM', newprelim_restroom_path, class: "navbar-brand2" %>
         <!-- /.navbar-collapse -->
