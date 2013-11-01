@@ -19,8 +19,10 @@ feature "admin edits restroom" do
     log_in_admin
 
     page.find("#restroom_309456473").click_on "Edit"
-    fill_in 'Location', with: "Cleveland, OH"
+    fill_in 'Address', with: "Cleveland, OH"
     choose 'Male'
+    fill_in 'Found within...', with: "Park"
+
     click_on 'Update Restroom'
 
     # Then I should see success message

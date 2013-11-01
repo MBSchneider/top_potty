@@ -7,7 +7,9 @@ feature "visitor searches for male, female, or neither" do
 
     # input address in search bar
     fill_in "search", with: "801 NE 62nd St, Seattle, WA 98115"
+
     choose("malefemale_male")
+
     click_on "Search for restroom"
 
     page.text.must_include "802"

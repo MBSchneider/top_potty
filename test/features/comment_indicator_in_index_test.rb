@@ -11,6 +11,7 @@ feature "index shows comments are available to view" do
     choose 'Male'
     select '10', from: "Cleanliness rating"
     fill_in 'Comment', with: "This be a comment"
+    fill_in 'Found within...', with: "Store"
 
     click_on 'Create Restroom'
     click_on 'Back'
