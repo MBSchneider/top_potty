@@ -7,6 +7,6 @@ class Restroom < ActiveRecord::Base
   after_validation :geocode
 
   def self.search(query)
-    where("location like ?", "%#{query}%")
+    where("location LIKE ?, %#{query}%")
   end
 end
