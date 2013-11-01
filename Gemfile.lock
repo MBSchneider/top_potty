@@ -33,7 +33,7 @@ GEM
     arel (3.0.2)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
-    bootstrap-sass (3.0.0.0.rc2)
+    bootstrap-sass (3.0.0.0)
       sass (~> 3.2)
     builder (3.0.4)
     capybara (2.1.0)
