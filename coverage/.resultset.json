@@ -1,14 +1,14 @@
 {
   "Unit Tests": {
     "coverage": {
-      "/Users/mattschneider/CFApps/TopPotty/config/environment.rb": [
+      "/home/matt/top_potty/config/environment.rb": [
         null,
         1,
         null,
         null,
         1
       ],
-      "/Users/mattschneider/CFApps/TopPotty/config/application.rb": [
+      "/home/matt/top_potty/config/application.rb": [
         1,
         null,
         null,
@@ -82,7 +82,7 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/config/boot.rb": [
+      "/home/matt/top_potty/config/boot.rb": [
         1,
         null,
         null,
@@ -90,7 +90,7 @@
         null,
         1
       ],
-      "/Users/mattschneider/CFApps/TopPotty/config/environments/test.rb": [
+      "/home/matt/top_potty/config/environments/test.rb": [
         1,
         null,
         null,
@@ -129,7 +129,7 @@
         1,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/config/initializers/backtrace_silencers.rb": [
+      "/home/matt/top_potty/config/initializers/backtrace_silencers.rb": [
         null,
         null,
         null,
@@ -138,7 +138,7 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/config/initializers/devise.rb": [
+      "/home/matt/top_potty/config/initializers/devise.rb": [
         null,
         null,
         1,
@@ -382,23 +382,6 @@
         null,
         null,
         null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/Users/mattschneider/CFApps/TopPotty/config/initializers/inflections.rb": [
         null,
         null,
         null,
@@ -415,14 +398,31 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/config/initializers/mime_types.rb": [
+      "/home/matt/top_potty/config/initializers/inflections.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         null,
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/config/initializers/secret_token.rb": [
+      "/home/matt/top_potty/config/initializers/mime_types.rb": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/home/matt/top_potty/config/initializers/secret_token.rb": [
         null,
         null,
         null,
@@ -431,7 +431,7 @@
         null,
         1
       ],
-      "/Users/mattschneider/CFApps/TopPotty/config/initializers/session_store.rb": [
+      "/home/matt/top_potty/config/initializers/session_store.rb": [
         null,
         null,
         1,
@@ -441,7 +441,7 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/config/initializers/wrap_parameters.rb": [
+      "/home/matt/top_potty/config/initializers/wrap_parameters.rb": [
         null,
         null,
         null,
@@ -457,7 +457,7 @@
         1,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/config/routes.rb": [
+      "/home/matt/top_potty/config/routes.rb": [
         1,
         null,
         null,
@@ -527,7 +527,7 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/app/models/user.rb": [
+      "/home/matt/top_potty/app/models/user.rb": [
         1,
         null,
         null,
@@ -575,7 +575,7 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/app/controllers/application_controller.rb": [
+      "/home/matt/top_potty/app/controllers/application_controller.rb": [
         1,
         1,
         1,
@@ -590,27 +590,27 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/app/helpers/application_helper.rb": [
+      "/home/matt/top_potty/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/app/helpers/cleanliness_ratings_helper.rb": [
+      "/home/matt/top_potty/app/helpers/cleanliness_ratings_helper.rb": [
         1,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/app/helpers/maps_helper.rb": [
+      "/home/matt/top_potty/app/helpers/maps_helper.rb": [
         1,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/app/helpers/omniauth_callbacks_helper.rb": [
+      "/home/matt/top_potty/app/helpers/omniauth_callbacks_helper.rb": [
         1,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/app/helpers/restrooms_helper.rb": [
+      "/home/matt/top_potty/app/helpers/restrooms_helper.rb": [
         1,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/app/controllers/cleanliness_ratings_controller.rb": [
+      "/home/matt/top_potty/app/controllers/cleanliness_ratings_controller.rb": [
         1,
         1,
         null,
@@ -635,17 +635,17 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/app/models/cleanliness_rating.rb": [
+      "/home/matt/top_potty/app/models/cleanliness_rating.rb": [
         1,
         1,
         1,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/app/controllers/maps_controller.rb": [
+      "/home/matt/top_potty/app/controllers/maps_controller.rb": [
         1,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/app/controllers/omniauth_callbacks_controller.rb": [
+      "/home/matt/top_potty/app/controllers/omniauth_callbacks_controller.rb": [
         1,
         null,
         1,
@@ -663,7 +663,7 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/app/controllers/restrooms_controller.rb": [
+      "/home/matt/top_potty/app/controllers/restrooms_controller.rb": [
         1,
         1,
         1,
@@ -782,7 +782,7 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/app/models/restroom.rb": [
+      "/home/matt/top_potty/app/models/restroom.rb": [
         1,
         null,
         1,
@@ -798,7 +798,7 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/app/policies/application_policy.rb": [
+      "/home/matt/top_potty/app/policies/application_policy.rb": [
         1,
         1,
         null,
@@ -841,7 +841,7 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/app/policies/restroom_policy.rb": [
+      "/home/matt/top_potty/app/policies/restroom_policy.rb": [
         1,
         1,
         null,
@@ -884,7 +884,7 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/test/features/authentication/log_out_test.rb": [
+      "/home/matt/top_potty/test/features/authentication/log_out_test.rb": [
         1,
         null,
         1,
@@ -903,7 +903,7 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/test/features/authentication/sign_up_test.rb": [
+      "/home/matt/top_potty/test/features/authentication/sign_up_test.rb": [
         1,
         null,
         1,
@@ -926,7 +926,7 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/test/features/authentication/twitter_log_in_test.rb": [
+      "/home/matt/top_potty/test/features/authentication/twitter_log_in_test.rb": [
         1,
         null,
         1,
@@ -949,7 +949,7 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/test/features/authorization/crud_admin_test.rb": [
+      "/home/matt/top_potty/test/features/authorization/crud_admin_test.rb": [
         1,
         null,
         1,
@@ -984,7 +984,7 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/test/features/authorization/crud_user_test.rb": [
+      "/home/matt/top_potty/test/features/authorization/crud_user_test.rb": [
         1,
         null,
         1,
@@ -1007,7 +1007,7 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/test/features/authorization/visitor_not_add_rating_test.rb": [
+      "/home/matt/top_potty/test/features/authorization/visitor_not_add_rating_test.rb": [
         1,
         null,
         1,
@@ -1020,7 +1020,7 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/test/features/average_cleanliness_test.rb": [
+      "/home/matt/top_potty/test/features/average_cleanliness_test.rb": [
         1,
         null,
         1,
@@ -1073,7 +1073,7 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/test/features/bootstrap_test.rb": [
+      "/home/matt/top_potty/test/features/bootstrap_test.rb": [
         1,
         null,
         1,
@@ -1088,7 +1088,7 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/test/features/comment_indicator_in_index_test.rb": [
+      "/home/matt/top_potty/test/features/comment_indicator_in_index_test.rb": [
         1,
         null,
         1,
@@ -1112,7 +1112,7 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/test/features/location/display_map_test.rb": [
+      "/home/matt/top_potty/test/features/location/display_map_test.rb": [
         1,
         null,
         1,
@@ -1129,7 +1129,7 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/test/features/location/sort_nearest_test.rb": [
+      "/home/matt/top_potty/test/features/location/sort_nearest_test.rb": [
         1,
         null,
         1,
@@ -1147,29 +1147,7 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/test/features/member_contribute_foundwithin_test.rb": [
-        1,
-        null,
-        1,
-        1,
-        null,
-        1,
-        null,
-        1,
-        null,
-        1,
-        1,
-        1,
-        1,
-        null,
-        1,
-        null,
-        1,
-        null,
-        null,
-        null
-      ],
-      "/Users/mattschneider/CFApps/TopPotty/test/features/member_contribute_restrooms_test.rb": [
+      "/home/matt/top_potty/test/features/member_contribute_foundwithin_test.rb": [
         1,
         null,
         1,
@@ -1191,7 +1169,29 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/test/features/search_before_restroom_add_test.rb": [
+      "/home/matt/top_potty/test/features/member_contribute_restrooms_test.rb": [
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/home/matt/top_potty/test/features/search_before_restroom_add_test.rb": [
         1,
         null,
         1,
@@ -1222,7 +1222,7 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/test/features/tpbadge_display_test.rb": [
+      "/home/matt/top_potty/test/features/tpbadge_display_test.rb": [
         1,
         null,
         1,
@@ -1246,7 +1246,7 @@
         null,
         null
       ],
-      "/Users/mattschneider/CFApps/TopPotty/test/features/visitor_search_malefemale_test.rb": [
+      "/home/matt/top_potty/test/features/visitor_search_malefemale_test.rb": [
         1,
         null,
         1,
@@ -1299,6 +1299,6 @@
         null
       ]
     },
-    "timestamp": 1383328750
+    "timestamp": 1383329417
   }
 }
