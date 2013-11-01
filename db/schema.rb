@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(:version => 20131101075606) do
     t.string   "foundwithin"
     t.string   "address"
     t.string   "comment"
+    t.string   "addressone"
+    t.string   "addresstwo"
   end
 
   create_table "users", :force => true do |t|

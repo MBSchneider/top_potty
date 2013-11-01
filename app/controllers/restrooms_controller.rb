@@ -6,16 +6,16 @@ class RestroomsController < ApplicationController
   def index
 
     if params[:search].present? && params[:malefemale] == 'male'
-      @restrooms = Restroom.near(params[:search], 60, :order => :distance, :limit => 6).where(:malefemale => 'male')
+      @restrooms = Restroom.near(params[:search], 60, :order => :distance).where(:malefemale => 'male').limit(5)
       @search_coordinates = Geocoder.coordinates(params[:search])
     elsif params[:search].present? && params[:malefemale] == 'female'
-      @restrooms = Restroom.near(params[:search], 60, :order => :distance, :limit => 6).where(:malefemale => 'female')
+      @restrooms = Restroom.near(params[:search], 60, :order => :distance).where(:malefemale => 'female').limit(5)
       @search_coordinates = Geocoder.coordinates(params[:search])
     elsif params[:search].present?
-      @restrooms = Restroom.near(params[:search], 60, :order => :distance, :limit => 6).where(:malefemale => 'female')
+      @restrooms = Restroom.near(params[:search], 60, :order => :distance).where(:malefemale => 'female').limit(5)
       @search_coordinates = Geocoder.coordinates(params[:search])
     else
-      @restrooms = Restroom.all
+      @restrooms = Restroom.limit(6)
       result = request.location
     end
 
@@ -72,6 +72,10 @@ class RestroomsController < ApplicationController
   def create
     @restroom = Restroom.new(params[:restroom])
     authorize @restroom
+    @this_address = Geocoder.search(@restroom.location)[0].formatted_address.split(",")
+    @restroom.addressone = @this_address[0]
+    @restroom.addresstwo = @this_address[1] + @this_address[2]
+
     respond_to do |format|
       if @restroom.save
         format.html { redirect_to @restroom, notice: 'Restroom was successfully created.' }
