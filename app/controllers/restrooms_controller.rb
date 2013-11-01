@@ -18,7 +18,6 @@ class RestroomsController < ApplicationController
       @restrooms = Restroom.limit(6)
       result = request.location
     end
-
     respond_to do |format|
       format.html # index.html.erb
       format.js
@@ -74,7 +73,7 @@ class RestroomsController < ApplicationController
     authorize @restroom
     @this_address = Geocoder.search(@restroom.location)[0].formatted_address.split(",")
     @restroom.addressone = @this_address[0]
-    @restroom.addresstwo = @this_address[1] + @this_address[2]
+    @restroom.addresstwo = @this_address[1] + @this_address[2] if @this_address[1] && @this_address[2]
 
     respond_to do |format|
       if @restroom.save
