@@ -11,12 +11,16 @@ first:
   malefemale: male
   longitude: -122.3360958
   latitude: 47.6235376
+  addressone: "511 Boren Ave. N"
+  addresstwo: "Seattle, WA"
 
 second:
   location: "Denver, CO"
   malefemale: male
   longitude: -104.9847179
   latitude: 39.737567
+  addressone: "Denver"
+  addresstwo: "CO"
 
 third:
   location: "802 NE 62nd St, Seattle, WA 98115"

@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(:version => 20131101075606) do
     t.float    "latitude"
     t.string   "foundwithin"
     t.string   "address"
-    t.string   "comment"
     t.string   "addressone"
     t.string   "addresstwo"
+    t.string   "comment"
   end
 
   create_table "users", :force => true do |t|

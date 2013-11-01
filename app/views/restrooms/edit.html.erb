@@ -1,33 +1,6 @@
 <h1>Editing restroom at <%= @restroom.location %></h1>
 
-<%= form_for(@restroom) do |f| %>
-  <% if @restroom.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@restroom.errors.count, "error") %> prohibited this restroom from being saved:</h2>
-
-      <ul>
-      <% @restroom.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-        <%= f.radio_button(:malefemale, "male") %>
-        <%= f.label(:malefemale, "Male", :value => "male") %>
-        <%= f.radio_button(:malefemale, "female") %>
-        <%= f.label(:malefemale, "Female", :value => "female") %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<%= render "form" %>
 
 <%= link_to 'Show', @restroom %> |
 <%= link_to 'Back', restrooms_path %>

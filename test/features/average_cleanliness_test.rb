@@ -9,6 +9,7 @@ feature "restrooms cleanliness rating shows average and total of all ratings" do
     fill_in 'Address', with: "123 Oak Rd."
     choose 'Male'
     select '6', from: "Cleanliness rating"
+    fill_in 'Found within...', with: "Bar"
 
     click_on 'Create Restroom'
 
@@ -33,6 +34,7 @@ feature "restrooms cleanliness rating shows average and total of all ratings" do
     fill_in 'Address', with: "123 Oak Rd."
     choose 'Male'
     select '6', from: "Cleanliness rating"
+    fill_in 'Found within...', with: "Bar"
 
     click_on 'Create Restroom'
 
