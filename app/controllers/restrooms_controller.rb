@@ -70,6 +70,11 @@ class RestroomsController < ApplicationController
     @restroom = Restroom.new(params[:restroom])
     authorize @restroom
 
+
+
+
+
+
     respond_to do |format|
       if @restroom.save
         format.html { redirect_to @restroom, notice: 'Restroom was successfully created.' }

@@ -16,7 +16,7 @@
 
       <%= link_to root_path, class: 'navbar-brand' do %>
         <%= image_tag "toppottyv4.png", size: "180x60", class: "img-low-margin" %>
-        <% end %>
+      <% end %>
 
       <%= form_tag(restrooms_path, :method => "get", id: "search-form") do %>
         <%= text_field_tag :search, params[:search], placeholder: "123 Oak St, Anytown, WA" %>
