@@ -6,16 +6,16 @@ class RestroomsController < ApplicationController
   def index
 
     if params[:search].present? && params[:malefemale] == 'male'
-      @restrooms = Restroom.near(params[:search], 60, :order => :distance, :limit => 6).where(:malefemale => 'male')
+      @restrooms = Restroom.near(params[:search], 60, :order => :distance).where(:malefemale => 'male').limit(5)
       @search_coordinates = Geocoder.coordinates(params[:search])
     elsif params[:search].present? && params[:malefemale] == 'female'
-      @restrooms = Restroom.near(params[:search], 60, :order => :distance, :limit => 6).where(:malefemale => 'female')
+      @restrooms = Restroom.near(params[:search], 60, :order => :distance).where(:malefemale => 'female').limit(5)
       @search_coordinates = Geocoder.coordinates(params[:search])
     elsif params[:search].present?
-      @restrooms = Restroom.near(params[:search], 60, :order => :distance, :limit => 6).where(:malefemale => 'female')
+      @restrooms = Restroom.near(params[:search], 60, :order => :distance).where(:malefemale => 'female').limit(5)
       @search_coordinates = Geocoder.coordinates(params[:search])
     else
-      @restrooms = Restroom.all
+      @restrooms = Restroom.limit(6)
       result = request.location
     end
 
