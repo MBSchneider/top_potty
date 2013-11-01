@@ -37,7 +37,7 @@ save_and_open_page
     visit root_path
 
     #input address in search bar
-    fill_in "search", with: "801 NE 62nd St, Seattle, WA 98115"
+    fill_in "search", with: "804 NE 62nd St, Seattle, WA 98115"
 
     click_on "Search for restroom"
 
@@ -45,6 +45,6 @@ save_and_open_page
     page.text.must_include "802"
 
     # map shows on page
-    page.has_css?("#map")
+    # page.has_css?("#map")
   end
 end

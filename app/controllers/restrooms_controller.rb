@@ -12,7 +12,7 @@ class RestroomsController < ApplicationController
       @restrooms = Restroom.near(params[:search], 60, :order => :distance).where(:malefemale => 'female').limit(5)
       @search_coordinates = Geocoder.coordinates(params[:search])
     elsif params[:search].present?
-      @restrooms = Restroom.near(params[:search], 60, :order => :distance).where(:malefemale => 'female').limit(5)
+      @restrooms = Restroom.near(params[:search], 60, :order => :distance)
       @search_coordinates = Geocoder.coordinates(params[:search])
     else
       @restrooms = Restroom.limit(6)
