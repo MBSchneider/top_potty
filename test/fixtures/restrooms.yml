@@ -23,9 +23,13 @@ third:
   malefemale: male
   longitude: -122.319272
   latitude: 47.6735339
+  addressone: "business three"
+  addresstwo: "802 NE 62nd St, Seattle, WA 98115"
 
 fourth:
   location: "803 NE 62nd St, Seattle, WA 98115"
   malefemale: female
   longitude: -122.319272
   latitude: 47.6735339
+  addressone: "business four"
+  addresstwo: "803 NE 62nd St, Seattle, WA 98115"

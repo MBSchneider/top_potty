@@ -20,7 +20,7 @@ feature "restrooms cleanliness rating shows average and total of all ratings" do
     click_on 'Back'
 
     page.text.must_include '4.5'
-    page.text.must_include '2 reviews total'
+    page.text.must_include '2 reviews'
 
   end
 
@@ -43,7 +43,7 @@ feature "restrooms cleanliness rating shows average and total of all ratings" do
     click_on 'Create Cleanliness rating'
 
     page.text.must_include '4.5'
-    page.text.must_include '2 reviews total'
+    page.text.must_include '2 reviews'
 
   end
 end
