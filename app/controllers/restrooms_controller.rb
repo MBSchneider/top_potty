@@ -69,7 +69,6 @@ class RestroomsController < ApplicationController
   def create
     @restroom = Restroom.new(params[:restroom])
     authorize @restroom
-
     respond_to do |format|
       if @restroom.save
         format.html { redirect_to @restroom, notice: 'Restroom was successfully created.' }
@@ -104,9 +103,8 @@ class RestroomsController < ApplicationController
     @restroom = Restroom.find(params[:id])
     authorize @restroom
     @restroom.destroy
-
     respond_to do |format|
-      format.html { redirect_to restrooms_url, notice: 'Restroom deleted.' }
+      format.html { redirect_to restrooms_path, notice: 'Restroom deleted.' }
       format.json { head :no_content }
     end
   end

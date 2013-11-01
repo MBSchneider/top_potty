@@ -16,7 +16,7 @@
 
       <%= link_to root_path, class: 'navbar-brand' do %>
         <%= image_tag "toppottyv4.png", size: "180x60", class: "img-low-margin" %>
-        <% end %>
+      <% end %>
 
       <%= form_tag(restrooms_path, :method => "get", id: "search-form") do %>
         <%= text_field_tag :search, params[:search], placeholder: "123 Oak St, Anytown, WA" %>
@@ -24,7 +24,7 @@
         <%= radio_button_tag(:malefemale, "male") %>
         <%= label_tag(:malefemale_female, "Female:", :value => "female", class: "navbar-form") %>
         <%= radio_button_tag(:malefemale, "female") %>
-        <%= submit_tag "Search for restroom", :name => nil %>
+        <%= submit_tag "Search for restroom", :name => nil, class: "btn btn-default btn-low-margin btn-sm" %>
         <%= link_to 'ADD NEW RESTROOM', newprelim_restroom_path, class: "navbar-brand2" %>
         <!-- /.navbar-collapse -->
       <% end %>

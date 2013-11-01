@@ -9,3 +9,7 @@ body {
   margin-top: -35px;
   margin-bottom: -30px;
 }
+.btn-low-margin {
+  margin-top: -5px;
+  margin-bottom: -5px;
+}

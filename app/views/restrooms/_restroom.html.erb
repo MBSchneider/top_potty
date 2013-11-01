@@ -1,25 +1,31 @@
 <tr class="restroom" data-lat=<%= restroom.latitude %> data-long=<%= restroom.longitude %> id=<%= dom_id(restroom) %> >
   <td>
     <% if restroom.cleanliness_ratings.average('cleanlinessrating').round(1).to_s >= '8.8' %>
-      <%= image_tag "tpbadge.png", alt: "The TP! Badge is given to restrooms that have an average cleanliness rating of at least 8.8.", size: "45x50" %>
+      <%= image_tag "tpbadge.png", alt: "The TP! Badge is given to restrooms that have an average cleanliness rating of at least 8.8.", size: "45x50" %><br/>
     <% end %>
-  <%= link_to restroom.location, restroom %></td>
-  <td><%= restroom.foundwithin %></td>
+
+    <%= link_to restroom do %>
+      <strong>In: <%= restroom.foundwithin %> </strong><br />
+      <% this_address = Geocoder.search(restroom.location)[0] %>
+      <% neat_address = this_address.formatted_address.split(",") %>
+      <%= neat_address[0] unless neat_address[0] == this_address.city || neat_address[0] == this_address.state%><br />
+      <%= this_address.city %>, <%= this_address.state %>
+    <% end %>
   <td><center><% if restroom.malefemale == 'male' %>
       <%= image_tag "male.png", size: "15x40" %>
     <% elsif restroom.malefemale == 'female' %>
       <%= image_tag "female.png", size: "18x40" %>
       <% end %></center></td>
-  <td>
-    <%= restroom.cleanliness_ratings.average('cleanlinessrating').round(2) %>
-    (<%= restroom.cleanliness_ratings.count %> reviews total)<br/>
-    <%= link_to 'Add Cleanliness rating', new_restroom_cleanliness_rating_path(restroom), class: "btn btn-default" %>
+  <td style="text-align:center">
+    <%= restroom.cleanliness_ratings.average('cleanlinessrating').round(2) %><br />
+    (<%= restroom.cleanliness_ratings.count %> reviews)<br/>
+    <%= link_to 'Rate', new_restroom_cleanliness_rating_path(restroom), class: "btn btn-default btn-sm" %>
   </td>
   <% if policy(restroom).update? %>
-    <td><%= link_to 'Edit', edit_restroom_path(restroom) %></td>
+    <td><%= button_to 'Edit', edit_restroom_path(restroom), :method => "get", class: "btn btn-primary"  %></td>
   <% end %>
   <% if policy(restroom).destroy? %>
-    <td><%= link_to 'Destroy', restroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= button_to 'Destroy', restroom, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
   <% end %>
 </tr>
 
