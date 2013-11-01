@@ -72,6 +72,10 @@ class RestroomsController < ApplicationController
   def create
     @restroom = Restroom.new(params[:restroom])
     authorize @restroom
+    @this_address = Geocoder.search(@restroom.location)[0].formatted_address.split(",")
+    @restroom.addressone = @this_address[0]
+    @restroom.addresstwo = @this_address[1] + @this_address[2]
+
     respond_to do |format|
       if @restroom.save
         format.html { redirect_to @restroom, notice: 'Restroom was successfully created.' }

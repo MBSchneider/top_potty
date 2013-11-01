@@ -15,33 +15,40 @@ restroom_list = [
   [ "530 Westlake Ave N, Seattle WA", "Guitar Center", "female"],
   [ "2623 NE University Village St, Seattle WA", "near Bartell's", "female"],
   [ "308 Kirkland Ave, Kirkland WA", "Kirkland Library", "male"],
-  [ "7520 35th ave NE #3, Seattle WA", "Thai of Wedgwood", "male"]
+  [ "7520 35th ave NE #3, Seattle WA", "Thai of Wedgwood", "male"],
+  [ "2800 Southcenter Mall, Seattle, WA", "Southcenter Mall", "male"],
+  [ "2800 Southcenter Mall, Seattle, WA", "Southcenter Mall", "male"],
+  [ "401 NE Northgate Way, Seattle, WA", "Northgate Mall", "male"],
+  [ "401 NE Northgate Way, Seattle, WA", "Northgate Mall", "female"],
+  [ "2623 NE University Village St #7, Seattle, WA", "University Village", "male"],
+  [ "2623 NE University Village St #7, Seattle, WA", "University Village", "male"],
+  [ "600 Pine St, Seattle, WA", "Pacific Place", "male"],
+  [ "600 Pine St, Seattle, WA", "Pacific Place", "female"],
+  [ "400 Pine St, Seattle, WA", "Westlake Mall", "male"],
+  [ "400 Pine St, Seattle, WA", "Westlake Mall", "female"]
 ]
 
+cleanlinessrating_list = [9.2, 8.5, 8, 8, 7, 8, 3.5, 9, 8, 7, 6, 7, 7, 7, 9, 9, 9, 8, 5, 6]
+
+x = 0
 restroom_list.each do |location, foundwithin, malefemale|
-  Restroom.create( location: location, foundwithin: foundwithin, malefemale: malefemale )
+  r = Restroom.new( location: location, foundwithin: foundwithin, malefemale: malefemale )
+  @this_address = Geocoder.search(r.location)[0].formatted_address.split(",")
+  r.addressone = @this_address[0]
+  r.addresstwo = @this_address[1] + @this_address[2]
+  r.save
+  Restroom.last.cleanliness_ratings.build
+  a = Restroom.last.cleanliness_ratings.new( cleanlinessrating: cleanlinessrating_list[x] )
+  x += 1
+  a.save
+  sleep(2)
 end
 
-cleanlinessrating_list = [
-  [ "1", "8"],
-  [ "1", "9"],
-  [ "1", "8"],
-  [ "1", "10"],
-  [ "2", "8"],
-  [ "2", "9"],
-  [ "3", "7"],
-  [ "3", "9"],
-  [ "4", "7"],
-  [ "4", "9"],
-  [ "5", "7"],
-  [ "6", "8"],
-  [ "7", "4"],
-  [ "7", "3"],
-  [ "8", "9"],
-  [ "9", "8"],
-  [ "10", "7"]
-]
 
-cleanlinessrating_list.each do |restroom_id, cleanlinessrating|
-  CleanlinessRating.create( restroom_id: restroom_id, cleanlinessrating: cleanlinessrating )
-end
+
+# cleanlinessrating_list.each do |restroom_id, cleanlinessrating|
+#   these_restrooms[restroom_id.to_i].cleanliness_ratings.build
+#   a = restroom_list[restroom_id.to_i].cleanliness_ratings.new( cleanlinessrating: cleanlinessrating )
+#   a.restroom = restroom_list[restroom_id.to_i]
+#   a.save
+# end

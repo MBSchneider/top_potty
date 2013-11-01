@@ -6,10 +6,8 @@
 
     <%= link_to restroom do %>
       <strong>In: <%= restroom.foundwithin %> </strong><br />
-      <% this_address = Geocoder.search(restroom.location)[0] %>
-      <% neat_address = this_address.formatted_address.split(",") %>
-      <%= neat_address[0] unless neat_address[0] == this_address.city || neat_address[0] == this_address.state%><br />
-      <%= this_address.city %>, <%= this_address.state %>
+      <%= restroom.addressone %><br />
+      <%= restroom.addresstwo %>
     <% end %>
   <td><center><% if restroom.malefemale == 'male' %>
       <%= image_tag "male.png", size: "15x40" %>
