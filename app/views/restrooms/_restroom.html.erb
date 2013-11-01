@@ -21,6 +21,12 @@
     (<%= restroom.cleanliness_ratings.count %> reviews)<br/>
     <%= link_to 'Rate', new_restroom_cleanliness_rating_path(restroom), class: "btn btn-default btn-sm" %>
   </td>
+  <td>
+    <center>
+      <% if restroom.comment %>
+        <%= image_tag("comment.png") %><br />
+        <%= link_to "See comment", restroom_path(restroom) %>
+      <% end %></center></td>
   <% if policy(restroom).update? %>
     <td><%= button_to 'Edit', edit_restroom_path(restroom), :method => "get", class: "btn btn-primary"  %></td>
   <% end %>
