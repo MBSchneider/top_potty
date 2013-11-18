@@ -5,17 +5,14 @@ class RestroomsController < ApplicationController
   # GET /restrooms.json
   def index
 
-    if params[:search].present? && params[:malefemale] == 'male'
-      @restrooms = Restroom.near(params[:search], 60, :order => :distance).where(:malefemale => 'male').limit(5)
-      @search_coordinates = Geocoder.coordinates(params[:search])
-    elsif params[:search].present? && params[:malefemale] == 'female'
-      @restrooms = Restroom.near(params[:search], 60, :order => :distance).where(:malefemale => 'female').limit(5)
+    if params[:search].present? && params[:malefemale].present?
+      @restrooms = Restroom.near(params[:search], 60, :order => :distance).where(:malefemale => params[:malefemale]).limit(5)
       @search_coordinates = Geocoder.coordinates(params[:search])
     elsif params[:search].present?
-      @restrooms = Restroom.near(params[:search], 60, :order => :distance)
+      @restrooms = Restroom.near(params[:search], 60, :order => :distance).limit(5)
       @search_coordinates = Geocoder.coordinates(params[:search])
     else
-      @restrooms = Restroom.limit(6)
+      @restrooms = Restroom.limit(5)
       result = request.location
     end
     respond_to do |format|
@@ -39,6 +36,17 @@ class RestroomsController < ApplicationController
   # GET /restrooms/new
   # GET /restrooms/new.json
   def new
+
+    # if params[:restroom_location].present?
+    #   respond_to do |format|
+    #   format.html # new.html.erb
+    #   format.json { render json: @restroom }
+    # else
+    #   respond_to do |format|
+    #   format.html # new.html.erb
+    #   format.json { render json: @restroom }
+    # end
+
     @restroom = Restroom.new
     authorize @restroom
     @restroom.cleanliness_ratings.build
@@ -46,6 +54,7 @@ class RestroomsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @restroom }
+      format.js
     end
   end
 

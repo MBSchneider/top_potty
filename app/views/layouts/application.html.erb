@@ -25,7 +25,7 @@
         <%= label_tag(:malefemale_female, "Female:", :value => "female", class: "navbar-form") %>
         <%= radio_button_tag(:malefemale, "female") %>
         <%= submit_tag "Search for restroom", :name => nil, class: "btn btn-default btn-low-margin btn-sm" %>
-        <%= link_to 'ADD NEW RESTROOM', newprelim_restroom_path, class: "navbar-brand2" %>
+        <%= link_to 'ADD NEW RESTROOM', new_restroom_path, class: "navbar-brand2" %>
         <!-- /.navbar-collapse -->
       <% end %>
     </nav>

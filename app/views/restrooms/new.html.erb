@@ -1,5 +1,23 @@
 <h1>Add new restroom</h1>
 
-<%= render "form" %>
+<div id="prelim_search">
+  <%= form_for new_restroom_path, :method => "get", class: "navbar-form", id: "newrestroom-location", remote: true do |f|%>
+    <div class="input-append">
+      <%= f.label "Address" %><br />
+      <%= text_field_tag :newrr_search, params[:newrr_search], class: "span2", placeholder: "123 Oak St, Anytown, WA" %><br />
+      <%= label_tag(:male_or_female_male, "Male:", :value => "male") %>
+      <%= radio_button_tag(:male_or_female, "male") %>
+      <%= label_tag(:male_or_female_female, "Female:", :value => "female") %>
+      <%= radio_button_tag(:male_or_female, "female") %><br />
+      <%= submit_tag "Next", :name => nil, class: "btn-success btn", id: "new_rr_search" %>
+      <div id="after_search" style="display: none; color:red">
+      If any of the below match your restroom, please rate!  <br />
+      Otherwise:
+    </div>
+      <button class="btn btn-small btn-success" style="display: none; margin-bottom: 5px; margin-top: 0px" id="add_new">
+        Add new
+      </button>
+    </div>
 
-<%= link_to 'Back', restrooms_path %>
+  <% end %>
+</div>
