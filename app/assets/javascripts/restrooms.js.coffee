@@ -2,80 +2,66 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-$(document).ready ->
+console.log "loading coffeescript"
 
+$(document).ready ->
+  console.log "Doc ready"
+  drawTheMap()
+
+
+window.drawTheMap = ->
+  console.log "Calls draw map"
+  unless $("#show_maps").length
+    return
+  console.log "URL SPLIT"
+  console.log document.URL.split("restrooms")[0] + 'assets/toilet.png'
+
+
+  image = document.URL.split("restrooms")[0] + 'assets/toilet.png'
+
+  $("#map-canvas").height($("#map-canvas").width())
+  console.log("drawing the map")
   # If no search data is available, center map on Seattle city center
   # and no location marker for user
   map = null
-  $("#map-canvas").height($("#map-canvas").width())
-  if $("#restroom_table").data("lat-near") == 47.6062095 && $("#restroom_table").data("long-near") == -122.3320708
-    console.log "No search"
-    initialize = ->
-      myLatlng = new google.maps.LatLng(47.6062095, -122.3320708)
-      console.log "myLat = " + myLatlng
-      mapOptions =
-        center: myLatlng
-        zoom: 10
-        mapTypeId: google.maps.MapTypeId.ROADMAP
 
-      map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
-      console.log "Map: " + map
-      image = 'assets/toilet.png';
-      $(".restroom").each ->
-        a = $(this).data("lat")
-        b = $(this).data("long")
-
-        rrLatLng = new google.maps.LatLng(a, b)
-        marker = new google.maps.Marker(
-          position: rrLatLng
-          map: map
-          icon: image
-          #shape: shape
-          #title: beach[0]
-          #zIndex: beach[3]
-        )
-
-    google.maps.event.addDomListener window, "load", initialize
-
+  theZoom = 10
+  if $("#restroom_table").data("lat-near") == 0 && $("#restroom_table").data("long-near") == 0
+    myLatlng = new google.maps.LatLng(47.6062095, -122.3320708)
   else
+    myLatlng = new google.maps.LatLng($("#restroom_table").data("lat-near"), $("#restroom_table").data("long-near"))
+    theZoom = 14
+  bounds = new google.maps.LatLngBounds()
+  bounds.extend myLatlng
+  console.log "myLat = " + myLatlng
 
-    console.log "Yes search"
+  mapOptions =
+    center: myLatlng
+    zoom: theZoom
+    mapTypeId: google.maps.MapTypeId.ROADMAP
 
-    initialize = ->
-      myLatlng = new google.maps.LatLng($("#restroom_table").data("lat-near"), $("#restroom_table").data("long-near"))
-      bounds = new google.maps.LatLngBounds()
-      bounds.extend myLatlng
-      LatLngMarkerList = new Array(myLatlng)
-      console.log "myLat = " + myLatlng
-      mapOptions =
-        center: myLatlng
-        zoom: 14
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+  map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
+  console.log "Map: " + map
 
-      map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
-      console.log "Map: " + map
-      marker = new google.maps.Marker(
-        position: myLatlng
-        map: map
-        title: "Hello World!"
-      )
-      image = 'assets/toilet.png';
-      $(".restroom").each ->
-        a = $(this).data("lat")
-        b = $(this).data("long")
+  unless $("#restroom_table").data("lat-near") == 0 && $("#restroom_table").data("long-near") == 0
+    marker = new google.maps.Marker(
+      position: myLatlng
+      map: map
+      title: "Hello World!"
+    )
 
-        rrLatLng = new google.maps.LatLng(a, b)
-        LatLngMarkerList.push rrLatLng
-        bounds.extend rrLatLng
+  $(".restroom").each ->
+    a = $(this).data("lat")
+    b = $(this).data("long")
 
-        marker = new google.maps.Marker(
-          position: rrLatLng
-          map: map
-          icon: image
-          #shape: shape
-          #title: beach[0]
-          #zIndex: beach[3]
-        )
-      map.fitBounds bounds
-
-    google.maps.event.addDomListener window, "load", initialize
+    rrLatLng = new google.maps.LatLng(a, b)
+    bounds.extend rrLatLng
+    marker = new google.maps.Marker(
+      position: rrLatLng
+      map: map
+      icon: image
+      #shape: shape
+      #title: beach[0]
+      #zIndex: beach[3]
+    )
+  map.fitBounds bounds

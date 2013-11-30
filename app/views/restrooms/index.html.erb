@@ -1,34 +1,3 @@
 <h2>Restrooms</h2>
 
-<div class="row">
-  <div class="col-md-6">
-
-    <% if @search_coordinates %>
-      <table class="table" id="restroom_table" data-lat-near=<%= @search_coordinates[0] %> data-long-near=<%= @search_coordinates[1]%>>
-    <% else %>
-      <table class = "table" id="restroom_table" data-long-near=<%= -122.3320708 %> data-lat-near=<%= 47.6062095 %>>
-    <% end %>
-        <tr>
-          <th style="font-size:1.2em">Location</th>
-          <th><center><%= image_tag "malefemale.png", size: "50x46" %></center></th>
-          <th style="font-size:1.2em; text-align:center">
-            Cleanliness <br />
-            Rating
-          </th>
-        </tr>
-
-    <%= render @restrooms %>
-
-      </table>
-    <%  if URI(request.referer || "").path == '/newprelim_restroom' %>
-      Restroom not found?
-      <%= link_to 'Add a new restroom!', new_restroom_path %>
-    <% end %>
-
-  </div>
-  <div class="col-md-6">
-    <div id="map-canvas" style="width:100%"></div>
-  </div>
-</div>
-
-<br />
+    <%= render 'search_results' %>
