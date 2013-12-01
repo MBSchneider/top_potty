@@ -32,6 +32,12 @@
       <%= builder.select(:cleanlinessrating, 1..10, :selected => 5) %>
     <% end %>
     </div>
+
+    <div class="field">
+    <%= f.label(:comment, "Notes:") %><br />
+    <%= f.text_area :comment, placeholder: "Add your notes about this restroom here" %>
+    </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

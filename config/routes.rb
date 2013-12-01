@@ -3,6 +3,7 @@ TopPotty::Application.routes.draw do
 
   resources :restrooms do
     resources :cleanliness_ratings
+    resources :notes
   end
 
   resources :maps

@@ -21,7 +21,7 @@
       <td style="text-align:center">
         <%= restroom.cleanliness_ratings.average('cleanlinessrating').round(2) %><br />
         (<%= restroom.cleanliness_ratings.count %> reviews)<br/>
-        <%= link_to 'Rate', new_restroom_cleanliness_rating_path(restroom), class: "btn btn-default btn-sm" %>
+        <%= link_to 'Rate / Add Note', new_restroom_cleanliness_rating_path(restroom), class: "btn btn-default btn-sm" %>
       </td>
       <% if policy(restroom).update? %>
         <td><%= button_to 'Edit', edit_restroom_path(restroom), :method => "get", class: "btn btn-primary"  %></td>

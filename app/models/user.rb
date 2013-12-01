@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :admin
   validates_presence_of :email
+  has_many :notes, dependent: :destroy
 
   def admin?
     admin == true

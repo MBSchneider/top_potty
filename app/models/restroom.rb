@@ -4,7 +4,8 @@ class Restroom < ActiveRecord::Base
   validates :location, :malefemale, :addressone, :addresstwo, :foundwithin, :presence => true
 
   has_many :cleanliness_ratings, dependent: :destroy
-  accepts_nested_attributes_for :cleanliness_ratings
+  has_many :notes, dependent: :destroy
+  accepts_nested_attributes_for :cleanliness_ratings, :notes
   geocoded_by :location
   after_validation :geocode
 

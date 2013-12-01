@@ -22,6 +22,16 @@
 
 </p>
 
-<%= link_to 'Add Cleanliness rating', new_restroom_cleanliness_rating_path(@restroom) %>
+<p>
+  <b>Notes:</b>
+
+  <% @restroom.notes.each do |note| %>
+    "<%= note.comment %>" by user <%= note.user.email %>
+    </br>
+  <% end %>
+
+</p>
+
+<%= link_to 'Add Cleanliness Rating / Note', new_restroom_cleanliness_rating_path(@restroom) %> </br>
 <%= link_to 'Edit', edit_restroom_path(@restroom) %> |
 <%= link_to 'Back', restrooms_path %>
