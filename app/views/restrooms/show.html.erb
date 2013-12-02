@@ -1,27 +1,28 @@
-<div><%= image_tag "http://maps.google.com/maps/api/staticmap?size=400x300&sensor=false&zoom=15&markers=#{@restroom.latitude}%2C#{@restroom.longitude}" %></div>
-<p>
-  <b>Address:</b>
-  <%= @restroom.location %>
-</p>
-
-<p>
-  <b>Found within:</b>
-  <%= @restroom.foundwithin %>
-</p>
-
-<p>
-  <b>Male/Female:</b>
-  <%= @restroom.malefemale %>
-</p>
-
-<p>
-  <b>Average Cleanliness Rating:</b>
-
-  <%= @restroom.cleanliness_ratings.average(:cleanlinessrating).round(2) %>
-  (<%= @restroom.cleanliness_ratings.count %> reviews total)
-
-</p>
-
+<div><%= image_tag "http://maps.google.com/maps/api/staticmap?size=400x300&sensor=false&zoom=15&markers=#{@restroom.latitude}%2C#{@restroom.longitude}" %></div><br />
+<table class="view-table">
+  <tr>
+    <td><b>Address:</b></td>
+    <td><%= @restroom.location %></td>
+  </tr>
+  <tr>
+    <td><b>Found within:</b></td>
+    <td><%= @restroom.foundwithin %></td>
+  </tr>
+  <tr>
+    <td><b>Male/Female:</b></td>
+    <td><%= @restroom.malefemale %></td>
+  </tr>
+  <tr>
+    <td><b>Average Cleanliness Rating:</b></td>
+    <td>
+      <% if @restroom.cleanliness_ratings.average('cleanlinessrating').round(1).to_s >= '8.8' %>
+        <%= image_tag "tpbadge.png", alt: "The TP! Badge is given to restrooms that have an average cleanliness rating of at least 8.8.", size: "45x50" %><br/>
+      <% end %>
+      <%= @restroom.cleanliness_ratings.average(:cleanlinessrating).round(2) %>
+      (<%= @restroom.cleanliness_ratings.count %> reviews total)
+    </td>
+  </tr>
+</table>
 <p>
   <b>Notes:</b>
 
@@ -31,7 +32,7 @@
   <% end %>
 
 </p>
-
+<br />
 <%= link_to 'Add Cleanliness Rating / Note', new_restroom_cleanliness_rating_path(@restroom) %> </br>
 <%= link_to 'Edit', edit_restroom_path(@restroom) %> |
 <%= link_to 'Back', restrooms_path %>

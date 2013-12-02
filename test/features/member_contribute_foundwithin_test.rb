@@ -1,20 +1,26 @@
 require "test_helper"
 
 feature "Member can contribute foundwithin data" do
-  scenario "Member adds new foundwithin information" do
+  scenario "Member adds new foundwithin information", :js => true do
 
-    sign_in(:one)
+    log_in_user_one
 
     visit new_restroom_path
+    save_and_open_page
 
-    fill_in 'Address', with: "123 Oak Rd."
-    fill_in 'Found within', with: "PCC"
+    fill_in 'newrr_search', with: "85th and aurora seattle"
     choose 'Male'
-    select '6', from: "Cleanliness rating"
+    click_on 'Next'
 
-    click_on 'Create Restroom'
 
-    page.text.must_include 'PCC'
+
+    # fill_in 'Found within', with: "PCC"
+
+    # select '6', from: "Cleanliness rating"
+
+
+
+    # page.text.must_include 'PCC'
 
   end
 end

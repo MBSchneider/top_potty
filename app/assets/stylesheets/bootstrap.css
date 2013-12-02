@@ -208,7 +208,7 @@ textarea {
   vertical-align: top;
 }
 
-table, td, th {
+.table, .table tr, .table tr td {
   border-collapse: collapse;
   border-spacing: 0;
   border: 2px solid white;
