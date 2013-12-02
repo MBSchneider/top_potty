@@ -1,4 +1,4 @@
-<tr class="restroom" data-lat=<%= restroom.latitude %> data-long=<%= restroom.longitude %> id=<%= dom_id(restroom) %> >
+<tr class="restroom" data-lat=<%= restroom.latitude %> data-long=<%= restroom.longitude %> id =<%= dom_id(restroom) %> data-address='<%= restroom.addressone.to_s %>' >
   <td>
     <% if restroom.cleanliness_ratings.average('cleanlinessrating').round(1).to_s >= '8.8' %>
       <%= image_tag "tpbadge.png", alt: "The TP! Badge is given to restrooms that have an average cleanliness rating of at least 8.8.", size: "45x50" %><br/>
@@ -17,10 +17,10 @@
   <td style="text-align:center">
     <%= restroom.cleanliness_ratings.average('cleanlinessrating').round(2) %><br />
     (<%= restroom.cleanliness_ratings.count %> reviews)<br/>
-    <%= link_to 'Rate / Add Note', new_restroom_cleanliness_rating_path(restroom), class: "btn btn-default btn-sm" %>
+    <%= link_to 'Rate', new_restroom_cleanliness_rating_path(restroom), class: "btn btn-default btn-sm cleanliness_button", remote: true %>
   </td>
   <% if policy(restroom).update? %>
-    <td><%= button_to 'Edit', edit_restroom_path(restroom), :method => "get", class: "btn btn-primary"  %></td>
+    <td><%= button_to 'Edit', edit_restroom_path(restroom), :method => "get", class: "btn btn-primary", :id => 'current-race'+restroom.id.to_s %></td>
   <% end %>
   <% if policy(restroom).destroy? %>
     <td><%= button_to 'Destroy', restroom, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>

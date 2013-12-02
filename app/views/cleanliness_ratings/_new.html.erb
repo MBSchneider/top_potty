@@ -1,0 +1,32 @@
+<div class="modal fade" id="new-rating-modal">
+  <div class="modal-dialog">
+    <div class="modal-content" style="text-align: center;">
+      <div class="modal-header" style="background-color: #d6009d; color: white; border-top-left-radius: 6px; border-top-right-radius: 6px;">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">New Cleanliness Rating / Note for: <br />
+          <%= @restroom.location %></h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for([@restroom, @cleanlinessrating]) do |f| %>
+          <div class="field">
+              <%= f.label(:cleanlinessrating, "Cleanliness rating, 1 (dirtiest) to 10 (cleanest):") %><br />
+              <%= f.select(:cleanlinessrating, 1..10, :selected => 5) %>
+            </div>
+          <div class="actions">
+            <%= f.submit 'Rate' %>
+          </div>
+        <% end %>
+
+        <%= form_for([@restroom, @note]) do |f| %>
+            <div class="field">
+            <%= f.label(:comment, "Notes:") %><br />
+            <%= f.text_area :comment, placeholder: "Add your notes about this restroom here", style: "width:50%; height:100px;" %>
+            </div>
+          <div class="actions">
+            <%= f.submit %>
+          </div>
+        <% end %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

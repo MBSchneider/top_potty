@@ -52,6 +52,7 @@ class RestroomsController < ApplicationController
     @restroom.cleanliness_ratings.build
     @restroom.notes.build
 
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @restroom }
