@@ -11,36 +11,72 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :location, "Address" %><br />
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label(:foundwithin, "Found within...") %><br />
-    <%= f.text_field :foundwithin, placeholder: "\"Safeway\" or \"Sears Tower, 4th floor\"" %>
-  </div>
-  <div class="field">
-        <%= f.radio_button(:malefemale, "male") %>
-        <%= f.label(:malefemale, "Male", :value => "male") %>
-        <%= f.radio_button(:malefemale, "female") %>
-        <%= f.label(:malefemale, "Female", :value => "female") %>
-  </div>
+  <table border="0">
+    <tr>
+      <th>INFO</th>
+      <th>RATE</th>
+      <th>MORE INFO</th>
+    </tr>
+    <td>
+      <div class="field">
+        <%= f.label :location, "Address" %><br />
+        <%= f.text_field :location %>
+      </div>
+      <div class="field">
+        <%= f.label(:foundwithin, "Found within...") %><br />
+        <%= f.text_field :foundwithin, placeholder: "\"Safeway\" or \"Sears Tower, 4th floor\"" %>
+      </div>
+      <div class="field">
+        <%= f.label(:directions, "Directions to restroom") %><br />
+        <%= f.text_area :directions, placeholder: "Turn left at reception, head down hallway...", :size => "30x4" %>
+      </div>
+      <div class="field">
+            <%= f.radio_button(:malefemale, "male") %>
+            <%= f.label(:malefemale, "Male", :value => "male") %>
+            <%= f.radio_button(:malefemale, "female") %>
+            <%= f.label(:malefemale, "Female", :value => "female") %>
+      </div>
+    </td>
 
-    <%= f.fields_for :cleanliness_ratings do |builder| %>
-    <div class="field">
-      <%= builder.label(:cleanlinessrating, "Cleanliness rating, 1 (dirtiest) to 10 (cleanest):") %><br />
-      <%= builder.select(:cleanlinessrating, 1..10, :selected => 5) %>
-    <% end %>
-    </div>
+    <td>
+      <%= f.fields_for :cleanliness_ratings do |builder| %>
+        <div class="field">
+          <%= builder.label(:cleanlinessrating, "Cleanliness rating, 1 (dirtiest) to 10 (cleanest):") %><br />
+          <%= builder.select(:cleanlinessrating, 1..10, :selected => 5) %>
+        </div>
+      <% end %>
 
-    <%= f.fields_for :notes do |notesbuilder| %>
-    <div class="field">
-      <%= notesbuilder.label(:comment, "Notes:") %><br />
-      <%= notesbuilder.text_area :comment, placeholder: "Add your notes about this restroom here" %>
-    </div>
+      <%= f.fields_for :notes do |notesbuilder| %>
+        <div class="field">
+          <%= notesbuilder.label(:comment, "Notes:") %><br />
+          <%= notesbuilder.text_area :comment, placeholder: "Add any notes/comments about this restroom here", :size => "30x10" %>
+        </div>
+      <% end %>
+    </td>
 
-    <div class="actions">
-      <%= notesbuilder.submit %>
-    </div>
-  <% end %>
+    <td>
+      <%= f.fields_for :numberofstalls do |stalls| %>
+        <div class="field">
+          <center><%= stalls.label(:numberofstalls, "# of stalls") %>
+          <%= stalls.select(:numberofstalls, 1..20, :selected => 1) %></br>
+          -----</center>
+        </div>
+      <% end %>
+      <%= f.fields_for :numberofurinals do |urinals| %>
+        <div class="field">
+          <center><%= urinals.label(:numberofurinals, "# of urinals") %>
+          <%= urinals.select(:numberofurinals, 1..20, :selected => 0) %></br>
+          -----</center>
+        </div>
+      <% end %>
+      <center><%= f.label(:handsfreefaucets, "Hands-free faucets") %>
+      <%= f.check_box :handsfreefaucets %></br>
+      -----</center>
+
+    </td>
+  </table>
+<div class="actions">
+  <%= f.submit %>
+</div>
+
 <% end %>
