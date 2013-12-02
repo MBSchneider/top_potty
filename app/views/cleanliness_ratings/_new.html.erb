@@ -13,14 +13,14 @@
               <%= f.select(:cleanlinessrating, 1..10, :selected => 5) %>
             </div>
           <div class="actions">
-            <%= f.submit %>
+            <%= f.submit 'Rate' %>
           </div>
         <% end %>
 
         <%= form_for([@restroom, @note]) do |f| %>
             <div class="field">
             <%= f.label(:comment, "Notes:") %><br />
-            <%= f.text_area :comment, placeholder: "Add your notes about this restroom here" %>
+            <%= f.text_area :comment, placeholder: "Add your notes about this restroom here", style: "width:50%; height:100px;" %>
             </div>
           <div class="actions">
             <%= f.submit %>

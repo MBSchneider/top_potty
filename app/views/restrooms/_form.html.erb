@@ -33,12 +33,14 @@
     <% end %>
     </div>
 
+    <%= f.fields_for :notes do |notesbuilder| %>
     <div class="field">
-    <%= f.label(:comment, "Notes:") %><br />
-    <%= f.text_area :comment, placeholder: "Add your notes about this restroom here" %>
+      <%= notesbuilder.label(:comment, "Notes:") %><br />
+      <%= notesbuilder.text_area :comment, placeholder: "Add your notes about this restroom here" %>
     </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions">
+      <%= notesbuilder.submit %>
+    </div>
+  <% end %>
 <% end %>
