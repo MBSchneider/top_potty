@@ -9,7 +9,6 @@ class CleanlinessRatingsController < ApplicationController
 
   def create
     @restroom = Restroom.find(params[:restroom_id])
-    @note = @restroom.note.new(params[:note])
     @cleanlinessrating = @restroom.cleanliness_ratings.new(params[:cleanliness_rating])
 
     respond_to do |format|

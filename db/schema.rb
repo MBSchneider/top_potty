@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131201034501) do
+ActiveRecord::Schema.define(:version => 20131202191653) do
 
   create_table "cleanliness_ratings", :force => true do |t|
     t.integer  "restroom_id"
@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(:version => 20131201034501) do
   create_table "restrooms", :force => true do |t|
     t.string   "location"
     t.string   "malefemale"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.integer  "cleanliness"
     t.float    "longitude"
     t.float    "latitude"
@@ -38,6 +38,21 @@ ActiveRecord::Schema.define(:version => 20131201034501) do
     t.string   "address"
     t.string   "addressone"
     t.string   "addresstwo"
+    t.string   "directions"
+    t.boolean  "diaper",           :default => false
+    t.boolean  "attendant",        :default => false
+    t.boolean  "handsfreetoilets", :default => false
+    t.boolean  "handsfreefaucets", :default => false
+    t.boolean  "handsfreeurinals", :default => false
+    t.boolean  "urinalprivacy",    :default => false
+    t.boolean  "stalldoors",       :default => true
+    t.boolean  "heatedseats",      :default => false
+    t.integer  "numberofstalls",   :default => 1
+    t.integer  "numberofurinals",  :default => 1
+    t.boolean  "wheelchair",       :default => true
+    t.boolean  "outlets",          :default => false
+    t.boolean  "makeupmirror",     :default => false
+    t.boolean  "fhdispenser",      :default => false
   end
 
   create_table "users", :force => true do |t|
