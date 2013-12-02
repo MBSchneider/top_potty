@@ -50,6 +50,7 @@ class RestroomsController < ApplicationController
     @restroom = Restroom.new
     authorize @restroom
     @restroom.cleanliness_ratings.build
+    @restroom.notes.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -62,6 +63,7 @@ class RestroomsController < ApplicationController
     @restroom = Restroom.new
     authorize @restroom
     @restroom.cleanliness_ratings.build
+    @restroom.notes.build
 
     respond_to do |format|
       format.html # new.html.erb
