@@ -2,38 +2,51 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-console.log "loading coffeescript"
+showMarkers = null
+theZoom = null
+myLatlng = null
 
 $(document).ready ->
-  console.log "Doc ready"
+  showMarkers = true
+  theZoom = 14
+  myLatlng = null
   drawTheMap()
-
 
 window.drawTheMap = ->
   console.log "Calls draw map"
   unless $("#show_maps").length
     return
-  console.log "URL SPLIT"
-  console.log document.URL.split("restrooms")[0] + 'assets/toilet.png'
+  getLatLong()
 
+getLatLong = ->
+  if $("#restroom_table").data("lat-near") == 0 && $("#restroom_table").data("long-near") == 0 # No search input has been entered
 
+    if navigator.geolocation
+      # If geolocation is possible, sets search to user location
+      navigator.geolocation.getCurrentPosition (position) ->
+        drawMapAtLatLong(new google.maps.LatLng(position.coords.latitude, position.coords.longitude))
+    else
+      # If geolocation not possible, centers map on seattle, zooms out,
+      # doesn't show 'you are here' marker
+      showMarkers = false
+      theZoom = 10
+      drawMapAtLatLong(new google.maps.LatLng(47.6062095, -122.3320708))
+  else
+    drawMapAtLatLong(new google.maps.LatLng($("#restroom_table").data("lat-near"), $("#restroom_table").data("long-near")))
+
+drawMapAtLatLong = (myLatlng) ->
+  # sets restroom icon
   image = document.URL.split("restrooms")[0] + 'assets/toilet.png'
 
+  # Sets map canvas width equal to height
   $("#map-canvas").height($("#map-canvas").width())
-  console.log("drawing the map")
-  # If no search data is available, center map on Seattle city center
-  # and no location marker for user
+
   map = null
 
-  theZoom = 10
-  if $("#restroom_table").data("lat-near") == 0 && $("#restroom_table").data("long-near") == 0
-    myLatlng = new google.maps.LatLng(47.6062095, -122.3320708)
-  else
-    myLatlng = new google.maps.LatLng($("#restroom_table").data("lat-near"), $("#restroom_table").data("long-near"))
-    theZoom = 14
+  # Creates new bounds to make sure all markers and user location are
+  # included in map
   bounds = new google.maps.LatLngBounds()
   bounds.extend myLatlng
-  console.log "myLat = " + myLatlng
 
   mapOptions =
     center: myLatlng
@@ -41,27 +54,21 @@ window.drawTheMap = ->
     mapTypeId: google.maps.MapTypeId.ROADMAP
 
   map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
-  console.log "Map: " + map
 
-  unless $("#restroom_table").data("lat-near") == 0 && $("#restroom_table").data("long-near") == 0
+  unless showMarkers == false
     marker = new google.maps.Marker(
       position: myLatlng
       map: map
-      title: "Hello World!"
+      title: "You are here"
     )
 
   $(".restroom").each ->
-    a = $(this).data("lat")
-    b = $(this).data("long")
-
-    rrLatLng = new google.maps.LatLng(a, b)
+    rrLatLng = new google.maps.LatLng($(this).data("lat"), $(this).data("long"))
     bounds.extend rrLatLng
     marker = new google.maps.Marker(
       position: rrLatLng
       map: map
       icon: image
-      #shape: shape
-      #title: beach[0]
-      #zIndex: beach[3]
+      title: $(this).data("address")
     )
   map.fitBounds bounds

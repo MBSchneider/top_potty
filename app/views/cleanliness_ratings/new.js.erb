@@ -1,0 +1,7 @@
+$(document).ready(function () {
+  console.log("IN new.js.erb");
+  var a = $("#restroom_<%= @restroom.id %> .cleanliness_button");
+  a.hide();
+  a.closest('td').html("<%= j render 'new' %>");
+});
+

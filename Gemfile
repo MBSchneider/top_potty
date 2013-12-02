@@ -43,9 +43,12 @@ gem 'jquery-rails'
 
 group :test do
   gem 'minitest-rails-capybara'
+  gem 'capybara-webkit'
+  gem 'selenium-webdriver'
   gem 'turn'
   gem 'speaker'
   gem 'launchy'
+  gem 'database_cleaner'
   gem 'simplecov', :require => false
 end
 
