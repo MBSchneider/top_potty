@@ -6,7 +6,7 @@ if (showAddNew == true){
         Geocoder.search(params[:newrr_search])[0].data["geometry"]["location_type"] !=
         "GEOMETRIC_CENTER"
   %>
-    $('alert-danger').remove();
+    $('.alert-danger').remove();
 
     console.log("yes search...");
     <% @search_coordinates = Geocoder.coordinates(params[:newrr_search]) %>
@@ -39,6 +39,7 @@ if (showAddNew == true){
         Geocoder.search(params[:newrr_search])[0].data["geometry"]["location_type"] ==
         "GEOMETRIC_CENTER"
   %>
+    console.log("GEO center");
     $('#prelim_search').prepend('<div class="alert alert-danger alert-dismissable" data-dismiss="alert" style="width:50%"><strong>Location:</strong> Please enter more specific location.</div>');
   <% end %>
 };
