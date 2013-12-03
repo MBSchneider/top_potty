@@ -19,8 +19,4 @@ class Restroom < ActiveRecord::Base
   def self.search(query)
     where("location LIKE ?, %#{query}%")
   end
-
-  def imageboolean
-    attribute ? 'Yes' : 'No'
-  end
 end

@@ -52,51 +52,47 @@
   </tr>
   <tr>
     <td><b>Hands-free faucets?</b></td>
-    <td><%= @restroom.handsfreefaucets ? 'Yes' : 'No' %></td>
+    <td><%= imageboolean @restroom.handsfreefaucets? %></td>
   </tr>
   <tr>
     <td><b>Hands-free toilets?</b></td>
-    <td><%= @restroom.handsfreetoilets %></td>
+    <td><%= imageboolean @restroom.handsfreetoilets? %></td>
   </tr>
   <tr>
     <td><b>Hands-free urinals?</b></td>
-    <td><%= @restroom.handsfreeurinals %></td>
+    <td><%= imageboolean @restroom.handsfreeurinals? %></td>
   </tr>
   <tr>
     <td><b>Urinal privacy screens?</b></td>
-    <td><%= @restroom.urinalprivacy %></td>
-  </tr>
-  <tr>
-    <td><b>Stall doors?</b></td>
-    <td><%= @restroom.stalldoors %></td>
+    <td><%= imageboolean @restroom.urinalprivacy? %></td>
   </tr>
   <tr>
     <td><b>Wheelchair accessible?</b></td>
-    <td><%= @restroom.wheelchair %></td>
+    <td><%= imageboolean @restroom.wheelchair? %></td>
   </tr>
   <tr>
     <td><b>Attendant?</b></td>
-    <td><%= @restroom.attendant %></td>
+    <td><%= imageboolean @restroom.attendant? %></td>
   </tr>
   <tr>
     <td><b>Diaper changing station?</b></td>
-    <td><%= @restroom.diaper %></td>
+    <td><%= imageboolean @restroom.diaper? %></td>
   </tr>
   <tr>
     <td><b>Feminine hygiene dispenser?</b></td>
-    <td><%= @restroom.fhdispenser %></td>
+    <td><%= imageboolean @restroom.fhdispenser? %></td>
   </tr>
   <tr>
     <td><b>Electrical outlets?</b></td>
-    <td><%= @restroom.outlets %></td>
+    <td><%= imageboolean @restroom.outlets? %></td>
   </tr>
   <tr>
     <td><b>Make-up mirror?</b></td>
-    <td><%= @restroom.makeupmirror %></td>
+    <td><%= imageboolean @restroom.makeupmirror? %></td>
   </tr>
   <tr>
     <td><b>Heated toilet seats?</b></td>
-    <td><%= @restroom.heatedseats %></td>
+    <td><%= imageboolean @restroom.heatedseats? %></td>
   </tr>
 </table>
 
