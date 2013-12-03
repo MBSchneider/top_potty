@@ -20,7 +20,6 @@ class CleanlinessRatingsController < ApplicationController
           @note.save
         end
         puts @note
-        binding.pry
         format.html { redirect_to @restroom, notice: 'Cleanliness rating was successfully added.' }
         format.json { render json: @restroom, status: :created, location: @restroom }
       else
