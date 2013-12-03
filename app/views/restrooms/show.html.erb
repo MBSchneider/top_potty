@@ -1,19 +1,39 @@
-<div><%= image_tag "http://maps.google.com/maps/api/staticmap?size=400x300&sensor=false&zoom=15&markers=#{@restroom.latitude}%2C#{@restroom.longitude}" %></div><br />
+<table class="table-bordered">
+  <tr>
+    <td><div><%= image_tag "http://maps.google.com/maps/api/staticmap?size=400x300&sensor=false&zoom=15&markers=#{@restroom.latitude}%2C#{@restroom.longitude}" %></div></td>
+    <td>
+      <p>
+        <center><b>Notes:</b></br>
+
+        <% @restroom.notes.each do |note| %>
+        "<%= note.comment %>" written by <%= note.user.email %></br>
+        <center>-----</center>
+        </br>
+        <% end %></center>
+      </p>
+    </td>
+  </tr>
+</table>
+<br />
 <table class="view-table">
   <tr>
     <td><b>Address:</b></td>
     <td><%= @restroom.location %></td>
+  </tr>
+   <tr>
+    <td><b>Male/Female:</b></td>
+    <td><%= @restroom.malefemale %></td>
   </tr>
   <tr>
     <td><b>Found within:</b></td>
     <td><%= @restroom.foundwithin %></td>
   </tr>
   <tr>
-    <td><b>Male/Female:</b></td>
-    <td><%= @restroom.malefemale %></td>
+    <td><b>Directions to restroom:</b></td>
+    <td><%= @restroom.directions %></td>
   </tr>
   <tr>
-    <td><b>Average Cleanliness Rating:</b></td>
+    <td><b>Avg Cleanliness Rating:</b></td>
     <td>
       <% if @restroom.cleanliness_ratings.average('cleanlinessrating').round(1).to_s >= '8.8' %>
         <%= image_tag "tpbadge.png", alt: "The TP! Badge is given to restrooms that have an average cleanliness rating of at least 8.8.", size: "45x50" %><br/>
@@ -22,17 +42,64 @@
       (<%= @restroom.cleanliness_ratings.count %> reviews total)
     </td>
   </tr>
+  <tr>
+    <td><b># of stalls:</b></td>
+    <td><%= @restroom.numberofstalls%></td>
+  </tr>
+  <tr>
+    <td><b># of urinals:</b></td>
+    <td><%= @restroom.numberofurinals %></td>
+  </tr>
+  <tr>
+    <td><b>Hands-free faucets?</b></td>
+    <td><%= @restroom.handsfreefaucets ? 'Yes' : 'No' %></td>
+  </tr>
+  <tr>
+    <td><b>Hands-free toilets?</b></td>
+    <td><%= @restroom.handsfreetoilets %></td>
+  </tr>
+  <tr>
+    <td><b>Hands-free urinals?</b></td>
+    <td><%= @restroom.handsfreeurinals %></td>
+  </tr>
+  <tr>
+    <td><b>Urinal privacy screens?</b></td>
+    <td><%= @restroom.urinalprivacy %></td>
+  </tr>
+  <tr>
+    <td><b>Stall doors?</b></td>
+    <td><%= @restroom.stalldoors %></td>
+  </tr>
+  <tr>
+    <td><b>Wheelchair accessible?</b></td>
+    <td><%= @restroom.wheelchair %></td>
+  </tr>
+  <tr>
+    <td><b>Attendant?</b></td>
+    <td><%= @restroom.attendant %></td>
+  </tr>
+  <tr>
+    <td><b>Diaper changing station?</b></td>
+    <td><%= @restroom.diaper %></td>
+  </tr>
+  <tr>
+    <td><b>Feminine hygiene dispenser?</b></td>
+    <td><%= @restroom.fhdispenser %></td>
+  </tr>
+  <tr>
+    <td><b>Electrical outlets?</b></td>
+    <td><%= @restroom.outlets %></td>
+  </tr>
+  <tr>
+    <td><b>Make-up mirror?</b></td>
+    <td><%= @restroom.makeupmirror %></td>
+  </tr>
+  <tr>
+    <td><b>Heated toilet seats?</b></td>
+    <td><%= @restroom.heatedseats %></td>
+  </tr>
 </table>
-<p>
-  <b>Notes:</b>
 
-  <% @restroom.notes.each do |note| %>
-
-  </br>
-  <% end %>
-
-
-</p>
 <br />
 <%= link_to 'Add Cleanliness Rating / Note', new_restroom_cleanliness_rating_path(@restroom) %> </br>
 <%= link_to 'Edit', edit_restroom_path(@restroom) %> |

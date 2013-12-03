@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131202191653) do
+ActiveRecord::Schema.define(:version => 20131203004806) do
 
   create_table "cleanliness_ratings", :force => true do |t|
     t.integer  "restroom_id"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20131202191653) do
     t.boolean  "outlets",          :default => false
     t.boolean  "makeupmirror",     :default => false
     t.boolean  "fhdispenser",      :default => false
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|

@@ -1464,6 +1464,7 @@ th {
 
 .table-bordered {
   border: 1px solid #dddddd;
+  background-color: #d6d6d6;
 }
 
 .table-bordered > thead > tr > th,

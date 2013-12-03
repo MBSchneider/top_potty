@@ -52,7 +52,6 @@ class RestroomsController < ApplicationController
     @restroom.cleanliness_ratings.build
     @restroom.notes.build
 
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @restroom }
@@ -64,7 +63,7 @@ class RestroomsController < ApplicationController
     @restroom = Restroom.new
     authorize @restroom
     @restroom.cleanliness_ratings.build
-    @restroom.notes.build
+    #@restroom.notes.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -86,6 +85,8 @@ class RestroomsController < ApplicationController
     @this_address = Geocoder.search(@restroom.location)[0].formatted_address.split(",")
     @restroom.addressone = @this_address[0]
     @restroom.addresstwo = @this_address[1] + @this_address[2] if @this_address[1] && @this_address[2]
+    #@note = @restroom.notes.build(params[:note])
+    #@note.user_id = current_user.id
 
     respond_to do |format|
       if @restroom.save

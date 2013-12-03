@@ -6,7 +6,7 @@ class Restroom < ActiveRecord::Base
                   :handsfreeurinals, :urinalprivacy, :stalldoors,
                   :heatedseats, :numberofstalls, :numberofurinals,
                   :wheelchair, :outlets, :makeupmirror, :fhdispenser,
-                  :notes_attributes
+                  :notes_attributes, :directions, :note
 
   validates :location, :malefemale, :addressone, :addresstwo, :foundwithin, :presence => true
 
@@ -18,5 +18,9 @@ class Restroom < ActiveRecord::Base
 
   def self.search(query)
     where("location LIKE ?, %#{query}%")
+  end
+
+  def imageboolean
+    attribute ? 'Yes' : 'No'
   end
 end
