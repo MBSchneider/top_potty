@@ -7,7 +7,7 @@
   <div class="col-md-6">
 
     <% if @search_coordinates %>
-      <table class="table" id="restroom_table" data-lat-near=<%= @search_coordinates[0] %> data-long-near=<%= @search_coordinates[1]%>>
+      <table class="table" id="restroom_table" data-lat-near=<%= @search_coordinates[0] %> data-long-near=<%= @search_coordinates[1] %> data-is-search=<%= @is_search %>>
     <% else %>
       <table class = "table" id="restroom_table" data-long-near=<%= 0 %> data-lat-near=<%= 0 %>>
     <% end %>
