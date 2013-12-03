@@ -1,6 +1,6 @@
 <h1>Add new restroom</h1>
 
-<div id="prelim_search">
+<div id="prelim_search" style="<%='display:none' if @restroom.errors.count > 0 %>">
   <%= form_for new_restroom_path, :method => "get", class: "navbar-form", id: "newrestroom-location", remote: true do |f|%>
     <div class="input-append">
       <%= f.label "Address" %><br />
@@ -10,14 +10,15 @@
       <%= label_tag(:male_or_female_female, "Female:", :value => "female") %>
       <%= radio_button_tag(:male_or_female, "female") %><br />
       <%= submit_tag "Next", :name => nil, class: "btn-success btn", id: "new_rr_search" %>
-      <div id="after_search" style="display: none; color:red">
-      If any of the below match your restroom, please rate!  <br />
-      Otherwise:
-    </div>
-      <button class="btn btn-small btn-success" style="display: none; margin-bottom: 5px; margin-top: 0px" id="add_new">
+      <div id="after_search" style="display: none;">
+        If any of the below match your restroom, please rate!  <br />
+        Otherwise:
+      </div>
+      <button class="btn btn-small btn-success anim-item" style="display: none; margin-bottom: 5px; margin-top: 0px" id="add_new">
         Add new
       </button>
     </div>
 
   <% end %>
 </div>
+<%= render 'form' %>

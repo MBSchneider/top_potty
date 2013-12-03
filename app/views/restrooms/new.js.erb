@@ -2,7 +2,11 @@ var showAddNew = true;
 
 if (showAddNew == true){
   console.log("show add new " + showAddNew);
-  <% if params[:newrr_search].present? %>
+  <%  if params[:newrr_search].present? &&
+        Geocoder.search(params[:newrr_search])[0].data["geometry"]["location_type"] !=
+        "GEOMETRIC_CENTER"
+  %>
+    $('.alert-danger').remove();
 
     console.log("yes search...");
     <% @search_coordinates = Geocoder.coordinates(params[:newrr_search]) %>
@@ -12,24 +16,44 @@ if (showAddNew == true){
       <% @restrooms = Restroom.near(params[:newrr_search], 60, :order => :distance).limit(5) %>
     <% end %>
 
-    $('.container').append("<%= j render 'search_results' %>");
+    if ($('#restroom_results').length == 0){
+      $('.container').append("<%= j render 'search_results' %>");
+    } else {
+      $('#restroom_results').remove();
+      $('.container').append("<%= j render 'search_results' %>");
+    }
 
     window.drawTheMap();
-
-    $("#new_rr_search").hide();
+    $('.input-append input :first').after($("#new_rr_search"));
+    $("#new_rr_search").val("Update address").removeClass("btn-success");
     $("#after_search").show();
-    $("#add_new").show();
+
+    $("#add_new").show().animate({
+      opacity: 1,
+      "margin-left":"12px"
+    }, 'fast' );
+
     showAddNew = false;
-  <% else %>
-    console.log("no search...");
+
+  <%  elsif params[:newrr_search].present? &&
+        Geocoder.search(params[:newrr_search])[0].data["geometry"]["location_type"] ==
+        "GEOMETRIC_CENTER"
+  %>
+    console.log("GEO center");
+    $('#prelim_search').prepend('<div class="alert alert-danger alert-dismissable" data-dismiss="alert" style="width:50%"><strong>Location:</strong> Please enter more specific location.</div>');
   <% end %>
 };
 
 $("#add_new").on("click", function(){
-  console.log("clicked!!");
   $("#add_new").remove();
+  console.log("clicked!!");
   $("#after_search").remove();
-  $("#prelim_search").before("<%= j render 'form' %>");
+  $("#addRestroomForm").show();
+  $(".anim-item").animate({
+      opacity: 1,
+      "margin-left":"0px"
+    }, 'slow' );
+  console.log($("#newrr_search").val());
   $("#restroom_location").val($("#newrr_search").val());
 
   if ($('#male_or_female_male').is(':checked')) {
@@ -37,5 +61,5 @@ $("#add_new").on("click", function(){
   } else {
     $('#restroom_malefemale_female').prop('checked',true);
   }
-  $("#prelim_search").remove();
+  $("#prelim_search").hide();
 })
