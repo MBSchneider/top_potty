@@ -23,7 +23,6 @@ class Restroom < ActiveRecord::Base
     if Geocoder.search(location)[0].data["geometry"]["location_type"] == "GEOMETRIC_CENTER"
       errors.add(:location, "must be more specific.")
     end
-    binding.pry
   end
 
   def self.search(query)

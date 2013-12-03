@@ -8,22 +8,20 @@
       </div>
       <div class="modal-body">
         <%= form_for([@restroom, @cleanlinessrating]) do |f| %>
-          <div class="field">
-              <%= f.label(:cleanlinessrating, "Cleanliness rating, 1 (dirtiest) to 10 (cleanest):") %><br />
-              <%= f.select(:cleanlinessrating, 1..10, :selected => 5) %>
-            </div>
-          <div class="actions">
-            <%= f.submit 'Rate' %>
-          </div>
-        <% end %>
-
-        <%= form_for([@restroom, @note]) do |f| %>
+          <%= fields_for @cleanlinessrating do |c| %>
             <div class="field">
-            <%= f.label(:comment, "Notes:") %><br />
-            <%= f.text_area :comment, placeholder: "Add your notes about this restroom here", style: "width:50%; height:100px;" %>
+              <%= c.label(:cleanlinessrating, "Cleanliness rating, 1 (dirtiest) to 10 (cleanest):") %><br />
+              <%= c.select(:cleanlinessrating, 1..10, :selected => 5) %>
             </div>
+          <% end %>
+          <%= fields_for @note do |n| %>
+            <div class="field">
+              <%= n.label(:comment, "Notes:") %><br />
+              <%= n.text_area :comment, placeholder: "Add your notes about this restroom here", style: "width:50%; height:100px;" %>
+            </div>
+          <% end %>
           <div class="actions">
-            <%= f.submit %>
+            <%= f.submit "Submit"%>
           </div>
         <% end %>
       </div>
