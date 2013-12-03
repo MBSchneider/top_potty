@@ -10,10 +10,12 @@
       <%= restroom.addresstwo %>
     <% end %>
   </td>
-  <td>
-    <%= restroom.distance_from([@search_coordinates[0],@search_coordinates[1]]).round(2) %> Miles
+  <% if @is_search %>
+    <td>
+      <%= restroom.distance_from([@search_coordinates[0],@search_coordinates[1]]).round(2) %> Miles
+    </td>
+  <% end %>
 
-  </td>
   <td><center><% if restroom.malefemale == 'male' %>
       <%= image_tag "male.png", size: "15x40" %>
     <% elsif restroom.malefemale == 'female' %>
