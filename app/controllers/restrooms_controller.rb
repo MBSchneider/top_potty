@@ -12,8 +12,8 @@ class RestroomsController < ApplicationController
       @restrooms = Restroom.near(params[:search], 60, :order => :distance).limit(5)
       @search_coordinates = Geocoder.coordinates(params[:search])
     else
-      @restrooms = Restroom.limit(5)
-      result = request.location
+      @restrooms = Restroom.near(request.remote_ip, 60, :order => :distance).limit(5)
+      @search_coordinates = Geocoder.coordinates(request.remote_ip)
     end
     respond_to do |format|
       format.html # index.html.erb
