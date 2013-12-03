@@ -1,46 +1,46 @@
-<%= form_for(@restroom) do |f| %>
-  <% if @restroom.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@restroom.errors.count, "error") %> prohibited this restroom from being saved:</h2>
-
-      <ul>
-      <% @restroom.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :location, "Address" %><br />
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label(:foundwithin, "Found within...") %><br />
-    <%= f.text_field :foundwithin, placeholder: "\"Safeway\" or \"Sears Tower, 4th floor\"" %>
-  </div>
-  <div class="field">
-        <%= f.radio_button(:malefemale, "male") %>
-        <%= f.label(:malefemale, "Male", :value => "male") %>
-        <%= f.radio_button(:malefemale, "female") %>
-        <%= f.label(:malefemale, "Female", :value => "female") %>
-  </div>
-
-    <%= f.fields_for :cleanliness_ratings do |builder| %>
-    <div class="field">
-      <%= builder.label(:cleanlinessrating, "Cleanliness rating, 1 (dirtiest) to 10 (cleanest):") %><br />
-      <%= builder.select(:cleanlinessrating, 1..10, :selected => 5) %>
+<div id="addRestroomForm" style="<%='display:none' unless @restroom.errors.count > 0 %>">
+  <%= form_for @restroom do |f| %>
+    <% if @restroom.errors.any? %>
+      <div id="error_explanation">
+        <h4><%= pluralize(@restroom.errors.count, "error") %> prohibited this restroom from being saved:</h4>
+        <ul>
+        <% @restroom.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     <% end %>
-    </div>
 
-    <%= f.fields_for :notes do |notesbuilder| %>
     <div class="field">
-      <%= notesbuilder.label(:comment, "Notes:") %><br />
-      <%= notesbuilder.text_area :comment, placeholder: "Add your notes about this restroom here" %>
+      <%= f.label :location, "Address" %><br />
+      <%= f.text_field :location %>
     </div>
+    <div class="field">
+      <%= f.radio_button(:malefemale, "male") %>
+      <%= f.label(:malefemale, "Male", :value => "male") %>
+      <%= f.radio_button(:malefemale, "female") %>
+      <%= f.label(:malefemale, "Female", :value => "female") %>
+    </div>
+    <div class="field anim-item">
+      <%= f.label(:foundwithin, "Found within...") %><br />
+      <%= f.text_field :foundwithin, placeholder: "\"Safeway\" or \"Sears Tower, 4th floor\"" %>
+    </div>
+    <%= f.fields_for :cleanliness_ratings do |builder| %>
+      <div class="field anim-item">
+        <%= builder.label(:cleanlinessrating, "Cleanliness rating, 1 (dirtiest) to 10 (cleanest):") %><br />
+        <%= builder.select(:cleanlinessrating, 1..10, :selected => 5) %>
+      </div>
+    <% end %>
+    <%= f.fields_for :notes do |notesbuilder| %>
+      <div class="field anim-item">
+        <%= notesbuilder.label(:comment, "Notes:") %><br />
+        <%= notesbuilder.text_area :comment, placeholder: "Add your notes about this restroom here", style: "width:50%; height:100px;" %>
+      </div>
 
-    <div class="actions">
-      <%= notesbuilder.submit %>
-    </div>
+      <div class="actions anim-item">
+        <%= notesbuilder.submit "Add this restroom", class: "btn btn-small btn-success" %>
+      </div>
+      <br />
+    <% end %>
   <% end %>
-<% end %>
+</div>

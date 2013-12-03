@@ -1,10 +1,10 @@
 class RestroomsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
   after_filter :verify_authorized, except: [:index, :show]
+
   # GET /restrooms
   # GET /restrooms.json
   def index
-
     if params[:search].present? && params[:malefemale].present?
       @restrooms = Restroom.near(params[:search], 60, :order => :distance).where(:malefemale => params[:malefemale]).limit(5)
       @search_coordinates = Geocoder.coordinates(params[:search])
@@ -17,7 +17,6 @@ class RestroomsController < ApplicationController
     end
     respond_to do |format|
       format.html # index.html.erb
-      format.js
       format.json { render json: @restrooms }
     end
   end
@@ -36,8 +35,11 @@ class RestroomsController < ApplicationController
   # GET /restrooms/new
   # GET /restrooms/new.json
   def new
+    if params[:newrr_search].present? && Geocoder.search(params[:newrr_search])[0].data["geometry"]["location_type"] != "GEOMETRIC_CENTER"
+      puts "YES"
+    end
 
-    # if params[:restroom_location].present?
+    #if params[:restroom_location].present?
     #   respond_to do |format|
     #   format.html # new.html.erb
     #   format.json { render json: @restroom }
@@ -67,6 +69,7 @@ class RestroomsController < ApplicationController
     @restroom.notes.build
 
     respond_to do |format|
+      format.js
       format.html # new.html.erb
       format.json { render json: @restroom }
     end
@@ -83,15 +86,19 @@ class RestroomsController < ApplicationController
   def create
     @restroom = Restroom.new(params[:restroom])
     authorize @restroom
-    @this_address = Geocoder.search(@restroom.location)[0].formatted_address.split(",")
+    @this_location = Geocoder.search(@restroom.location)[0]
+    @this_address = @this_location.formatted_address.split(",")
     @restroom.addressone = @this_address[0]
     @restroom.addresstwo = @this_address[1] + @this_address[2] if @this_address[1] && @this_address[2]
 
     respond_to do |format|
       if @restroom.save
+        puts "SAVED"
         format.html { redirect_to @restroom, notice: 'Restroom was successfully created.' }
         format.json { render json: @restroom, status: :created, location: @restroom }
       else
+        puts "NOT SAVED"
+        # format.js { render action: "new" }
         format.html { render action: "new" }
         format.json { render json: @restroom.errors, status: :unprocessable_entity }
       end

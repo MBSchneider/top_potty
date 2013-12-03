@@ -8,13 +8,23 @@ class Restroom < ActiveRecord::Base
                   :wheelchair, :outlets, :makeupmirror, :fhdispenser,
                   :notes_attributes
 
-  validates :location, :malefemale, :addressone, :addresstwo, :foundwithin, :presence => true
+  validates :location, :malefemale, :addressone, :foundwithin, :presence => true
+  validate :location_must_be_specific
 
   has_many :cleanliness_ratings, dependent: :destroy
   has_many :notes, dependent: :destroy
   accepts_nested_attributes_for :cleanliness_ratings, :notes
   geocoded_by :location
   after_validation :geocode
+
+
+  def location_must_be_specific
+
+    if Geocoder.search(location)[0].data["geometry"]["location_type"] == "GEOMETRIC_CENTER"
+      errors.add(:location, "must be more specific.")
+    end
+    binding.pry
+  end
 
   def self.search(query)
     where("location LIKE ?, %#{query}%")
