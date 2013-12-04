@@ -15,8 +15,6 @@ class RestroomsController < ApplicationController
       @is_search = true
     else
       @restrooms = Restroom.near(request.remote_ip, 60, :order => :distance).limit(5)
-      puts request.remote_ip
-      binding.pry
       @search_coordinates = Geocoder.coordinates(request.remote_ip)
       @is_search = false
     end
