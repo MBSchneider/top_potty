@@ -1,23 +1,20 @@
-<h1>New Cleanliness Rating / Note for <%= @restroom.location %></h1>
+<h4>New Cleanliness Rating / Note for <%= @restroom.location %></h4>
 
 <%= form_for([@restroom, @cleanlinessrating]) do |f| %>
-  <div class="field">
-      <%= f.label(:cleanlinessrating, "Cleanliness rating, 1 (dirtiest) to 10 (cleanest):") %><br />
-      <%= f.select(:cleanlinessrating, 1..10, :selected => 5) %>
+  <%= fields_for @cleanlinessrating do |c| %>
+    <div class="field">
+      <%= c.label(:cleanlinessrating, "Cleanliness rating, 1 (dirtiest) to 10 (cleanest):") %><br />
+      <%= c.select(:cleanlinessrating, 1..10, :selected => 5) %>
     </div>
+  <% end %>
+  <%= fields_for @note do |n| %>
+    <div class="field">
+      <%= n.label(:comment, "Notes:") %><br />
+      <%= n.text_area :comment, placeholder: "Add your notes about this restroom here", style: "width:50%; height:100px;" %>
+    </div>
+  <% end %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit"%>
   </div>
 <% end %>
-
-<%= form_for([@restroom, @note]) do |n| %>
-    <div class="field">
-    <%= n.label(:comment, "Notes:") %><br />
-    <%= n.text_area :comment, placeholder: "Add any notes/comments about this restroom here" %>
-    </div>
-  <div class="actions">
-    <%= n.submit %>
-  </div>
-  <% end %>
-
 <%= link_to 'Back', restrooms_path %>
