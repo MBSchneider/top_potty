@@ -1,5 +1,6 @@
 class CleanlinessRatingsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:index, :show]
+  after_filter :verify_authorized, except: [:index, :show]
 
   def new
     @cleanlinessrating = CleanlinessRating.new

@@ -54,8 +54,8 @@ drawMapAtLatLong = (myLatlng) ->
     mapTypeId: google.maps.MapTypeId.ROADMAP
 
   map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
-
-  unless showMarkers == false
+  console.log $("#restroom_table").data("is-search")
+  unless $("#restroom_table").data("is-search") == "false"
     marker = new google.maps.Marker(
       position: myLatlng
       map: map

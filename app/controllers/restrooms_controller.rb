@@ -8,12 +8,15 @@ class RestroomsController < ApplicationController
     if params[:search].present? && params[:malefemale].present?
       @restrooms = Restroom.near(params[:search], 60, :order => :distance).where(:malefemale => params[:malefemale]).limit(5)
       @search_coordinates = Geocoder.coordinates(params[:search])
+      @is_search = true
     elsif params[:search].present?
       @restrooms = Restroom.near(params[:search], 60, :order => :distance).limit(5)
       @search_coordinates = Geocoder.coordinates(params[:search])
+      @is_search = true
     else
-      @restrooms = Restroom.limit(5)
-      result = request.location
+      @restrooms = Restroom.near(request.remote_ip, 60, :order => :distance).limit(5)
+      @search_coordinates = Geocoder.coordinates(request.remote_ip)
+      @is_search = false
     end
     respond_to do |format|
       format.html # index.html.erb
