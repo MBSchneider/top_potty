@@ -17,7 +17,7 @@ class CleanlinessRatingsController < ApplicationController
     respond_to do |format|
       if @cleanlinessrating.save
         puts @note.comment
-        if @note.comment != ""
+        if @note.comment != nil
           @note.save
         end
         puts @note

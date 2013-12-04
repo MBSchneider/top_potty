@@ -5,7 +5,7 @@ feature "restrooms cleanliness rating shows average and total of all ratings" do
     sign_in(:one)
 
     visit new_restroom_path
-
+save_and_open_page
     fill_in 'Address', with: "123 Oak Rd."
     choose 'Male'
     select '6', from: "Cleanliness rating"

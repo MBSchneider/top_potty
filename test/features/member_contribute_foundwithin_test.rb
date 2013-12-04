@@ -1,12 +1,12 @@
 require "test_helper"
 
 feature "Member can contribute foundwithin data" do
+  @javascript
   scenario "Member adds new foundwithin information", :js => true do
-
-    log_in_user_one
+    sign_in(:one)
 
     visit new_restroom_path
-    save_and_open_page
+
 
     fill_in 'newrr_search', with: "85th and aurora seattle"
     choose 'Male'
