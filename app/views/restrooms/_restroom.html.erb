@@ -24,7 +24,11 @@
   <td style="text-align:center">
     <%= restroom.cleanliness_ratings.average('cleanlinessrating').round(2) %><br />
     (<%= restroom.cleanliness_ratings.count %> reviews)<br/>
-    <%= link_to 'Rate', new_restroom_cleanliness_rating_path(restroom), class: "btn btn-default btn-sm cleanliness_button", remote: true %>
+    <% if policy(restroom).update? %>
+      <%= link_to 'Rate', new_restroom_cleanliness_rating_path(restroom), class: "btn btn-default btn-sm cleanliness_button", remote: true %>
+    <% else %>
+      <%= link_to 'Rate', new_restroom_cleanliness_rating_path(restroom), class: "btn btn-default btn-sm cleanliness_button" %>
+    <% end %>
   </td>
   <% if policy(restroom).update? %>
     <td><%= button_to 'Edit', edit_restroom_path(restroom), :method => "get", class: "btn btn-primary", :id => 'current-race'+restroom.id.to_s %></td>
@@ -33,6 +37,3 @@
     <td><%= button_to 'Destroy', restroom, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
   <% end %>
 </tr>
-
-
-
