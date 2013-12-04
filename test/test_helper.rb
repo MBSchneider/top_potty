@@ -14,11 +14,12 @@ require "minitest/rails/capybara"
 # Uncomment for awesome colorful output
 # require "minitest/pride"
 
-DatabaseCleaner.strategy = :transaction
+DatabaseCleaner.strategy = :truncation
 
 class MiniTest::Spec
   before :each do
-    DatabaseCleaner.start
+    # DatabaseCleaner.start
+    DatabaseCleaner.clean
   end
 
   after :each do
@@ -55,8 +56,11 @@ def sign_in(user)
   visit new_user_session_path
   fill_in "Email", with: users(user).email
   fill_in "Password", with: "password"
-  sleep 4
+
+  sleep(1)
   click_on "Sign in"
+  sleep(1)
+  DatabaseCleaner.clean
 end
 
 def log_in_admin
