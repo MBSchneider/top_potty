@@ -54,10 +54,12 @@
     <td><b># of stalls:</b></td>
     <td><%= @restroom.numberofstalls%></td>
   </tr>
+  <% if @restroom.malefemale == "male" %>
   <tr>
     <td><b># of urinals:</b></td>
     <td><%= @restroom.numberofurinals %></td>
   </tr>
+  <% end %>
   <tr>
     <td><b>Hands-free faucets?</b></td>
     <td><%= imageboolean @restroom.handsfreefaucets? %></td>
@@ -66,6 +68,7 @@
     <td><b>Hands-free toilets?</b></td>
     <td><%= imageboolean @restroom.handsfreetoilets? %></td>
   </tr>
+  <% if @restroom.malefemale == "male" %>
   <tr>
     <td><b>Hands-free urinals?</b></td>
     <td><%= imageboolean @restroom.handsfreeurinals? %></td>
@@ -74,6 +77,7 @@
     <td><b>Urinal privacy screens?</b></td>
     <td><%= imageboolean @restroom.urinalprivacy? %></td>
   </tr>
+  <% end %>
   <tr>
     <td><b>Wheelchair accessible?</b></td>
     <td><%= imageboolean @restroom.wheelchair? %></td>
@@ -86,10 +90,12 @@
     <td><b>Diaper changing station?</b></td>
     <td><%= imageboolean @restroom.diaper? %></td>
   </tr>
+  <% if @restroom.malefemale == "female" %>
   <tr>
     <td><b>Feminine hygiene dispenser?</b></td>
     <td><%= imageboolean @restroom.fhdispenser? %></td>
   </tr>
+  <% end %>
   <tr>
     <td><b>Electrical outlets?</b></td>
     <td><%= imageboolean @restroom.outlets? %></td>

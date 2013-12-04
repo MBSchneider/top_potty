@@ -27,5 +27,6 @@ class Restroom < ActiveRecord::Base
 
   def self.search(query)
     where("location LIKE ?, %#{query}%")
+
   end
 end
