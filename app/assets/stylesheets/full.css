@@ -18,3 +18,9 @@ body {
   margin-left: -20px;
   opacity: 50%;
 }
+
+#infopopup {
+  display: none;
+  border: 1px solid #F00;
+  width: 220px;
+}

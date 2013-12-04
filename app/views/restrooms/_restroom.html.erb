@@ -5,10 +5,12 @@
     <% end %>
 
     <%= link_to restroom do %>
-      <strong>In: <%= restroom.foundwithin %> </strong><br />
+      <strong>In: <%= restroom.foundwithin %> </strong>
+      <br />
       <%= restroom.addressone %><br />
       <%= restroom.addresstwo %>
     <% end %>
+
   <td><center><% if restroom.malefemale == 'male' %>
       <%= image_tag "male.png", size: "15x40" %>
     <% elsif restroom.malefemale == 'female' %>
