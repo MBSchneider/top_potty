@@ -1,13 +1,21 @@
 class RestroomPolicy < ApplicationPolicy
   attr_reader :user, :restroom
 
-  def initialize(user, post)
+  def initialize(user, restroom)
     @user = user
     @restroom = restroom
   end
 
   def create?
     true
+  end
+
+  def new?
+    if user.present?
+      true
+    else
+      false
+    end
   end
 
   def newprelim?
