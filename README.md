@@ -22,9 +22,13 @@ After submitting a search, you may add your rating of a restroom's cleanliness b
 Adding a restroom:
 You may add a new restroom by clicking on the link in the upper-right corner.  To add a new restroom, you must first confirm that the new restroom location does not already exist by searching for closeby restrooms.  Once you have confirmed it does not exist, you may submit the new restroom.  This will require you to log in.
 
-### Known Issues
+## Known Issues
 
 This application is a work in progress.  Please feel free to submit ideas, features, etc.
+
+## Brakeman Security Report:
+[See report here.](https://rawgithub.com/MBSchneider/top_potty/master/brakeman.html)
+
 
 ## Authors
 
@@ -38,3 +42,5 @@ This application is a work in progress.  Please feel free to submit ideas, featu
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+

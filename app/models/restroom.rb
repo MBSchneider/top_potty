@@ -24,9 +24,4 @@ class Restroom < ActiveRecord::Base
       errors.add(:location, "must be more specific.")
     end
   end
-
-  def self.search(query)
-    where("location LIKE ?, %#{query}%")
-
-  end
 end
