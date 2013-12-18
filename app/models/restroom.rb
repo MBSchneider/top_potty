@@ -6,7 +6,7 @@ class Restroom < ActiveRecord::Base
                   :handsfreeurinals, :urinalprivacy, :stalldoors,
                   :heatedseats, :numberofstalls, :numberofurinals,
                   :wheelchair, :outlets, :makeupmirror, :fhdispenser,
-                  :notes_attributes, :directions, :note
+                  :notes_attributes, :directions, :note, :user_id
 
   validates :location, :malefemale, :addressone, :foundwithin, :presence => true
   validate :location_must_be_specific
