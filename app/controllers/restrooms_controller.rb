@@ -5,29 +5,33 @@ class RestroomsController < ApplicationController
   # GET /restrooms
   # GET /restrooms.json
   def index
-    @q = Restrooms.search(params[:q])
-    @restrooms = @q.result(distinct: true)
-    # if params[:search].present? && params[:handsfreefaucets].present?
-    #   @restrooms = Restroom.near(params[:search], 60, :order => :distance).where(:handsfreefaucets => "true").limit(5)
-    #   @search_coordinates = Geocoder.coordinates(params[:search])
-    #   @is_search = true
+    # @q = Restroom.search(params[:q])
+    # @restrooms = @q.result(distinct: true)
+    # @restrooms = @searched.near(params[:q], 60, :order => :distance).limit(5)
+
     # if params[:search].present? && params[:malefemale].present?
-    #   @restrooms = Restroom.near(params[:search], 60, :order => :distance).where(:malefemale => params[:malefemale]).limit(5)
-    #   @search_coordinates = Geocoder.coordinates(params[:search])
-    #   @is_search = true
-    # elsif params[:search].present?
-    #   @restrooms = Restroom.near(params[:search], 60, :order => :distance).limit(5)
-    #   @search_coordinates = Geocoder.coordinates(params[:search])
-    #   @is_search = true
-    # else
-    #   @restrooms = Restroom.near(request.remote_ip, 60, :order => :distance).limit(5)
-    #   @search_coordinates = Geocoder.coordinates(request.remote_ip)
-    #   @is_search = false
+    #   @q = Restroom.near(params[:search], 60, :order => :distance).where(:malefemale => params[:malefemale]).search(params[:q])
+    # @search_coordinates = Geocoder.coordinates(params[:search])
+    # @is_search = true
+
+    if params[:address].present?
+      @q = Restroom.near(params[:address], 60, :order => :distance).search(params[:q])
+      @restrooms = @q.result(distinct: true)
+      @search_coordinates = Geocoder.coordinates(params[:address])
+      @is_search = true
+
+    else
+      @q = Restroom.near(request.remote_ip, 60, :order => :distance).search(params[:q])
+      @restrooms = @q.result(distinct: true)
+      @search_coordinates = Geocoder.coordinates(request.remote_ip)
+      @is_search = false
     end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @restrooms }
     end
+
+
   end
 
   # GET /restrooms/1

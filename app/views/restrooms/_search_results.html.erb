@@ -3,7 +3,11 @@
   <%= form_tag(restrooms_path, :method => "get", class: "navbar-form", id: "search-form") do %>
   <div class="input-append">
     <%= search_form_for @q do |f| %>
-      <%= f.text_field :search, class: "span2", placeholder: "123 Oak St, Anytown, WA" %>
+      <%= text_field_tag :address, params[:address], class: "span2", placeholder: "123 Oak St, Anytown, WA" %>
+    <br />
+      <%= f.check_box :handsfreefaucets_true %>
+      <%= f.submit %>
+    <% end %>
   </div>
 <% end %>
 </div>
