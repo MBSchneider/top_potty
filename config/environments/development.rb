@@ -38,3 +38,9 @@ TopPotty::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 end
+
+class ActionDispatch::Request
+    def remote_ip
+      "24.22.240.56"
+    end
+  end

@@ -19,7 +19,7 @@
       <% end %>
 
       <%= form_tag(restrooms_path, :method => "get", id: "search-form") do %>
-        <%= text_field_tag :search, params[:search], placeholder: "123 Oak St, Anytown, WA", size: 30 %>
+        <%= text_field_tag :address, params[:address], placeholder: "123 Oak St, Anytown, WA", size: 30 %>
         <span style="margin-left: -28px;"><%= submit_tag "Find", :name => nil, class: "btn btn-default btn-low-margin btn-sm" %></span>
         <%= link_to 'ADD NEW', new_restroom_path, class: "navbar-brand2" %>
         <!-- /.navbar-collapse -->
