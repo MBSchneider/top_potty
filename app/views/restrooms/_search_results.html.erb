@@ -8,10 +8,35 @@
   <%= form_tag(restrooms_path, :method => "get", class: "navbar-form", id: "search-form") do %>
   <div class="input-append">
     <%= search_form_for @q do |f| %>
-      <%= text_field_tag :address, params[:address], class: "span2", placeholder: "123 Oak St, Anytown, WA" %>
-    <br />
-      <%= f.check_box :handsfreefaucets_true %>
-      <%= f.submit %>
+      <center><%= label_tag :address, "Address:" %>
+      <%= text_field_tag :address, params[:address], class: "span2", placeholder: "123 Oak St, Anytown, WA", size: 30 %>
+      <%= f.label(:malefemale_male, "Male:", :value => "male") %>
+      <%= f.radio_button(:malefemale_cont, "male") %>
+      <%= f.label(:malefemale_female, "Female:", :value => "female") %>
+      <%= f.radio_button(:malefemale_cont, "female") %><br />
+      <%= f.label(:handsfreefaucets, "Hands free faucets:") %>
+      <%= f.check_box :handsfreefaucets_true %> &nbsp;&nbsp;
+      <%= f.label(:handsfreetoilets, "Hands free flush toilets:") %>
+      <%= f.check_box :handsfreetoilets_true %> &nbsp;&nbsp;
+      <%= f.label(:handsfreeurinals, "Hands free flush urinals:") %>
+      <%= f.check_box :handsfreeurinals_true %> &nbsp;&nbsp;
+      <%= f.label(:urinalprivacy, "Urinal privacy screens:") %>
+      <%= f.check_box :urinalprivacy_true %> &nbsp;&nbsp;
+      <%= f.label(:wheelchair, "Wheelchair access:") %>
+      <%= f.check_box :wheelchair_true %> &nbsp;&nbsp;
+      <%= f.label(:attendant, "Attendant:") %>
+      <%= f.check_box :attendant_true %> &nbsp;&nbsp;
+      <%= f.label(:diaper, "Diaper changing station:") %>
+      <%= f.check_box :diaper_true %> &nbsp;&nbsp;
+      <%= f.label(:fhdispenser, "Feminine hygiene dispenser:") %>
+      <%= f.check_box :fhdispenser_true %> &nbsp;&nbsp;
+      <%= f.label(:outlets, "Electrical outlets:") %>
+      <%= f.check_box :outlets_true %> &nbsp;&nbsp;
+      <%= f.label(:makeupmirror, "Makeup mirror:") %>
+      <%= f.check_box :makeupmirror_true %> &nbsp;&nbsp;
+      <%= f.label(:heatedseats, "Heated toilet seats:") %>
+      <%= f.check_box :heatedseats_true %> &nbsp;&nbsp;
+      <br/><%= f.submit %></center>
     <% end %>
     </td>
   </div>
