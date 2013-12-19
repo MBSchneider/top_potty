@@ -11,11 +11,10 @@
       </div>
     <% end %>
 
-    <table border="0">
+    <table border="0" width="90%" bgcolor="e3e3e3">
       <tr>
         <th>INFO</th>
         <th>RATE</th>
-        <th>MORE INFO</th>
       </tr>
       <td>
         <div class="field">
@@ -54,52 +53,56 @@
           </div>
         <% end %>
       </td>
+    </table>
 
-      <td class="anim-item">
-          <div class="field">
-            <center><%= f.label(:numberofstalls, "# of stalls") %>
-            <%= f.select(:numberofstalls, 0..20, :selected => 1) %></br>
-            -----</center>
-          </div>
+    <table border="0" width="90%">
+      <tr>
+        <th>MORE INFO</th>
+      </tr>
+      <td class="anim-item" bgcolor="e3e3e3">
+          <center><span class="field">
+            <%= f.label(:numberofstalls, "# of stalls") %>
+            <%= f.select(:numberofstalls, 0..20, :selected => 1) %>
+            &nbsp;|&nbsp;
+          </span>
 
-          <div class="field">
-            <center><%= f.label(:numberofurinals, "# of urinals") %>
-            <%= f.select(:numberofurinals, 0..20, :selected => 0) %></br>
-            -----</center>
-          </div>
-        <center><%= f.label(:handsfreefaucets, "Hands-free faucets") %>
-        <%= f.check_box :handsfreefaucets %></br>
-        -----</center>
-        <center><%= f.label(:handsfreetoilets, "Hands-free toilets") %>
-        <%= f.check_box :handsfreetoilets %></br>
-        -----</center>
-        <center><%= f.label(:handsfreeurinals, "Hands-free urinals") %>
-        <%= f.check_box :handsfreeurinals %></br>
-        -----</center>
-        <center><%= f.label(:urinalprivacy, "Urinal privacy screens") %>
-        <%= f.check_box :urinalprivacy %></br>
-        -----</center>
-        <center><%= f.label(:wheelchair, "Wheelchair access") %>
-        <%= f.check_box :wheelchair %></br>
-        -----</center>
-        <center><%= f.label(:attendant, "Attendant") %>
-        <%= f.check_box :attendant %></br>
-        -----</center>
-        <center><%= f.label(:diaper, "Diaper station") %>
-        <%= f.check_box :diaper %></br>
-        -----</center>
-        <center><%= f.label(:fhdispenser, "Feminine hygiene dispenser") %>
-        <%= f.check_box :fhdispenser %></br>
-        -----</center>
-        <center><%= f.label(:outlets, "Electrical outlets") %>
-        <%= f.check_box :outlets %></br>
-        -----</center>
-        <center><%= f.label(:makeupmirror, "Make-up mirror") %>
-        <%= f.check_box :makeupmirror %></br>
-        -----</center>
-        <center><%= f.label(:heatedseats, "Heated toilet seats") %>
-        <%= f.check_box :heatedseats %></br>
-        -----</center>
+          <span class="field">
+            <%= f.label(:numberofurinals, "# of urinals") %>
+            <%= f.select(:numberofurinals, 0..20, :selected => 0) %>
+          &nbsp;|&nbsp;</span>
+        <span><%= f.label(:handsfreefaucets, "Hands-free faucets") %>
+        <%= f.check_box :handsfreefaucets %>
+        &nbsp;|&nbsp;</span>
+        <span><%= f.label(:handsfreetoilets, "Hands-free toilets") %>
+        <%= f.check_box :handsfreetoilets %>
+        &nbsp;|&nbsp;</span>
+        <span><%= f.label(:handsfreeurinals, "Hands-free urinals") %>
+        <%= f.check_box :handsfreeurinals %>
+        &nbsp;&nbsp;</span>
+        <span><%= f.label(:urinalprivacy, "Urinal privacy screens") %>
+        <%= f.check_box :urinalprivacy %>
+        &nbsp;|&nbsp;</span>
+        <span><%= f.label(:wheelchair, "Wheelchair access") %>
+        <%= f.check_box :wheelchair %>
+        &nbsp;|&nbsp;</span>
+        <span><%= f.label(:attendant, "Attendant") %>
+        <%= f.check_box :attendant %>
+        &nbsp;|&nbsp;</span>
+        <span><%= f.label(:diaper, "Diaper station") %>
+        <%= f.check_box :diaper %>
+        &nbsp;|&nbsp;</span>
+        <span><%= f.label(:fhdispenser, "Feminine hygiene dispenser") %>
+        <%= f.check_box :fhdispenser %>
+        &nbsp;|&nbsp;</span>
+        <span><%= f.label(:outlets, "Electrical outlets") %>
+        <%= f.check_box :outlets %>
+        &nbsp;|&nbsp;</span>
+        <span><%= f.label(:makeupmirror, "Make-up mirror") %>
+        <%= f.check_box :makeupmirror %>
+        &nbsp;|&nbsp;</span>
+        <span><%= f.label(:heatedseats, "Heated toilet seats") %>
+        <%= f.check_box :heatedseats %>
+        </span></center>
       </td>
     </table>
   <div class="actions anim-item">
