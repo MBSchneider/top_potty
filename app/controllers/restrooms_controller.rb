@@ -16,13 +16,13 @@ class RestroomsController < ApplicationController
 
     if params[:address].present?
       @q = Restroom.near(params[:address], 60, :order => :distance).search(params[:q])
-      @restrooms = @q.result(distinct: true)
+      @restrooms = @q.result(distinct: true).page(params[:page]).per(5)
       @search_coordinates = Geocoder.coordinates(params[:address])
       @is_search = true
 
     else
       @q = Restroom.near(request.remote_ip, 60, :order => :distance).search(params[:q])
-      @restrooms = @q.result(distinct: true)
+      @restrooms = @q.result(distinct: true).page(params[:page]).per(5)
       @search_coordinates = Geocoder.coordinates(request.remote_ip)
       @is_search = false
     end

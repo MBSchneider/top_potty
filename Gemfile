@@ -13,6 +13,7 @@ gem 'pundit'
 gem 'omniauth-twitter'
 gem 'gon'
 gem 'ransack'
+gem 'kaminari'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
