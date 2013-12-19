@@ -15,17 +15,13 @@
       <%= render 'restrooms/navbar' %>
 
       <%= link_to root_path, class: 'navbar-brand' do %>
-        <%= image_tag "toppottyv2.png", size: "180x60", class: "img-low-margin" %>
+        <%= image_tag "toppottyv5.png", size: "324x60", class: "img-low-margin" %>
       <% end %>
 
       <%= form_tag(restrooms_path, :method => "get", id: "search-form") do %>
-        <%= text_field_tag :search, params[:search], placeholder: "123 Oak St, Anytown, WA" %>
-        <%= label_tag(:malefemale_male, "Male:", :value => "male", class: "navbar-form") %>
-        <%= radio_button_tag(:malefemale, "male") %>
-        <%= label_tag(:malefemale_female, "Female:", :value => "female", class: "navbar-form") %>
-        <%= radio_button_tag(:malefemale, "female") %>
-        <%= submit_tag "Search for restroom", :name => nil, class: "btn btn-default btn-low-margin btn-sm" %>
-        <%= link_to 'ADD NEW RESTROOM', new_restroom_path, class: "navbar-brand2" %>
+        <%= text_field_tag :search, params[:search], placeholder: "123 Oak St, Anytown, WA", size: 30 %>
+        <span style="margin-left: -28px;"><%= submit_tag "Find", :name => nil, class: "btn btn-default btn-low-margin btn-sm" %></span>
+        <%= link_to 'ADD NEW', new_restroom_path, class: "navbar-brand2" %>
         <!-- /.navbar-collapse -->
       <% end %>
     </nav>
