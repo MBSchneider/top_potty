@@ -28,7 +28,7 @@ restroom_list = [
   [ "400 Pine St, Seattle, WA", "Westlake Mall", "female"]
 ]
 
-cleanlinessrating_list = [9.2, 8.5, 8, 8, 7, 8, 3.5, 9, 8, 7, 6, 7, 7, 7, 9, 9, 9, 8, 5, 6]
+cleanlinessrating_list = [9, 9, 8, 8, 7, 8, 3, 9, 8, 7, 6, 7, 7, 7, 9, 9, 9, 8, 5, 6]
 
 x = 0
 restroom_list.each do |location, foundwithin, malefemale|
