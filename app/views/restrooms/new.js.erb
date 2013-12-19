@@ -2,25 +2,25 @@ var showAddNew = true;
 
 if (showAddNew == true){
   console.log("show add new " + showAddNew);
-  <%  if params[:newrr_search].present? &&
-        Geocoder.search(params[:newrr_search])[0].data["geometry"]["location_type"] !=
+  <%  if params[:address].present? &&
+        Geocoder.search(params[:address])[0].data["geometry"]["location_type"] !=
         "GEOMETRIC_CENTER"
   %>
     $('.alert-danger').remove();
 
     console.log("yes search...");
-    <% @search_coordinates = Geocoder.coordinates(params[:newrr_search]) %>
+    <% @search_coordinates = Geocoder.coordinates(params[:address]) %>
     <% if params[:male_or_female].present? %>
-      <% @restrooms = Restroom.near(params[:newrr_search], 60, :order => :distance).where(:malefemale => params[:male_or_female]).limit(5) %>
+      <% @restrooms = Restroom.near(params[:address], 60, :order => :distance).where(:malefemale => params[:male_or_female]).limit(5) %>
     <% else %>
-      <% @restrooms = Restroom.near(params[:newrr_search], 60, :order => :distance).limit(5) %>
+      <% @restrooms = Restroom.near(params[:address], 60, :order => :distance).limit(5) %>
     <% end %>
 
     if ($('#restroom_results').length == 0){
-      $('.container').append("<%= j render 'search_results' %>");
+      $('.container').append("<%= j render 'search_results_for_new' %>");
     } else {
       $('#restroom_results').remove();
-      $('.container').append("<%= j render 'search_results' %>");
+      $('.container').append("<%= j render 'search_results_for_new' %>");
     }
 
     window.drawTheMap();
@@ -35,8 +35,8 @@ if (showAddNew == true){
 
     showAddNew = false;
 
-  <%  elsif params[:newrr_search].present? &&
-        Geocoder.search(params[:newrr_search])[0].data["geometry"]["location_type"] ==
+  <%  elsif params[:address].present? &&
+        Geocoder.search(params[:address])[0].data["geometry"]["location_type"] ==
         "GEOMETRIC_CENTER"
   %>
     console.log("GEO center");

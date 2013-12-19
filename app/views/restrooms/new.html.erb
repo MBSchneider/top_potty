@@ -4,11 +4,7 @@
   <%= form_for new_restroom_path, :method => "get", class: "navbar-form", id: "newrestroom-location", remote: true do |f|%>
     <div class="input-append">
       <%= f.label "Address" %><br />
-      <%= text_field_tag :newrr_search, params[:newrr_search], class: "span2", placeholder: "123 Oak St, Anytown, WA" %><br />
-      <%= label_tag(:male_or_female_male, "Male:", :value => "male") %>
-      <%= radio_button_tag(:male_or_female, "male") %>
-      <%= label_tag(:male_or_female_female, "Female:", :value => "female") %>
-      <%= radio_button_tag(:male_or_female, "female") %><br />
+      <%= text_field_tag :address, params[:address], class: "span2", placeholder: "123 Oak St, Anytown, WA" %><br />
       <%= submit_tag "Next", :name => nil, class: "btn-success btn", id: "new_rr_search" %>
       <div id="after_search" style="display: none;">
         If any of the below match your restroom, please rate!  <br />

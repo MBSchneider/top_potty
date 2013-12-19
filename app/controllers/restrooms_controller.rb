@@ -48,8 +48,17 @@ class RestroomsController < ApplicationController
   # GET /restrooms/new
   # GET /restrooms/new.json
   def new
-    if params[:newrr_search].present? && Geocoder.search(params[:newrr_search])[0].data["geometry"]["location_type"] != "GEOMETRIC_CENTER"
+    if params[:address].present? && Geocoder.search(params[:address])[0].data["geometry"]["location_type"] != "GEOMETRIC_CENTER"
       puts "YES"
+    end
+
+    @q = Restroom.search(params[:q])
+
+    if params[:address].present?
+      @q = Restroom.near(params[:address], 60, :order => :distance).search(params[:q])
+      @restrooms = @q.result(distinct: true).page(params[:page]).per(5)
+      @search_coordinates = Geocoder.coordinates(params[:address])
+      @is_search = true
     end
 
     #if params[:restroom_location].present?

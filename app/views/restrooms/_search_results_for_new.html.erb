@@ -1,0 +1,32 @@
+<div class="row" id="restroom_results">
+  <div class="col-md-6">
+
+    <% if @search_coordinates %>
+      <table class="table" id="restroom_table" data-lat-near=<%= @search_coordinates[0] %> data-long-near=<%= @search_coordinates[1] %> data-is-search=<%= @is_search %>>
+    <% else %>
+      <table class = "table" id="restroom_table" data-long-near=<%= 0 %> data-lat-near=<%= 0 %>>
+    <% end %>
+
+      <tr id="show_maps">
+        <th style="font-size:1.2em">Location</th>
+        <% if @is_search %>
+          <th style="font-size:1.2em">Distance</th>
+        <% end %>
+        <th><center><%= image_tag "malefemale.png", size: "50x46" %></center></th>
+        <th style="font-size:1.2em; text-align:center">
+          Cleanliness <br />
+          Rating
+        </th>
+      </tr>
+
+      <%= render @restrooms %>
+
+    </table>
+
+  </div>
+
+  <div class="col-md-6">
+    <div id="map-canvas" style="width:100%"></div>
+  </div>
+</div>
+
