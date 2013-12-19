@@ -1,5 +1,10 @@
 <%= button_tag "More search options", :id => "filterbutton" %>
 <div id="searchfilters" class="hidden">
+  <center><table border="0" width="90%">
+      <tr>
+        <th>Look for restrooms with:</th>
+      </tr>
+      <td class="anim-item" bgcolor="e3e3e3">
   <%= form_tag(restrooms_path, :method => "get", class: "navbar-form", id: "search-form") do %>
   <div class="input-append">
     <%= search_form_for @q do |f| %>
@@ -8,8 +13,10 @@
       <%= f.check_box :handsfreefaucets_true %>
       <%= f.submit %>
     <% end %>
+    </td>
   </div>
 <% end %>
+</table></center>
 </div>
 
 <div class="row" id="restroom_results">
