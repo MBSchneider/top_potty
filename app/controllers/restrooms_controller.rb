@@ -111,7 +111,7 @@ class RestroomsController < ApplicationController
     @this_address = @this_location.formatted_address.split(",")
     @restroom.addressone = @this_address[0]
     @restroom.addresstwo = @this_address[1] + @this_address[2] if @this_address[1] && @this_address[2]
-    #@note = @restroom.notes.build(params[:note])
+    #@note = @restroom.notes.new(params[:comment])
     #@note.user_id = current_user.id
 
     respond_to do |format|

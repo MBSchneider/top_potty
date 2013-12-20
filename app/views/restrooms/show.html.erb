@@ -14,9 +14,11 @@
         <center><b>Notes:</b></br>
 
         <% @restroom.notes.each do |note| %>
-        "<%= note.comment %>" written by <%= note.user.email %></br>
-        <center>-----</center>
-        </br>
+        <% if note.comment != "" %>
+          "<%= note.comment %>" written by <%= note.user.email %></br>
+          <center>-----</center>
+          </br>
+         <% end %>
         <% end %></center>
       </p>
     </td>

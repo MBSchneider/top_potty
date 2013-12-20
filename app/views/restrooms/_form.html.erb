@@ -1,3 +1,4 @@
+<center>
 <div id="addRestroomForm" style="<%='display:none' unless @restroom.errors.count > 0 %>">
   <%= form_for(@restroom) do |f| %>
     <% if @restroom.errors.any? %>
@@ -61,46 +62,46 @@
       </tr>
       <td class="anim-item" bgcolor="e3e3e3">
           <center><span class="field">
-            <%= f.label(:numberofstalls, "# of stalls") %>
+            <%= f.label(:numberofstalls, "# of stalls:") %>
             <%= f.select(:numberofstalls, 0..20, :selected => 1) %>
-            &nbsp;|&nbsp;
+            &nbsp;&nbsp;
           </span>
 
           <span class="field">
-            <%= f.label(:numberofurinals, "# of urinals") %>
+            <%= f.label(:numberofurinals, "# of urinals:") %>
             <%= f.select(:numberofurinals, 0..20, :selected => 0) %>
-          &nbsp;|&nbsp;</span>
-        <span><%= f.label(:handsfreefaucets, "Hands-free faucets") %>
+          &nbsp;&nbsp;</span>
+        <span><%= f.label(:handsfreefaucets, "Hands-free faucets:") %>
         <%= f.check_box :handsfreefaucets %>
-        &nbsp;|&nbsp;</span>
-        <span><%= f.label(:handsfreetoilets, "Hands-free toilets") %>
+        &nbsp;&nbsp;</span>
+        <span><%= f.label(:handsfreetoilets, "Hands-free toilets:") %>
         <%= f.check_box :handsfreetoilets %>
-        &nbsp;|&nbsp;</span>
-        <span><%= f.label(:handsfreeurinals, "Hands-free urinals") %>
+        &nbsp;&nbsp;</span>
+        <span><%= f.label(:handsfreeurinals, "Hands-free urinals:") %>
         <%= f.check_box :handsfreeurinals %>
         &nbsp;&nbsp;</span>
-        <span><%= f.label(:urinalprivacy, "Urinal privacy screens") %>
+        <span><%= f.label(:urinalprivacy, "Urinal privacy screens:") %>
         <%= f.check_box :urinalprivacy %>
-        &nbsp;|&nbsp;</span>
-        <span><%= f.label(:wheelchair, "Wheelchair access") %>
+        &nbsp;&nbsp;</span>
+        <span><%= f.label(:wheelchair, "Wheelchair access:") %>
         <%= f.check_box :wheelchair %>
-        &nbsp;|&nbsp;</span>
-        <span><%= f.label(:attendant, "Attendant") %>
+        &nbsp;&nbsp;</span>
+        <span><%= f.label(:attendant, "Attendant:") %>
         <%= f.check_box :attendant %>
-        &nbsp;|&nbsp;</span>
-        <span><%= f.label(:diaper, "Diaper station") %>
+        &nbsp;&nbsp;</span>
+        <span><%= f.label(:diaper, "Diaper changing station:") %>
         <%= f.check_box :diaper %>
-        &nbsp;|&nbsp;</span>
-        <span><%= f.label(:fhdispenser, "Feminine hygiene dispenser") %>
+        &nbsp;&nbsp;</span>
+        <span><%= f.label(:fhdispenser, "Feminine hygiene dispenser:") %>
         <%= f.check_box :fhdispenser %>
-        &nbsp;|&nbsp;</span>
-        <span><%= f.label(:outlets, "Electrical outlets") %>
+        &nbsp;&nbsp;</span>
+        <span><%= f.label(:outlets, "Electrical outlets:") %>
         <%= f.check_box :outlets %>
-        &nbsp;|&nbsp;</span>
-        <span><%= f.label(:makeupmirror, "Make-up mirror") %>
+        &nbsp;&nbsp;</span>
+        <span><%= f.label(:makeupmirror, "Make-up mirror:") %>
         <%= f.check_box :makeupmirror %>
-        &nbsp;|&nbsp;</span>
-        <span><%= f.label(:heatedseats, "Heated toilet seats") %>
+        &nbsp;&nbsp;</span>
+        <span><%= f.label(:heatedseats, "Heated toilet seats:") %>
         <%= f.check_box :heatedseats %>
         </span></center>
       </td>
@@ -108,5 +109,7 @@
   <div class="actions anim-item">
     <%= f.submit "Add this restroom", class: "btn btn-small btn-success" %>
   </div>
+  <br/>
 
 <% end %>
+</center>
