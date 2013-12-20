@@ -211,7 +211,7 @@ textarea {
 .table, .table tr, .table tr td {
   border-collapse: collapse;
   border-spacing: 0;
-  border: 2px solid white;
+  border: 2px solid #e3e3e3;
 }
 
 th {
@@ -311,7 +311,7 @@ body {
   font-size: 14px;
   line-height: 1.428571429;
   color: #333333;
-  background: url(witewall_3.png);
+  background-color: #fafafa;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -4507,7 +4507,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 /* top nav bar background color */
 .navbar-inverse {
-  background-color: #d6009d;
+  background-color: #fa02b8;
   border-color: #080808;
 }
 

@@ -11,9 +11,9 @@
       <center><%= label_tag :address, "Address:" %>
       <%= text_field_tag :address, params[:address], class: "span2", placeholder: "123 Oak St, Anytown, WA", size: 30 %>
       <%= f.label(:malefemale_male, "Male:", :value => "male") %>
-      <%= f.radio_button(:malefemale_cont, "male") %>
+      <%= f.radio_button(:malefemale_eq, "male") %>
       <%= f.label(:malefemale_female, "Female:", :value => "female") %>
-      <%= f.radio_button(:malefemale_cont, "female") %><br />
+      <%= f.radio_button(:malefemale_eq, "female") %><br />
       <%= f.label(:handsfreefaucets, "Hands free faucets:") %>
       <%= f.check_box :handsfreefaucets_true %> &nbsp;&nbsp;
       <%= f.label(:handsfreetoilets, "Hands free flush toilets:") %>
