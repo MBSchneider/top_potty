@@ -305,7 +305,7 @@ html {
 }
 
 body {
-  padding-top: 20px;
+  padding-top: 0px;
   padding-left: 12px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -2346,7 +2346,7 @@ fieldset[disabled] .btn-link:focus {
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
-  border-radius: 3px;
+  border-radius: 2px;
 }
 
 .btn-xs {
@@ -4508,7 +4508,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 /* top nav bar background color */
 .navbar-inverse {
   background-color: #fa02b8;
-  border-color: #080808;
+  border-color: #db00a1;
 }
 
 .navbar-inverse .navbar-brand {
@@ -6481,7 +6481,22 @@ td.visible-lg {
   display: none !important;
 }
 
-@media (max-width: 767px) {
+@media (min-width: 0px) and (max-width: 444px) {
+  body {
+    padding-top: 80px;
+  }
+}
+
+@media (min-width: 445px) and (max-width: 647px) {
+  body {
+    padding-top: 50px;
+  }
+}
+
+@media (min-width: 648px) and (max-width: 767px) {
+   body {
+    padding-top: 24px;
+  }
   .visible-lg.visible-xs {
     display: block !important;
   }

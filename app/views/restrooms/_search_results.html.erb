@@ -1,15 +1,3 @@
- <div style="float:right">
-    <% if user_signed_in? %>
-        <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to "Sign Up", new_user_registration_path, class: "h6" %> |
-        <%= link_to "Log In", new_user_session_path, class: "h6" %> |
-        <%= link_to user_omniauth_authorize_path(:twitter) do %>
-        <font size="2">Sign in through Twitter</font><%= image_tag "bird_blue_32.png", size: "16x16" %>
-          <% end %>
-          <% end %>
-        </div>
-
 <%= button_tag "More search options", :id => "filterbutton" %>
 <div id="searchfilters" class="hidden">
   <center><table border="0" width="90%">
