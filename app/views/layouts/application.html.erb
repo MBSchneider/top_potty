@@ -9,15 +9,13 @@
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
-
   <body>
     <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-      <%= render 'restrooms/navbar' %>
+
 
       <%= link_to root_path, class: 'navbar-brand' do %>
         <%= image_tag "toppottyv5b.png", size: "324x60", class: "img-low-margin" %>
       <% end %>
-
       <%= form_tag(restrooms_path, :method => "get", id: "search-form") do %>
         <%= text_field_tag :address, params[:address], placeholder: "123 Oak St, Anytown, WA", size: 30 %>
         <span style="margin-left: -28px;"><%= image_submit_tag("search.png", :name => nil, class: "btn btn-default btn-low-margin btn-sm") %></span>
@@ -25,7 +23,6 @@
         <!-- /.navbar-collapse -->
       <% end %>
     </nav>
-
     <!-- Content goes here -->
     <br />
     <% [:notice,:error,:info,:success,:alert].each do |key| %>
