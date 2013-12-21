@@ -26,6 +26,7 @@ class RestroomsController < ApplicationController
       @search_coordinates = Geocoder.coordinates(request.remote_ip)
       @is_search = false
     end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @restrooms }

@@ -1,5 +1,5 @@
 class CleanlinessRatingsController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :authenticate_user!, except: [:new, :create, :index, :show]
   after_filter :verify_authorized, except: [:index, :show]
 
   def new
@@ -12,7 +12,7 @@ class CleanlinessRatingsController < ApplicationController
     @restroom = Restroom.find(params[:restroom_id])
     @cleanlinessrating = @restroom.cleanliness_ratings.new(params[:cleanliness_rating])
     @note = @restroom.notes.new(params[:note])
-    @note.user_id = current_user.id
+    # @note.user_id = current_user.id ## users not authenticated
 
     respond_to do |format|
       if @cleanlinessrating.save
