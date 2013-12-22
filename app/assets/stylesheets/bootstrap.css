@@ -4179,7 +4179,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
   .navbar-fixed-top,
   .navbar-fixed-bottom {
-    border-radius: 0 0 10px 10px;
+    border-radius: 0 0 0px 0px;
   }
 }
 
@@ -4912,7 +4912,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   white-space: nowrap;
   vertical-align: baseline;
   background-color: #999999;
-  border-radius: 10px;
+  border-radius: 0px;
 }
 
 .badge:empty {

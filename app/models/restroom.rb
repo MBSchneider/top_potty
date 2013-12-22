@@ -6,7 +6,7 @@ class Restroom < ActiveRecord::Base
                   :handsfreeurinals, :urinalprivacy, :stalldoors,
                   :heatedseats, :numberofstalls, :numberofurinals,
                   :wheelchair, :outlets, :makeupmirror, :fhdispenser,
-                  :notes_attributes, :directions, :note, :user_id
+                  :notes_attributes, :directions, :note, :user_id, :cleanaverage
 
   validates :location, :malefemale, :addressone, :foundwithin, :presence => true
   validate :location_must_be_specific
@@ -17,6 +17,15 @@ class Restroom < ActiveRecord::Base
   geocoded_by :location
   after_validation :geocode
 
+  def update_cleanaverage
+    @value = 0
+    self.cleanliness_ratings.each do |rating|
+      @value = @value + rating.cleanlinessrating
+    end
+    @total = self.cleanliness_ratings.size
+
+    update_attributes(cleanaverage: @value.to_f / @total.to_f)
+  end
 
   def location_must_be_specific
 

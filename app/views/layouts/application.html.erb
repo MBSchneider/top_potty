@@ -24,7 +24,7 @@
       <% end %>
     </nav>
     <!-- Content goes here -->
-     <div style="float:right">
+     <div style="float:right; margin-right:12px;">
     <% if user_signed_in? %>
         <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
       <% else %>
