@@ -24,7 +24,7 @@
       <%= image_tag "female.png", size: "18x40" %>
       <% end %></center></td>
   <td style="text-align:center; vertical-align: middle;">
-    <%= restroom.cleanaverage.round(2) %><br />
+    <%= restroom.cleanaverage %><br />
     (<%= restroom.cleanliness_ratings.count %> reviews)<br/>
     <% if policy(restroom).new? %>
       <% puts policy(restroom).new? %>
