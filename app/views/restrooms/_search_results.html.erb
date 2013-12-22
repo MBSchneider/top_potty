@@ -13,7 +13,7 @@
       <%= f.label(:malefemale_male, "Male:", :value => "male") %>
       <%= f.radio_button(:malefemale_eq, "male") %>
       <%= f.label(:malefemale_female, "Female:", :value => "female") %>
-      <%= f.radio_button(:malefemale_eq, "female") %>
+      <%= f.radio_button(:malefemale_eq, "female") %><br />
       <%= f.label(:cleanaverage, "Cleanliness rating is at least:") %>
       <%= f.select(:cleanaverage_gteq, 0..10, :selected => 0) %><br />
       <%= f.label(:handsfreefaucets, "Hands free faucets:") %>
