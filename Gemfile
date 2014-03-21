@@ -18,13 +18,10 @@ gem 'kaminari'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end
 
-group :development, :test do
-  gem 'sqlite3'
-end
+gem 'pg'
 
 gem 'minitest-rails'
 
