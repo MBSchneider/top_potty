@@ -13,6 +13,7 @@ first:
   latitude: 47.6235376
   addressone: "511 Boren Ave. N"
   addresstwo: "Seattle, WA"
+  cleanaverage: 4
 
 second:
   location: "Denver, CO"
@@ -21,6 +22,7 @@ second:
   latitude: 39.737567
   addressone: "Denver"
   addresstwo: "CO"
+  cleanaverage: 5
 
 third:
   location: "802 NE 62nd St, Seattle, WA 98115"
@@ -29,11 +31,22 @@ third:
   latitude: 47.6735339
   addressone: "business three"
   addresstwo: "802 NE 62nd St, Seattle, WA 98115"
+  cleanaverage: 6
 
 fourth:
-  location: "803 NE 62nd St, Seattle, WA 98115"
+  location: "n 130th st and aurora ave n, seattle wa"
   malefemale: female
-  longitude: -122.319272
-  latitude: 47.6735339
+  longitude: -122.344956
+  latitude: 47.723238
   addressone: "business four"
-  addresstwo: "803 NE 62nd St, Seattle, WA 98115"
+  addresstwo: "n 130th st and aurora ave n, seattle wa"
+  cleanaverage: 10
+
+fifth:
+  location: "1st and pike seattle wa"
+  malefemale: male
+  longitude: -122.340071
+  latitude: 47.608863
+  addressone: "business four"
+  addresstwo: "1st and pike seattle wa"
+  cleanaverage: 2

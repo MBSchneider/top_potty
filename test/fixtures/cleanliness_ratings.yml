@@ -19,4 +19,8 @@ crthree:
 
 crfourth:
   restroom: fourth
-  cleanlinessrating: 7
+  cleanlinessrating: 10
+
+crfifth:
+  restroom: fifth
+  cleanlinessrating: 2

@@ -5,6 +5,7 @@ gem 'rails', '3.2.14'
 # For map and location APIs
 gem 'gmaps4rails'
 gem 'geocoder'
+gem 'poltergeist'
 
 gem 'figaro'
 gem 'pry-rails'

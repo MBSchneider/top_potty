@@ -6,6 +6,7 @@ require "rails/test_help"
 require "minitest/rails"
 require 'capybara/webkit'
 require 'database_cleaner'
+require 'capybara/poltergeist'
 
 # To add Capybara feature tests add `gem "minitest-rails-capybara"`
 # to the test group in the Gemfile and uncomment the following:
@@ -14,12 +15,13 @@ require "minitest/rails/capybara"
 # Uncomment for awesome colorful output
 # require "minitest/pride"
 
-DatabaseCleaner.strategy = :truncation
+DatabaseCleaner.clean_with :truncation
+
+DatabaseCleaner.strategy = :transaction
 
 class MiniTest::Spec
   before :each do
-    # DatabaseCleaner.start
-    DatabaseCleaner.clean
+    DatabaseCleaner.start
   end
 
   after :each do
@@ -31,12 +33,12 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
   fixtures :all
 
-class ActionDispatch::IntegrationTest
-  include Rails.application.routes.url_helpers
-  include Capybara::DSL
-end
+  class ActionDispatch::IntegrationTest
+    include Rails.application.routes.url_helpers
+    include Capybara::DSL
+  end
 
-Turn.config.format = :outline
+  Turn.config.format = :outline
 end
 
 def log_in_user_one
@@ -60,7 +62,6 @@ def sign_in(user)
   sleep(1)
   click_on "Sign in"
   sleep(1)
-  DatabaseCleaner.clean
 end
 
 def log_in_admin
@@ -73,4 +74,10 @@ def log_in_admin
   fill_in "Password", with: 'password'
 
   click_button "Sign in"
+end
+
+def search_in_seattle
+  fill_in('address', match: :first, with: 'Seattle, WA')
+  save_and_open_page
+  find('.btn-low-margin').click
 end

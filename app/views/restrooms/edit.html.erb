@@ -1,6 +1,121 @@
 <h1>Editing restroom at <%= @restroom.location %></h1>
 
-<%= render "form" %>
+<center>
+<div id="addRestroomForm">
+  <%= form_for(@restroom) do |f| %>
+    <% if @restroom.errors.any? %>
+      <div id="error_explanation">
+        <h4><%= pluralize(@restroom.errors.count, "error") %> prohibited this restroom from being saved:</h4>
+        <ul>
+          <% @restroom.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <table border="0" width="90%" bgcolor="e3e3e3">
+      <tr>
+        <th>INFO</th>
+        <th>RATE</th>
+      </tr>
+      <td>
+        <div class="field">
+          <%= f.label :location, "Address" %><br />
+          <%= f.text_field :location %>
+        </div>
+        <div class="field">
+              <%= f.radio_button(:malefemale, "male") %>
+              <%= f.label(:malefemale, "Male", :value => "male") %>
+              <%= f.radio_button(:malefemale, "female") %>
+              <%= f.label(:malefemale, "Female", :value => "female") %>
+        </div>
+        <div class="field anim-item">
+          <%= f.label(:foundwithin, "Found within...") %><br />
+          <%= f.text_field :foundwithin, placeholder: "\"Safeway\" or \"Sears Tower, 4th floor\"" %>
+        </div>
+        <div class="field anim-item">
+          <%= f.label(:directions, "Directions to restroom") %><br />
+          <%= f.text_area :directions, placeholder: "Turn left at reception, head down hallway...", :size => "30x4" %>
+        </div>
+      </td>
+
+      <td>
+        <%= f.fields_for :cleanliness_ratings do |builder| %>
+          <div class="field anim-item">
+            <%= builder.label(:cleanlinessrating, "Cleanliness rating, 1 (dirtiest) to 10 (cleanest):") %><br />
+            <%= builder.select(:cleanlinessrating, 1..10, :selected => 5) %>
+          </div>
+        <% end %>
+
+        <%= f.fields_for :notes do |builder| %>
+          <div class="field anim-item">
+            <%= builder.hidden_field :user_id, :value => current_user.id %>
+            <%= builder.label(:comment, "Notes:") %><br />
+            <%= builder.text_area :comment, placeholder: "Add any notes/comments about this restroom here", :size => "30x10" %>
+          </div>
+        <% end %>
+      </td>
+    </table>
+
+    <table border="0" width="90%">
+      <tr>
+        <th>MORE INFO</th>
+      </tr>
+      <td class="anim-item" bgcolor="e3e3e3">
+          <center><span class="field">
+            <%= f.label(:numberofstalls, "# of stalls:") %>
+            <%= f.select(:numberofstalls, 0..20, :selected => 1) %>
+            &nbsp;&nbsp;
+          </span>
+
+          <span class="field">
+            <%= f.label(:numberofurinals, "# of urinals:") %>
+            <%= f.select(:numberofurinals, 0..20, :selected => 0) %>
+          &nbsp;&nbsp;</span>
+        <span><%= f.label(:handsfreefaucets, "Hands-free faucets:") %>
+        <%= f.check_box :handsfreefaucets %>
+        &nbsp;&nbsp;</span>
+        <span><%= f.label(:handsfreetoilets, "Hands-free toilets:") %>
+        <%= f.check_box :handsfreetoilets %>
+        &nbsp;&nbsp;</span>
+        <span><%= f.label(:handsfreeurinals, "Hands-free urinals:") %>
+        <%= f.check_box :handsfreeurinals %>
+        &nbsp;&nbsp;</span>
+        <span><%= f.label(:urinalprivacy, "Urinal privacy screens:") %>
+        <%= f.check_box :urinalprivacy %>
+        &nbsp;&nbsp;</span>
+        <span><%= f.label(:wheelchair, "Wheelchair access:") %>
+        <%= f.check_box :wheelchair %>
+        &nbsp;&nbsp;</span>
+        <span><%= f.label(:attendant, "Attendant:") %>
+        <%= f.check_box :attendant %>
+        &nbsp;&nbsp;</span>
+        <span><%= f.label(:diaper, "Diaper changing station:") %>
+        <%= f.check_box :diaper %>
+        &nbsp;&nbsp;</span>
+        <span><%= f.label(:fhdispenser, "Feminine hygiene dispenser:") %>
+        <%= f.check_box :fhdispenser %>
+        &nbsp;&nbsp;</span>
+        <span><%= f.label(:outlets, "Electrical outlets:") %>
+        <%= f.check_box :outlets %>
+        &nbsp;&nbsp;</span>
+        <span><%= f.label(:makeupmirror, "Make-up mirror:") %>
+        <%= f.check_box :makeupmirror %>
+        &nbsp;&nbsp;</span>
+        <span><%= f.label(:heatedseats, "Heated toilet seats:") %>
+        <%= f.check_box :heatedseats %>
+        </span></center>
+      </td>
+    </table>
+  <div class="actions anim-item">
+    <%= f.submit "Update this restroom", class: "btn btn-small btn-success" %>
+  </div>
+  <br/>
+
+<% end %>
+</center>
+
 
 <%= link_to 'Show', @restroom %> |
 <%= link_to 'Back', restrooms_path %>

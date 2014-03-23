@@ -1,8 +1,5 @@
 TopPotty::Application.routes.draw do
 
-
-  devise_for :users
-
   resources :restrooms do
     resources :cleanliness_ratings
     resources :notes

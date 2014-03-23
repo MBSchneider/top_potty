@@ -14,7 +14,6 @@ feature "Member can contribute restrooms" do
     # click_on 'Next'
     # page.text.must_include 'If any of the below match your restroom'
 
-    # save_and_open_page
     # find('#add_new').click
 
     # fill_in 'restroom_foundwithin', with: "Jack in the Box"

@@ -9,13 +9,18 @@ class CleanlinessRatingsController < ApplicationController
   end
 
   def create
+    puts '**************** CREATE CleanlinessRating'
     @restroom = Restroom.find(params[:restroom_id])
+    puts 'CREATE ' + @restroom.cleanaverage.to_s if @restroom.cleanaverage
     @cleanlinessrating = @restroom.cleanliness_ratings.new(params[:cleanliness_rating])
     @note = @restroom.notes.new(params[:note])
     # @note.user_id = current_user.id ## users not authenticated
 
     respond_to do |format|
       if @cleanlinessrating.save
+        @restroom = Restroom.find(params[:restroom_id])
+        @restroom.update_attributes(cleanaverage: get_cleanliness_average(@restroom))
+        puts 'CREATE 2 ' + @restroom.cleanaverage.to_s
         puts @note.comment
         if @note.comment != ""
           @note.save
@@ -28,5 +33,14 @@ class CleanlinessRatingsController < ApplicationController
         format.json { render json: @restroom.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  private
+  def get_cleanliness_average restroom
+    sum = 0
+    restroom.cleanliness_ratings.each do |c|
+      sum += c.cleanlinessrating
+    end
+    sum / restroom.cleanliness_ratings.size
   end
 end

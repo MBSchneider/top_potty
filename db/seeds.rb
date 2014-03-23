@@ -36,6 +36,7 @@ restroom_list.each do |location, foundwithin, malefemale|
   @this_address = Geocoder.search(r.location)[0].formatted_address.split(",")
   r.addressone = @this_address[0]
   r.addresstwo = @this_address[1] + @this_address[2]
+  r.cleanaverage = cleanlinessrating_list[x]
   r.save
   Restroom.last.cleanliness_ratings.build
   a = Restroom.last.cleanliness_ratings.new( cleanlinessrating: cleanlinessrating_list[x] )

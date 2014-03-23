@@ -1,6 +1,6 @@
 <tr class="restroom" data-lat=<%= restroom.latitude %> data-long=<%= restroom.longitude %> id =<%= dom_id(restroom) %> data-address='<%= restroom.addressone.to_s %>' >
   <td style="vertical-align: middle;">
-    <% if restroom.cleanliness_ratings.average('cleanlinessrating').round(1).to_s >= '8.8' %>
+    <% if restroom.cleanaverage.round(1) >= 8.8 %>
       <%= image_tag "tpbadge.png", alt: "The TP! Badge is given to restrooms that have an average cleanliness rating of at least 8.8.", size: "45x50" %><br/>
     <% end %>
 
@@ -24,12 +24,11 @@
       <%= image_tag "female.png", size: "18x40" %>
       <% end %></center></td>
   <td style="text-align:center; vertical-align: middle;">
-    <% if restroom.cleanaverage != nil %>
-      <%= restroom.cleanaverage.round(2) %><br />
-    <% else %>
-      <%= restroom.cleanliness_ratings.average(:cleanlinessrating).round(2) %>
-    <% end %>
-    (<%= restroom.cleanliness_ratings.count %> reviews)<br/>
+    <%= puts 'RR CLNAVG' + restroom.cleanaverage.to_s %>
+    <% restroom.update_cleanaverage unless restroom.cleanaverage %><br />
+    <%= restroom.cleanaverage.round(2) %><br />
+    (<%= restroom.cleanliness_ratings.count.to_s + ' reviews' %>)<br/>
+    <%= '(' + restroom.notes.count.to_s + ' comments)' if restroom.notes.count > 0 %><br/>
     <% if policy(restroom).new? %>
       <% puts policy(restroom).new? %>
       <% puts "*******  Render JS" %>
