@@ -1,17 +1,18 @@
-language:
-  ruby
-
+language: ruby
 rvm:
-  - "2.0.0"
-
+- 2.0.0
 env:
+  matrix:
   - DB=sqlite DEVISE_SECRET_KEY=1111122222333334444455555abcdefg
-
+  global:
+  - secure: A9QQLB2nJf3zIlpP6nLyX055tn2Ait9yWThQj/C7kAwxM0dEEBLYUoJzw6UN30MIL54O7tMa+oHGp5VwcbzZ2jEECcrl34TtNeP18GugVvDhZYweHj5gvu317/sJ3tbOW2MHTjI7ZXsxuOnBZOOKqxyiLHPAHcpL0BEflGCdg6o=
+  - secure: fofqV8nJII5NJmIvHrnQiTdTYTtHsuscN+xmek7DM1d2Y9iYor3YTUpmtH9zFEkUpn92wKRZr2XUSiX9rCx7t3ANjZauAIMk8A11avRV0pl/fmFtCXKh1DP+YrdjVMnElkBajH2Hyb3PxUs1ip5qVxEYfAcykav9v5FLGhvIXjc=
+  - secure: PxZImYD2r/po4vZpg7kvbSqSB9q4awuuGKDxV29jVUoa89NaJo2s6byzI29tN6GoiWcapnRfzCR2frG5DzIsvkjxPfsdUHcDVwh8oyGjKXkrVJQgclAgddKKRjtC9bBQS0WiJhoq101iq+9p8ovPqXG1RuysYuheKzCmBjr+wtE=
+  - secure: pDGdmppSIUpVsPsgmGK8NE5t4o429MSB6XpZDHJR/WFFP2w//OtdeSN/KIVjE/Z5Xo0/RlndO+IvtbPAMBGZRLbQa1k7zK+cWLUBoHQmgmi7GdkUuRbpMeYr9ye7IEiFqbkQFuJj7rN/EQVQGF/j8AVhnCXuu1UNm5tYY8GOh8I=
 script:
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
-  - bundle exec rake db:test:prepare
-  - bundle exec rake routes
-  - bundle exec rake
-  - rails -v
-
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rake routes
+- bundle exec rake
+- rails -v
 bundler_args: --binstubs=./bundler_stubs
