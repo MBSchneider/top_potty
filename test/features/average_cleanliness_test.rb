@@ -12,7 +12,7 @@ feature "restrooms cleanliness rating shows average and total of all ratings" do
     page.text.must_include '4.5'
     page.text.must_include '2 reviews'
   end
-  Capybara.javascript_driver = :poltergeist
+  Capybara.javascript_driver = :webkit
   scenario "index shows average cleanliness ratings and total ratings", js: true do
 
     log_in_admin
@@ -33,10 +33,11 @@ feature "restrooms cleanliness rating shows average and total of all ratings" do
     click_on 'Add Cleanliness Rating / Note'
     select '4'
     click_on 'Submit'
-    puts restrooms(:fifth).cleanliness_ratings
-    visit root_path
 
-    search_in_seattle
+    visit restrooms_path
+
+    fill_in('address', match: :first, with: 'Seattle, WA')
+    find('.btn-low-margin').click
 
     page.text.must_include '2.5'
     page.text.must_include '2 reviews'
