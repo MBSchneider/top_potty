@@ -13,12 +13,12 @@ env:
   - secure: PxZImYD2r/po4vZpg7kvbSqSB9q4awuuGKDxV29jVUoa89NaJo2s6byzI29tN6GoiWcapnRfzCR2frG5DzIsvkjxPfsdUHcDVwh8oyGjKXkrVJQgclAgddKKRjtC9bBQS0WiJhoq101iq+9p8ovPqXG1RuysYuheKzCmBjr+wtE=
   - secure: pDGdmppSIUpVsPsgmGK8NE5t4o429MSB6XpZDHJR/WFFP2w//OtdeSN/KIVjE/Z5Xo0/RlndO+IvtbPAMBGZRLbQa1k7zK+cWLUBoHQmgmi7GdkUuRbpMeYr9ye7IEiFqbkQFuJj7rN/EQVQGF/j8AVhnCXuu1UNm5tYY8GOh8I=
 before_script:
-- psql -c 'create database toppotty-test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database toppotty-test;' -U postgres
 script:
-- RAILS_ENV=test bundle exec rake db:create --trace
-- RAILS_ENV=test bundle exec rake db:migrate --trace
-- bundle exec rake db:test:prepare
-- bundle exec rake routes
-- bundle exec rake
-- rails -v
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - bundle exec rake routes
+  - bundle exec rake
+  - rails -v
 bundler_args: --binstubs=./bundler_stubs
