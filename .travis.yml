@@ -2,10 +2,10 @@ language: ruby
 rvm:
 - 2.0.0
 before_install:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
 addons:
-  postgresql: "9.3"
+  postgresql: '9.3'
 env:
   global:
   - secure: A9QQLB2nJf3zIlpP6nLyX055tn2Ait9yWThQj/C7kAwxM0dEEBLYUoJzw6UN30MIL54O7tMa+oHGp5VwcbzZ2jEECcrl34TtNeP18GugVvDhZYweHj5gvu317/sJ3tbOW2MHTjI7ZXsxuOnBZOOKqxyiLHPAHcpL0BEflGCdg6o=
@@ -13,12 +13,17 @@ env:
   - secure: PxZImYD2r/po4vZpg7kvbSqSB9q4awuuGKDxV29jVUoa89NaJo2s6byzI29tN6GoiWcapnRfzCR2frG5DzIsvkjxPfsdUHcDVwh8oyGjKXkrVJQgclAgddKKRjtC9bBQS0WiJhoq101iq+9p8ovPqXG1RuysYuheKzCmBjr+wtE=
   - secure: pDGdmppSIUpVsPsgmGK8NE5t4o429MSB6XpZDHJR/WFFP2w//OtdeSN/KIVjE/Z5Xo0/RlndO+IvtbPAMBGZRLbQa1k7zK+cWLUBoHQmgmi7GdkUuRbpMeYr9ye7IEiFqbkQFuJj7rN/EQVQGF/j8AVhnCXuu1UNm5tYY8GOh8I=
 before_script:
-  - cp config/database.yml.travis config/database.yml
-  - psql -c 'create database toppottytest;' -U postgres
+- cp config/database.yml.travis config/database.yml
+- psql -c 'create database toppottytest;' -U postgres
 script:
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
-  - bundle exec rake db:test:prepare
-  - bundle exec rake routes
-  - bundle exec rake
-  - rails -v
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rake routes
+- bundle exec rake
+- rails -v
 bundler_args: --binstubs=./bundler_stubs
+deploy:
+  provider: heroku
+  api_key:
+    secure: PvL+PHtmvgw3Roii7TaRchFTqIiu/8uVlKLPESgBD4i4vX5KkKxdo8utPExbd4IVAps8cDKu+0zeAi6M55hkQAQP0nBkpYiWwqYsCHR9pjria4c7wvD6V406XPuQ2LMTPZId0ZK7lqqNI6AJwP59U0R054rEEqihoWAUPDv0AII=
+  app: toppotty
