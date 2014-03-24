@@ -1,6 +1,9 @@
 language: ruby
 rvm:
 - 2.0.0
+before_install:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
 addons:
   postgresql: "9.3"
 env:
@@ -9,8 +12,8 @@ env:
   - secure: fofqV8nJII5NJmIvHrnQiTdTYTtHsuscN+xmek7DM1d2Y9iYor3YTUpmtH9zFEkUpn92wKRZr2XUSiX9rCx7t3ANjZauAIMk8A11avRV0pl/fmFtCXKh1DP+YrdjVMnElkBajH2Hyb3PxUs1ip5qVxEYfAcykav9v5FLGhvIXjc=
   - secure: PxZImYD2r/po4vZpg7kvbSqSB9q4awuuGKDxV29jVUoa89NaJo2s6byzI29tN6GoiWcapnRfzCR2frG5DzIsvkjxPfsdUHcDVwh8oyGjKXkrVJQgclAgddKKRjtC9bBQS0WiJhoq101iq+9p8ovPqXG1RuysYuheKzCmBjr+wtE=
   - secure: pDGdmppSIUpVsPsgmGK8NE5t4o429MSB6XpZDHJR/WFFP2w//OtdeSN/KIVjE/Z5Xo0/RlndO+IvtbPAMBGZRLbQa1k7zK+cWLUBoHQmgmi7GdkUuRbpMeYr9ye7IEiFqbkQFuJj7rN/EQVQGF/j8AVhnCXuu1UNm5tYY8GOh8I=
-  before_script:
-  - psql -c 'create database toppotty-test;' -U postgres
+before_script:
+- psql -c 'create database toppotty-test;' -U postgres
 script:
 - RAILS_ENV=test bundle exec rake db:create --trace
 - RAILS_ENV=test bundle exec rake db:migrate --trace
