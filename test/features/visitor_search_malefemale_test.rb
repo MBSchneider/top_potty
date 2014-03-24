@@ -30,8 +30,6 @@ feature "visitor searches for male, female, or neither" do
 
     page.text.must_include restrooms(:fourth).location
     page.text.wont_include restrooms(:third).location
-    save_and_open_page
-
 
     # # map shows on page
     # page.has_css?("#map")

@@ -12,7 +12,7 @@ feature "restrooms cleanliness rating shows average and total of all ratings" do
     page.text.must_include '4.5'
     page.text.must_include '2 reviews'
   end
-
+  Capybara.javascript_driver = :poltergeist
   scenario "index shows average cleanliness ratings and total ratings", js: true do
 
     log_in_admin
@@ -37,7 +37,6 @@ feature "restrooms cleanliness rating shows average and total of all ratings" do
     visit root_path
 
     search_in_seattle
-    save_and_open_page
 
     page.text.must_include '2.5'
     page.text.must_include '2 reviews'

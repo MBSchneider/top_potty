@@ -78,6 +78,5 @@ end
 
 def search_in_seattle
   fill_in('address', match: :first, with: 'Seattle, WA')
-  save_and_open_page
   find('.btn-low-margin').click
 end
