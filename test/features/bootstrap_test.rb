@@ -1,7 +1,7 @@
-require "test_helper"
+require 'test_helper'
 
-feature "bootstrap makes our site pretty" do
-  scenario "bootstrap loads fine" do
+feature 'bootstrap makes our site pretty' do
+  scenario 'bootstrap loads fine' do
     sign_in(:one)
 
     visit root_path

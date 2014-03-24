@@ -1,7 +1,7 @@
-require "test_helper"
+require 'test_helper'
 
-feature "visitor inputs address" do
-  scenario "input address, show on map" do
+feature 'visitor inputs address' do
+  scenario 'input address, show on map' do
     skip
 
   end

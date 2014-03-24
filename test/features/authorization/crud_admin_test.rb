@@ -1,13 +1,12 @@
-require "test_helper"
+require 'test_helper'
 
-feature "admin deletes restroom" do
-  scenario "can delete restroom from index" do
-
+feature 'admin deletes restroom' do
+  scenario 'can delete restroom from index' do
 
     log_in_admin
     search_in_seattle
 
-    page.find("#restroom_309456473").click_on "Destroy"
+    page.find('#restroom_309456473').click_on 'Destroy'
 
     # Then I should see success message
     page.text.must_include 'Restroom deleted.'
@@ -15,17 +14,16 @@ feature "admin deletes restroom" do
   end
 end
 
-feature "admin edits restroom" do
-  scenario "can edit restroom from index" do
-
+feature 'admin edits restroom' do
+  scenario 'can edit restroom from index' do
 
     log_in_admin
     search_in_seattle
 
-    page.find("#restroom_309456473").click_on "Edit"
-    fill_in 'Address', with: "Cleveland, OH"
+    page.find('#restroom_309456473').click_on 'Edit'
+    fill_in 'Address', with: 'Cleveland, OH'
     choose 'Male'
-    fill_in 'Found within...', with: "Park"
+    fill_in 'Found within...', with: 'Park'
 
     click_on 'Update this restroom'
 
@@ -36,9 +34,9 @@ feature "admin edits restroom" do
   end
 end
 
-feature "admin adds restroom" do
+feature 'admin adds restroom' do
   Capybara.javascript_driver = :poltergeist
-  scenario "can add a restroom", :js => true do
+  scenario 'can add a restroom', js: true do
 
     log_in_admin
     click_on '+ADD NEW+'
@@ -48,7 +46,8 @@ feature "admin adds restroom" do
     sleep 2
     find('#add_new').click
     choose 'Male'
-    select '1', :from => 'restroom_cleanliness_ratings_attributes_0_cleanlinessrating'
+    select '1',
+           from: 'restroom_cleanliness_ratings_attributes_0_cleanlinessrating'
     fill_in 'restroom_foundwithin', with: 'Sears'
 
     click_on 'Add this restroom'
@@ -60,13 +59,13 @@ feature "admin adds restroom" do
   end
 end
 
-feature "admin views restroom, show action" do
-  scenario "can view restroom show page" do
+feature 'admin views restroom, show action' do
+  scenario 'can view restroom show page' do
 
     log_in_admin
     search_in_seattle
 
-    page.find("#restroom_309456473 > td > a", match: :first).click
+    page.find('#restroom_309456473 > td > a', match: :first).click
 
     # Then I should see success message
     page.text.must_include restrooms(:first).location

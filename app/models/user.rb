@@ -22,15 +22,15 @@ class User < ActiveRecord::Base
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
-      user.email = auth.info.nickname + "@twitter.com"
+      user.email = auth.info.nickname + '@twitter.com'
     end
   end
 
   def self.new_with_session(params, session)
-    if session["devise.user_attributes"]
-      new(session["devise.user_attributes"], without_protection: true) do |user|
-        user.attributes = params
-        user.valid?
+    if session['devise.user_attributes']
+      new(session['devise.user_attributes'], without_protection: true) do |u|
+        u.attributes = params
+        u.valid?
       end
     else
       super
@@ -44,5 +44,4 @@ class User < ActiveRecord::Base
       super
     end
   end
-
 end

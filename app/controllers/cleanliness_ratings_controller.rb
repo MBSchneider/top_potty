@@ -22,21 +22,20 @@ class CleanlinessRatingsController < ApplicationController
         @restroom.update_attributes(cleanaverage: get_cleanliness_average(@restroom))
         puts 'CREATE 2 ' + @restroom.cleanaverage.to_s
         puts @note.comment
-        if @note.comment != ""
-          @note.save
-        end
+        @note.save unless @note.comment == ''
         puts @note
         format.html { redirect_to @restroom, notice: 'Cleanliness rating was successfully added.' }
         format.json { render json: @restroom, status: :created, location: @restroom }
       else
-        format.html { render action: "new" }
+        format.html { render action: 'new' }
         format.json { render json: @restroom.errors, status: :unprocessable_entity }
       end
     end
   end
 
   private
-  def get_cleanliness_average restroom
+
+  def get_cleanliness_average(restroom)
     sum = 0
     restroom.cleanliness_ratings.each do |c|
       sum += c.cleanlinessrating

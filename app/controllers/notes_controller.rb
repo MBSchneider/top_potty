@@ -17,7 +17,7 @@ class NotesController < ApplicationController
         format.html { redirect_to @restroom, notice: 'Note was successfully added.' }
         format.json { render json: @restroom, status: :created, location: @restroom }
       else
-        format.html { render action: "new" }
+        format.html { render action: 'new' }
         format.json { render json: @restroom.errors, status: :unprocessable_entity }
       end
     end

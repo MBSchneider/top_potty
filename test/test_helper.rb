@@ -1,16 +1,16 @@
-ENV["RAILS_ENV"] = "test"
+ENV['RAILS_ENV'] = 'test'
 require 'simplecov'
 SimpleCov.start
-require File.expand_path("../../config/environment", __FILE__)
-require "rails/test_help"
-require "minitest/rails"
+require File.expand_path('../../config/environment', __FILE__)
+require 'rails/test_help'
+require 'minitest/rails'
 require 'capybara/webkit'
 require 'database_cleaner'
 require 'capybara/poltergeist'
 
 # To add Capybara feature tests add `gem "minitest-rails-capybara"`
 # to the test group in the Gemfile and uncomment the following:
-require "minitest/rails/capybara"
+require 'minitest/rails/capybara'
 
 # Uncomment for awesome colorful output
 # require "minitest/pride"
@@ -30,7 +30,8 @@ class MiniTest::Spec
 end
 
 class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
+  # Setup all fixtures in test/fixtures/*.(yml|csv)
+  # for all tests in alphabetical order.
   fixtures :all
 
   class ActionDispatch::IntegrationTest
@@ -44,36 +45,33 @@ end
 def log_in_user_one
   visit root_path
 
-  click_link "Log In"
+  click_link 'Log In'
 
   # given a complete log in form
-  fill_in "Email", with: users(:one).email
-  fill_in "Password", with: 'password'
+  fill_in 'Email', with: users(:one).email
+  fill_in 'Password', with: 'password'
 
-  click_button "Sign in"
+  click_button 'Sign in'
 end
-
 
 def sign_in(user)
   visit new_user_session_path
-  fill_in "Email", with: users(user).email
-  fill_in "Password", with: "password"
+  fill_in 'Email', with: users(user).email
+  fill_in 'Password', with: 'password'
 
   sleep(1)
-  click_on "Sign in"
+  click_on 'Sign in'
   sleep(1)
 end
 
 def log_in_admin
   visit root_path
 
-  click_link "Log In"
+  click_link 'Log In'
 
-  # given a complete log in form
-  fill_in "Email", with: users(:three).email
-  fill_in "Password", with: 'password'
-
-  click_button "Sign in"
+  fill_in 'Email', with: users(:three).email
+  fill_in 'Password', with: 'password'
+  click_button 'Sign in'
 end
 
 def search_in_seattle

@@ -5,23 +5,14 @@ class RestroomsController < ApplicationController
   # GET /restrooms
   # GET /restrooms.json
   def index
-    # @q = Restroom.search(params[:q])
-    # @restrooms = @q.result(distinct: true)
-    # @restrooms = @searched.near(params[:q], 60, :order => :distance).limit(5)
-
-    # if params[:search].present? && params[:malefemale].present?
-    #   @q = Restroom.near(params[:search], 60, :order => :distance).where(:malefemale => params[:malefemale]).search(params[:q])
-    # @search_coordinates = Geocoder.coordinates(params[:search])
-    # @is_search = true
-
     if params[:address].present?
-      @q = Restroom.near(params[:address], 60, :order => :distance).search(params[:q])
+      @q = Restroom.near(params[:address], 60, order: :distance).search(params[:q])
       @restrooms = @q.result(distinct: true).page(params[:page]).per(5)
       @search_coordinates = Geocoder.coordinates(params[:address])
       @is_search = true
 
     else
-      @q = Restroom.near(request.remote_ip, 60, :order => :distance).search(params[:q])
+      @q = Restroom.near(request.remote_ip, 60, order: :distance).search(params[:q])
       @restrooms = @q.result(distinct: true).page(params[:page]).per(5)
       @search_coordinates = Geocoder.coordinates(request.remote_ip)
       @is_search = false
@@ -31,8 +22,6 @@ class RestroomsController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @restrooms }
     end
-
-
   end
 
   # GET /restrooms/1
@@ -49,28 +38,18 @@ class RestroomsController < ApplicationController
   # GET /restrooms/new
   # GET /restrooms/new.json
   def new
-    if params[:address].present? && Geocoder.search(params[:address])[0].data["geometry"]["location_type"] != "GEOMETRIC_CENTER"
-      puts "YES"
+    if params[:address].present? && Geocoder.search(params[:address])[0].data['geometry']['location_type'] != 'GEOMETRIC_CENTER'
+      puts 'YES'
     end
 
     @q = Restroom.search(params[:q])
 
     if params[:address].present?
-      @q = Restroom.near(params[:address], 60, :order => :distance).search(params[:q])
+      @q = Restroom.near(params[:address], 60, order: :distance).search(params[:q])
       @restrooms = @q.result(distinct: true).page(params[:page]).per(5)
       @search_coordinates = Geocoder.coordinates(params[:address])
       @is_search = true
     end
-
-    #if params[:restroom_location].present?
-    #   respond_to do |format|
-    #   format.html # new.html.erb
-    #   format.json { render json: @restroom }
-    # else
-    #   respond_to do |format|
-    #   format.html # new.html.erb
-    #   format.json { render json: @restroom }
-    # end
 
     @restroom = Restroom.new
     authorize @restroom
@@ -88,7 +67,6 @@ class RestroomsController < ApplicationController
     @restroom = Restroom.new
     authorize @restroom
     @restroom.cleanliness_ratings.build
-    #@restroom.notes.build
 
     respond_to do |format|
       format.js
@@ -109,22 +87,18 @@ class RestroomsController < ApplicationController
     @restroom = Restroom.new(params[:restroom])
     authorize @restroom
     @this_location = Geocoder.search(@restroom.location)[0]
-    @this_address = @this_location.formatted_address.split(",")
+    @this_address = @this_location.formatted_address.split(',')
     @restroom.addressone = @this_address[0]
     @restroom.addresstwo = @this_address[1] + @this_address[2] if @this_address[1] && @this_address[2]
     @restroom.update_cleanaverage
-    #@note = @restroom.notes.new(params[:comment])
-    #@note.user_id = current_user.id
 
     respond_to do |format|
       if @restroom.save
-        puts "SAVED"
+        puts 'SAVED'
         format.html { redirect_to @restroom, notice: 'Restroom was successfully created.' }
         format.json { render json: @restroom, status: :created, location: @restroom }
       else
-        puts "NOT SAVED"
-        # format.js { render action: "new" }
-        format.html { render action: "new" }
+        format.html { render action: 'new' }
         format.json { render json: @restroom.errors, status: :unprocessable_entity }
       end
     end
@@ -141,7 +115,7 @@ class RestroomsController < ApplicationController
         format.html { redirect_to @restroom, notice: 'Restroom was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: 'edit' }
         format.json { render json: @restroom.errors, status: :unprocessable_entity }
       end
     end

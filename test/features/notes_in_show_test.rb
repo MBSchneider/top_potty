@@ -1,7 +1,7 @@
-require "test_helper"
+require 'test_helper'
 
-feature "restroom show view shows notes" do
-  scenario "visitor can see notes in restroom show view" do
+feature 'restroom show view shows notes' do
+  scenario 'visitor can see notes in restroom show view' do
 
     sign_in(:one)
 
@@ -11,7 +11,7 @@ feature "restroom show view shows notes" do
     find('td > a', match: :first).click
     click_on 'Add Cleanliness Rating / Note'
 
-    fill_in 'Note', with: "Wackadoo I love this one."
+    fill_in 'Note', with: 'Wackadoo I love this one.'
 
     click_on 'Submit'
 
