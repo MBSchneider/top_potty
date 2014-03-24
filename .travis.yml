@@ -14,7 +14,7 @@ env:
   - secure: pDGdmppSIUpVsPsgmGK8NE5t4o429MSB6XpZDHJR/WFFP2w//OtdeSN/KIVjE/Z5Xo0/RlndO+IvtbPAMBGZRLbQa1k7zK+cWLUBoHQmgmi7GdkUuRbpMeYr9ye7IEiFqbkQFuJj7rN/EQVQGF/j8AVhnCXuu1UNm5tYY8GOh8I=
 before_script:
   - cp config/database.yml.travis config/database.yml
-  - psql -c 'create database toppotty-test;' -U postgres
+  - psql -c 'create database toppottytest;' -U postgres
 script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare

@@ -1,6 +1,6 @@
 test:
   adapter: postgresql
-  database: toppotty-test
+  database: toppottytest
   username: postgres
 
 # Warning: The database defined as "test" will be erased and
