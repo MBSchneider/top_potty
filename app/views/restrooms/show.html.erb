@@ -1,10 +1,15 @@
-<head>
+<% content_for :head do %>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@top_potty">
+  <meta name="twitter:title" content="<%= @restroom.location.truncate(70) %>">
+  <meta name="twitter:description" content="<%= "Check out the #{@restroom.foundwithin} restroom at #{@restroom.location}, rated #{@restroom.cleanaverage.round(1)} / 10" %>">
+  <meta name="twitter:image:src" content="<%= "http://maps.google.com/maps/api/staticmap?size=300x300&sensor=false&zoom=15&markers=#{@restroom.latitude}%2C#{@restroom.longitude}" %>">
+  <meta name="twitter:domain" content="www.toppotty.com">
   <script>
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
   </script>
-
-</head>
-<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-url="<%= restroom_url(@restroom) %>" data-text="Is it a @top_potty? Check out the restroom at <%= @restroom.addressone %>." data-related="top_potty" data-size="large" data-count="none" >Tweet</a>
+<% end %>
+<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-url="<%= restroom_url(@restroom) %>" data-text="Is it a top potty? Check out the restroom at <%= @restroom.addressone %>." data-related="top_potty" data-hashtags="top_potty" data-size="large" data-count="none" >Tweet</a>
 
 <table class="table-bordered">
   <tr>
