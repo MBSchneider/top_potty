@@ -10,7 +10,6 @@ class RestroomsController < ApplicationController
       @restrooms = @q.result(distinct: true).page(params[:page]).per(5)
       @search_coordinates = Geocoder.coordinates(params[:address])
       @is_search = true
-
     else
       @q = Restroom.near(request.remote_ip, 60, order: :distance).search(params[:q])
       @restrooms = @q.result(distinct: true).page(params[:page]).per(5)
@@ -94,7 +93,6 @@ class RestroomsController < ApplicationController
 
     respond_to do |format|
       if @restroom.save
-        puts 'SAVED'
         format.html { redirect_to @restroom, notice: 'Restroom was successfully created.' }
         format.json { render json: @restroom, status: :created, location: @restroom }
       else

@@ -9,21 +9,15 @@ class CleanlinessRatingsController < ApplicationController
   end
 
   def create
-    puts '**************** CREATE CleanlinessRating'
     @restroom = Restroom.find(params[:restroom_id])
-    puts 'CREATE ' + @restroom.cleanaverage.to_s if @restroom.cleanaverage
     @cleanlinessrating = @restroom.cleanliness_ratings.new(params[:cleanliness_rating])
     @note = @restroom.notes.new(params[:note])
-    # @note.user_id = current_user.id ## users not authenticated
 
     respond_to do |format|
       if @cleanlinessrating.save
         @restroom = Restroom.find(params[:restroom_id])
         @restroom.update_attributes(cleanaverage: get_cleanliness_average(@restroom))
-        puts 'CREATE 2 ' + @restroom.cleanaverage.to_s
-        puts @note.comment
         @note.save unless @note.comment == ''
-        puts @note
         format.html { redirect_to @restroom, notice: 'Cleanliness rating was successfully added.' }
         format.json { render json: @restroom, status: :created, location: @restroom }
       else
