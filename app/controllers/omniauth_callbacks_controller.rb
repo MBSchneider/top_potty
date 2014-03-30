@@ -2,7 +2,7 @@ class OmniauthCallbacksController < ApplicationController
   def all
     user = User.from_omniauth(request.env['omniauth.auth'])
     if user.persisted?
-      flash[:notice] = 'Signed in with Twitter!'
+      flash[:success] = 'Signed in with Twitter!'
       sign_in_and_redirect user
     else
       session['devise.user_attributes'] = user.attributes

@@ -10,7 +10,7 @@ class NotesController < ApplicationController
   def create
     @restroom = Restroom.find(params[:restroom_id])
     @note = @restroom.notes.new(params[:note])
-    @note.user_id = current_user.id
+    @note.user = current_user
 
     respond_to do |format|
       if @note.save

@@ -33,19 +33,31 @@
         <%= link_to "Sign Up", new_user_registration_path, class: "h6" %> |
         <%= link_to "Log In", new_user_session_path, class: "h6" %> |
         <%= link_to user_omniauth_authorize_path(:twitter) do %>
-        <font size="2">Sign in through Twitter</font><%= image_tag "bird_blue_32.png", size: "16x16" %>
+        <font size="2">Sign in through Twitter</font><%= image_tag "bird_blue_32.png", size: "16x16", style: 'margin-left: 5px' %>
           <% end %>
           <% end %>
         </div>
     <br />
-    <% [:notice,:error,:info,:success,:alert].each do |key| %>
-    <div class="message">
-      <%= flash[key] %>
-    </div>
-    <% end %>
 
     <div class="container">
-    <%= yield %>
+      <% [:warning,:danger,:info,:success,:notice,:alert].each do |key| %>
+        <%
+          if key == :alert
+            klass = 'danger'
+          elsif key == :notice
+            klass = 'success'
+          else
+            klass = key.to_s
+          end
+        %>
+        <% if flash[key] && flash[key].length > 0 %>
+          <div class="alert alert-<%= klass %> alert-dismissable">
+            <%= flash[key] if flash[key] && flash[key].length > 0 %>
+            <button type="button" style="top: 0; bottom: 0;" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          </div>
+        <% end %>
+      <% end %>
+      <%= yield %>
     </div>
     <center><%= Restroom.count %> restrooms rated, with <%= CleanlinessRating.count %> reviews, and counting...
   </body>

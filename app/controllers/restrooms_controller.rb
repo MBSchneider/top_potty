@@ -37,10 +37,6 @@ class RestroomsController < ApplicationController
   # GET /restrooms/new
   # GET /restrooms/new.json
   def new
-    if params[:address].present? && Geocoder.search(params[:address])[0].data['geometry']['location_type'] != 'GEOMETRIC_CENTER'
-      puts 'YES'
-    end
-
     @q = Restroom.search(params[:q])
 
     if params[:address].present?
@@ -59,18 +55,6 @@ class RestroomsController < ApplicationController
       format.html # new.html.erb
       format.json { render json: @restroom }
       format.js
-    end
-  end
-
-  def newprelim
-    @restroom = Restroom.new
-    authorize @restroom
-    @restroom.cleanliness_ratings.build
-
-    respond_to do |format|
-      format.js
-      format.html # new.html.erb
-      format.json { render json: @restroom }
     end
   end
 

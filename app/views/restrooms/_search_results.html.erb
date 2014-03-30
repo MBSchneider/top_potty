@@ -65,8 +65,13 @@
           Rating
         </th>
       </tr>
+      <% if @restrooms.size > 0 %>
+        <%= render @restrooms %>
+      <% else %>
+        <% flash[:danger] = 'No restrooms found within 60 miles of your search location.' %>
+        <% flash.discard(:danger) %>
+      <% end %>
 
-      <%= render @restrooms %>
       <%= paginate @restrooms %>
     </table>
     <%= paginate @restrooms %>

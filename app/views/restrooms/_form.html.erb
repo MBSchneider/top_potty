@@ -48,7 +48,6 @@
 
         <%= f.fields_for :notes do |builder| %>
           <div class="field anim-item">
-            <%= builder.hidden_field :user_id, :value => current_user.id %>
             <%= builder.label(:comment, "Notes:") %><br />
             <%= builder.text_area :comment, placeholder: "Add any notes/comments about this restroom here", :size => "30x10" %>
           </div>
